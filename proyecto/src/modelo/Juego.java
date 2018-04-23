@@ -1,10 +1,25 @@
 package modelo;
 
+import java.awt.event.KeyEvent;
+
+import hilos.HiloJuego;
+
 public class Juego {
+	
+	public static final int ANCHO = 750;
+	public static final int ALTO = 550;
+	public static final int FPS = 45;
 
 	private int puntaje;
 	private int nivel;
+	private Nave nave;
+	private boolean jugando;
 
+	public Juego() {
+		nave = new Nave();
+		jugando = true;
+	}
+	
 	public void eliminarpelota() {
 		// TODO - implement Juego.eliminarpelota
 		throw new UnsupportedOperationException();
@@ -58,4 +73,24 @@ public class Juego {
 		throw new UnsupportedOperationException();
 	}
 
+	public Nave getNave() {
+		return nave;
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		nave.keyPressed(e);
+    }
+
+    public void keyReleased(KeyEvent e) {
+    	nave.keyReleased(e);
+    }
+
+	public boolean isJugando() {
+		return jugando;
+	}
+
+	public void setJugando(boolean jugando) {
+		this.jugando = jugando;
+	}
+	
 }
