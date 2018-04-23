@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 public class Nave extends SpriteMovimiento implements Colisionable {
 	
 	public static final int VELOCIDAD_BASE = 5;
+	public static final int VIDAS = 3;
 	
 	private int vidas;
 	
@@ -12,7 +13,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		super(Juego.ANCHO/2, Juego.ALTO/2, "img/lennon.png");
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
-		vidas = 3;
+		vidas = VIDAS;
 	}
 
 	public void disminuirvida() {
