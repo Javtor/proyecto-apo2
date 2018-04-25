@@ -1,6 +1,7 @@
 package modelo;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import hilos.HiloJuego;
 
@@ -14,10 +15,20 @@ public class Juego {
 	private int nivel;
 	private Nave nave;
 	private boolean jugando;
+	
+	private Jugador jugador;
+	
+	//se supone que iba a ser un arbol 
+	private ArrayList<Jugador> listjugadores;
 
 	public Juego() {
 		nave = new Nave();
 		jugando = true;
+		
+	}
+	
+	public void iniciarjuego(String nombre) {
+		jugador = new Jugador (nombre);
 	}
 	
 	public void eliminarpelota() {
@@ -47,6 +58,11 @@ public class Juego {
 
 	public void guardardatos() {
 		// TODO - implement Juego.guardardatos
+		
+		//Falta manejo de archivos de texto
+		jugador.setNivel(nivel);
+		jugador.setPuntaje(puntaje);
+		
 		throw new UnsupportedOperationException();
 	}
 
@@ -93,4 +109,85 @@ public class Juego {
 		this.jugando = jugando;
 	}
 	
+	public void ordernarNombreAscendente() {
+		//Seleccion
+		for (int i=0; i<listjugadores.size()-1; i++) {
+			Jugador menor = listjugadores.get(i);
+			int cual = 0;
+			for (int j = i+1; j<listjugadores.size(); j++) {
+				if (listjugadores.get(j).compararNombre(menor)<0) {
+					menor = listjugadores.get(j);
+					cual = j; 
+				}
+			}
+			Jugador tmp = listjugadores.get(i);
+			listjugadores.set(i, menor);
+			listjugadores.set(cual, tmp);
+		}		
+	}
+	
+	public void ordernarNombreDescencente() {
+		//Seleccion
+		for (int i=0; i<listjugadores.size()-1; i++) {
+			Jugador mayor = listjugadores.get(i);
+			int cual = 0;
+			for (int j = i+1; j<listjugadores.size(); j++) {
+				if (listjugadores.get(j).compararNombre(mayor)>0) {
+					mayor = listjugadores.get(j);
+					cual = j; 
+				}
+			}
+			Jugador tmp = listjugadores.get(i);
+			listjugadores.set(i, mayor);
+			listjugadores.set(cual, tmp);
+		}		
+	}
+	
+	public void ordernarPuntajeAscendente() {
+		//Burbuja
+		for (int i=listjugadores.size(); i>0; i--) {
+			for (int j=0; j<i-1; j++) {
+				if (listjugadores.get(j).compareTo(listjugadores.get(j+1))>0) {
+					Jugador tmp = listjugadores.get(j);
+					listjugadores.set(j, listjugadores.get(j+1));
+					listjugadores.set(j+1, tmp);
+				}
+			}
+		}
+	}
+	
+	public void ordernarPuntajeDescendente() {
+		//Burbuja
+		for (int i=listjugadores.size(); i>0; i--) {
+			for (int j=0; j<i-1; j++) {
+				if (listjugadores.get(j).compareTo(listjugadores.get(j+1))<0) {
+					Jugador tmp = listjugadores.get(j);
+					listjugadores.set(j, listjugadores.get(j+1));
+					listjugadores.set(j+1, tmp);
+				}
+			}
+		}
+	}
+	
+	public void ordernarNivelAscendente() {
+		//Insercion 
+		for (int i=1; i<listjugadores.size();i++) {
+			for (int j=i; j>0 && listjugadores.get(j-1).compararNivel(listjugadores.get(j))>0; j--) {
+					Jugador tmp = listjugadores.get(j);
+					listjugadores.set(j, listjugadores.get(j-1));
+					listjugadores.set(j-1, tmp);
+			}
+		}
+	}
+	
+	public void ordernarNivelDescendente() {
+		//Insercion 
+		for (int i=1; i<listjugadores.size();i++) {
+			for (int j=i; j>0 && listjugadores.get(j-1).compararNivel(listjugadores.get(j))<0; j--) {
+					Jugador tmp = listjugadores.get(j);
+					listjugadores.set(j, listjugadores.get(j-1));
+					listjugadores.set(j-1, tmp);
+			}
+		}
+	}
 }

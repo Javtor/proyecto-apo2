@@ -6,6 +6,7 @@ public class Jugador implements Serializable, Comparable{
 	
 	private String nickname;
 	private int puntaje;
+	private int nivel;
 
 	public Jugador(String nickname) {
 		super();
@@ -19,9 +20,17 @@ public class Jugador implements Serializable, Comparable{
 	public int getPuntaje() {
 		return puntaje;
 	}
+	
+	public int getNivel() {
+		return nivel;
+	}
 
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;
+	}
+	
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 
 	@Override
@@ -35,6 +44,11 @@ public class Jugador implements Serializable, Comparable{
 		// TODO Auto-generated method stub
 		Jugador j = (Jugador)arg0;
 		return this.nickname.compareToIgnoreCase(j.getNickname());
+	}
+	
+	public int compararNivel(Object arg0) {
+		Jugador j = (Jugador)arg0;
+		return this.nivel-j.getNivel();
 	}
 	
 	@Override
