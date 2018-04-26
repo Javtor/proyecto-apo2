@@ -9,7 +9,7 @@ public class Juego {
 	public static final int ANCHO = 750;
 	public static final int ALTO = 550;
 	public static final int FPS = 45;
-
+	
 	private int puntaje;
 	private int nivel;
 	private Nave nave;
