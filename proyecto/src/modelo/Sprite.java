@@ -26,6 +26,10 @@ public class Sprite {
 	public Image getImagen() {
 		return new ImageIcon(imagen).getImage();
 	}
+	
+	public void setImagen(String imagen) {
+		this.imagen=imagen;
+	}
 
 	public int getX() {
 		return x;

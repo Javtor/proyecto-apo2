@@ -17,6 +17,7 @@ public class Juego {
 	private boolean jugando;
 	
 	private Jugador jugador;
+	private Bonificacion primerbonus;
 	
 	//se supone que iba a ser un arbol 
 	private ArrayList<Jugador> listjugadores;
@@ -109,6 +110,51 @@ public class Juego {
 		this.jugando = jugando;
 	}
 	
+	public void crearBonus() {
+		
+		borrarbonusinvisibles();
+		
+		int cx, cy, tipo;
+		
+		tipo = (int) ((Math.random() *3)+1);
+		cx = (int) ((Math.random() * ANCHO)+10);
+		cy = (int) ((Math.random() * ALTO)+10);
+		
+		Bonificacion anadida = new Bonificacion (cx, cy, null, tipo);
+		
+		if (primerbonus!=null) {
+			Bonificacion actual = localizarultimo();
+			actual.setSiguiente(anadida);
+			anadida.setAnterior(actual);
+		}else {
+			primerbonus=anadida;
+		}
+		
+	}
+	
+	public Bonificacion localizarultimo() {
+		Bonificacion actual = primerbonus;
+		if (actual!=null) {
+		while (actual.getSiguiente()!=null) {
+			actual = actual.getSiguiente();
+		}
+		}
+		return actual;
+	}
+	
+	public void borrarbonusinvisibles() {
+		Bonificacion actual = primerbonus;
+		
+		while (actual!=null) {
+			if (!actual.esVisible()) {
+				actual.getAnterior().desconectarsiguiente();
+				actual.getSiguiente().desconectaranterior();
+			}
+			actual=actual.getSiguiente();
+		}
+	}
+	
+	
 	public void ordernarNombreAscendente() {
 		//Seleccion
 		for (int i=0; i<listjugadores.size()-1; i++) {
@@ -190,4 +236,6 @@ public class Juego {
 			}
 		}
 	}
+	
+	
 }
