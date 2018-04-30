@@ -8,18 +8,21 @@ public class Juego {
 	
 	public static final int ANCHO = 750;
 	public static final int ALTO = 550;
-	public static final int FPS = 45;
-	
+	public static final int FPS = 45;	
 	private int puntaje;
 	private int nivel;
 	private Nave nave;
 	private boolean jugando;
+	private int cantidadpelotas;
+	
 
 	public Juego() {
 		nave = new Nave();
 		jugando = true;
+		cantidadpelotas=4;
 	}
-	
+	public void crearPelotas() {
+	}
 	public void eliminarpelota() {
 		// TODO - implement Juego.eliminarpelota
 		throw new UnsupportedOperationException();

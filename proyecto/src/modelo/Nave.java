@@ -3,14 +3,14 @@ package modelo;
 import java.awt.event.KeyEvent;
 
 public class Nave extends SpriteMovimiento implements Colisionable {
-	
+	public static final String VISUALNAVE="img/lennon.png";
 	public static final int VELOCIDAD_BASE = 5;
 	public static final int VIDAS = 3;
 	
 	private int vidas;
 	
 	public Nave() {
-		super(Juego.ANCHO/2, Juego.ALTO/2, "img/lennon.png");
+		super(Juego.ANCHO/2, Juego.ALTO/2,VISUALNAVE );
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS;
