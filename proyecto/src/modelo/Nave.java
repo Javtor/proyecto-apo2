@@ -1,6 +1,7 @@
 package modelo;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
 
 public class Nave extends SpriteMovimiento implements Colisionable {
 	
@@ -27,7 +28,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	@Override
-	public void colisionaCon(int Colisionable) {
+	public void colisionaCon(Colisionable c) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -87,5 +88,16 @@ public class Nave extends SpriteMovimiento implements Colisionable {
         	setDY(0);
         }
     }
+
+	@Override
+	public boolean hayColision(Colisionable c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Rectangle2D getHitbox() {
+		return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
+	}
 
 }

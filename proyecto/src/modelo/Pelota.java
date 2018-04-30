@@ -1,13 +1,15 @@
 package modelo;
 
-public class Pelota implements Colisionable {
+public class Pelota extends SpriteMovimiento implements Colisionable {
 
 	private boolean viva;
 	private int vidas;
+	private Pelota izq;
+	private Pelota der;
 
-	public Pelota() {
-		// TODO - implement Pelota.Pelota
-		throw new UnsupportedOperationException();
+	public Pelota(int x, int y, String imagen) {
+		super(x, y, imagen);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -19,6 +19,8 @@ public class Juego {
 	private Jugador jugador;
 	private Bonificacion primerbonus;
 	
+	private Pelota raiz;
+	
 	//se supone que iba a ser un arbol 
 	private ArrayList<Jugador> listjugadores;
 
