@@ -1,5 +1,7 @@
 package modelo;
 
+import java.awt.geom.Rectangle2D;
+
 public class Bonificacion extends Sprite implements Colisionable {
 
 	public static String DIREC_N_PROYECTIL = "img/nproyectiles.png";
@@ -56,12 +58,21 @@ public class Bonificacion extends Sprite implements Colisionable {
 	public void desconectaranterior() {
 		anterior = anterior.anterior;
 	}
-
 	
 	@Override
-	public void colisionaCon(int Colisionable) {
+	public void colisionaCon(Colisionable c) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean hayColision(Colisionable c) {
+		return getHitbox().intersects(c.getHitbox());
+	}
+
+	@Override
+	public Rectangle2D getHitbox() {
+		return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
 	}
 
 }

@@ -1,24 +1,29 @@
 package hilos;
 
+import java.util.ArrayList;
+
 import gui.Ventana;
 import modelo.Juego;
+import modelo.Pelota;
 
-public class HiloJuego extends Thread{
-	private Ventana principal;
-	private Juego juego;
+public class HiloPelotas extends Thread{
+	
+	Ventana principal;
+	ArrayList<Pelota> pelotas;
 
-	public HiloJuego(Ventana principal, Juego juego) {
+	public HiloPelotas(Ventana principal, ArrayList<Pelota> pelotas) {
 		super();
 		this.principal = principal;
-		this.juego = juego;
+		this.pelotas = pelotas;
 	}
-
+	
 	@Override
 	public void run() {
 		while (principal.isJugando()) {
+			for (int i = 0; i < pelotas.size(); i++) {
+				pelotas.get(i).mover();
+			}
 			try {
-				principal.refrescarTablero();
-				juego.cicloJuego();
 				Thread.sleep(1000 / Juego.FPS);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -27,4 +32,5 @@ public class HiloJuego extends Thread{
 
 		}
 	}
+
 }
