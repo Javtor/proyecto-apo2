@@ -33,7 +33,7 @@ public class Juego {
 
 	public void iniciarNivel() {
 		nave = new Nave();
-		numPelotas = nivel / 2 + 2;
+		numPelotas = nivel / 2 + 3;
 		iniciarPelotas();
 	}
 

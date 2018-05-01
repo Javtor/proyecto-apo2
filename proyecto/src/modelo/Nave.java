@@ -41,13 +41,13 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	@Override
 	public void mover() {
 		super.mover();
-		if(getX()<0) {
+		if(getX()<Math.abs(getDX())) {
 			setX(0);
-		} else if(getX()+getAncho()>Juego.ANCHO) {
+		} else if(getX()+getAncho()>Juego.ANCHO-Math.abs(getDX())) {
 			setX(Juego.ANCHO-getAncho());
-		} else if(getY()<0) {
+		} else if(getY()<Math.abs(getDY())) {
 			setY(0);
-		} else if(getY()+getAlto()>Juego.ALTO) {
+		} else if(getY()+getAlto()>Juego.ALTO-Math.abs(getDY())) {
 			setY(Juego.ALTO-getAlto());
 		}
 	}
