@@ -43,6 +43,7 @@ public class Ventana extends JFrame{
 		
 		moverNave();
 		generarPelotas();
+		generarBonificaciones();
 	}
 
 	public Bonificacion getBonus() {

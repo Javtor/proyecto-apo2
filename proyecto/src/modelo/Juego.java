@@ -1,13 +1,24 @@
 package modelo;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 
 import hilos.HiloJuego;
 
@@ -40,6 +51,14 @@ public class Juego {
 	}
 
 	public void iniciarNivel() {
+		try {
+			Clip sonido = AudioSystem.getClip();
+			sonido.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));
+			sonido.loop(sonido.LOOP_CONTINUOUSLY);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		nave = new Nave();
 		numPelotas = nivel / 2 + 3;
 		iniciarPelotas();
@@ -231,7 +250,6 @@ public class Juego {
 		Bonificacion actual = primerbonus;
 		while (actual != null) {
 			boolean colisiona = actual.hayColision(nave);
-			System.out.println("Entra");
 			if (colisiona) {
 				System.out.println("Colisiona");
 				actual.setVisible(false);
