@@ -1,11 +1,20 @@
 package modelo;
 
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import hilos.HiloJuego;
 
 public class Juego {
+	
+	public static final String DIREC_DATOS = "data/ultimapartida.txt";
+	public static final String NOM_DATOS = "data/datospartida.txt";
 	
 	public static final int ANCHO = 750;
 	public static final int ALTO = 550;
@@ -57,19 +66,41 @@ public class Juego {
 		throw new UnsupportedOperationException();
 	}
 
-	public void guardardatos() {
+	public void guardardatos() throws FileNotFoundException {
 		// TODO - implement Juego.guardardatos
 		
 		//Falta manejo de archivos de texto
 		jugador.setNivel(nivel);
 		jugador.setPuntaje(puntaje);
 		
-		throw new UnsupportedOperationException();
+		File archivo = new File (NOM_DATOS);
+		PrintWriter pw = new PrintWriter (archivo);
+		
+		if (archivo.exists())
+			archivo.delete();
+		
+		pw.write(jugador.getNickname());
+		pw.write("Puntaje:"+jugador.getPuntaje());
+		pw.write("Nivel:"+jugador.getNivel());
+		pw.close();
+		
 	}
 
-	public void cargardatos() {
-		// TODO - implement Juego.cargardatos
-		throw new UnsupportedOperationException();
+	public void cargardatos() throws IOException {
+		File archivo = new File (NOM_DATOS);
+		boolean existe = archivo.exists()&&archivo.isFile();
+		if (existe) {
+			BufferedReader read = new BufferedReader(new FileReader (archivo));
+			String usuario = read.readLine();
+			String[] level = read.readLine().split(":");
+			String[] puntuacion = read.readLine().split(":");
+			jugador.setNickname(usuario);
+			puntaje = Integer.parseInt(level[1]);
+			nivel = Integer.parseInt(puntuacion[1]);
+			read.close();
+		}else {
+			throw new FileNotFoundException ("No se ha encontrado el archivo");
+		}
 	}
 
 	/**
@@ -110,6 +141,10 @@ public class Juego {
 		this.jugando = jugando;
 	}
 	
+	public Bonificacion getBonus() {
+		return primerbonus;
+	}
+	
 	public void crearBonus() {
 		
 		borrarbonusinvisibles();
@@ -129,7 +164,6 @@ public class Juego {
 		}else {
 			primerbonus=anadida;
 		}
-		
 	}
 	
 	public Bonificacion localizarultimo() {
@@ -151,6 +185,42 @@ public class Juego {
 				actual.getSiguiente().desconectaranterior();
 			}
 			actual=actual.getSiguiente();
+		}
+	}
+	
+	public void verificarcolisiones() {
+		Bonificacion actual = primerbonus;
+		if (actual!=null) {
+		while(actual!=localizarultimo()) {
+			boolean colisiona = actual.colisionaCon(nave);
+			System.out.println("Entra");
+			if (colisiona) {
+				System.out.println("Colisiona");
+				actual.setVisible(false);
+				dobonus( actual.getTipo());
+			}
+			actual = actual.getSiguiente();
+		}
+		}
+	}
+	
+	public void dobonus(int tipo) {
+		switch (tipo) {
+		case 1:
+			//n proyectiles
+			break;
+		case 2:
+			//tipo proyectiles
+			
+			break;
+		case 3:
+			nave.aumentarvida();
+			//bonus vida
+			break;
+		case 4: 
+			puntaje+=100;
+			//bonus puntos
+			break;
 		}
 	}
 	
@@ -236,6 +306,8 @@ public class Juego {
 			}
 		}
 	}
+	
+	
 	
 	
 }

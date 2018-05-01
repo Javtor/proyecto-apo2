@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
+import hilos.HiloBonus;
 import hilos.HiloJuego;
 import hilos.HiloNave;
 import modelo.Juego;
@@ -14,6 +15,10 @@ public class Ventana extends JFrame{
 	
 	private PanelJuego panelJuego;
 	private Juego juego;
+	
+	private HiloBonus hB;
+	private HiloJuego hJ;
+	private HiloNave hN;
 	
 	public Ventana() {
 		juego = new Juego();
@@ -33,12 +38,17 @@ public class Ventana extends JFrame{
 		moverNave();
 	}
 	
+	public Juego getJuego() {
+		return juego;
+	}
 	
 	public void moverNave() {
-		HiloJuego hJ = new HiloJuego(this, juego);
-		HiloNave hN = new HiloNave(this, getNave());
+		hJ = new HiloJuego(this, juego);
+		hN = new HiloNave(this, getNave());
+		hB = new HiloBonus (this, juego);
 		hJ.start();
 		hN.start();
+		hB.start();
 	}
 	
 	public Nave getNave() {

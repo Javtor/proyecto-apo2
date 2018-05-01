@@ -6,6 +6,6 @@ public interface Colisionable {
 	 * 
 	 * @param Colisionable
 	 */
-	public void colisionaCon(int Colisionable);
+	public boolean colisionaCon(Colisionable Colisionable);
 
 }

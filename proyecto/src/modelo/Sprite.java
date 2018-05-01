@@ -1,6 +1,7 @@
 package modelo;
 
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
 
@@ -63,4 +64,8 @@ public class Sprite {
 		this.visible = visible;
 	}
 
+	public Rectangle2D getforma() {
+		return new Rectangle2D.Double (x, y, ancho, alto);
+	}
+	
 }

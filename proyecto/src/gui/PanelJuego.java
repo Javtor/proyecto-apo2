@@ -32,6 +32,7 @@ public class PanelJuego extends JPanel implements KeyListener{
 		//		g.setColor(Color.BLACK);
 //		g.fillRect(0, 0, Juego.ANCHO, Juego.ALTO);
 		dibujarNave(g2);
+		dibujarbonus(g2);
 	}
 	
 	public void dibujarNave(Graphics2D g2) {
@@ -39,6 +40,15 @@ public class PanelJuego extends JPanel implements KeyListener{
 		int x = principal.getNave().getX();
 		int y = principal.getNave().getY();				
 		g2.drawImage(img, x, y, null);
+	}
+	
+	public void dibujarbonus(Graphics2D g2) {
+		if (principal.getJuego().getBonus()!=null) {
+			Image img = principal.getJuego().getBonus().getImagen();
+			int x = principal.getJuego().getBonus().getX();
+			int y = principal.getJuego().getBonus().getY();
+			g2.drawImage(img, x, y , null);
+		}
 	}
 	
 	@Override

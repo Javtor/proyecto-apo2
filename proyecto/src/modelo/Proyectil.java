@@ -5,9 +5,9 @@ public class Proyectil implements Colisionable {
 	private int daño;
 	private char tipo;
 	@Override
-	public void colisionaCon(int Colisionable) {
+	public boolean colisionaCon(Colisionable Colisionable) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
-
+	
 }

@@ -26,11 +26,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public void colisionaCon(int Colisionable) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	@Override
 	public void mover() {
@@ -87,5 +83,17 @@ public class Nave extends SpriteMovimiento implements Colisionable {
         	setDY(0);
         }
     }
+
+	@Override
+	public boolean colisionaCon(Colisionable Colisionable) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public void aumentarvida() {
+		if (vidas<3) {
+			vidas++;
+		}
+	}
 
 }

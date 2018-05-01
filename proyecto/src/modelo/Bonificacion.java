@@ -2,10 +2,10 @@ package modelo;
 
 public class Bonificacion extends Sprite implements Colisionable {
 
-	public static String DIREC_N_PROYECTIL = "img/nproyectiles.png";
-	public static String DIREC_T_PROYECTIL = "img/tproyectil.png";
-	public static String DIREC_BONUS_VIDA = "img/bonusvida.png";
-	public static String DIREC_BONUS_PUNTOS = "img/bonuspuntos.png";
+	public static String DIREC_N_PROYECTIL = "img/bonus/nproyectiles.png";
+	public static String DIREC_T_PROYECTIL = "img/bonus/tproyectil.png";
+	public static String DIREC_BONUS_VIDA = "img/bonus/bonusvida.png";
+	public static String DIREC_BONUS_PUNTOS = "img/bonus/bonuspuntos.png";
 	
 	private int tipo;
 	private Bonificacion siguiente;
@@ -32,6 +32,10 @@ public class Bonificacion extends Sprite implements Colisionable {
 		siguiente=null;
 		anterior=null;
 	}
+	
+	public int getTipo() {
+		return tipo;
+	}
 
 	public Bonificacion getSiguiente() {
 		return siguiente;
@@ -56,12 +60,12 @@ public class Bonificacion extends Sprite implements Colisionable {
 	public void desconectaranterior() {
 		anterior = anterior.anterior;
 	}
+	
 
 	
 	@Override
-	public void colisionaCon(int Colisionable) {
-		// TODO Auto-generated method stub
-		
+	public boolean colisionaCon(Colisionable colisionable) {
+		return this.getforma().intersects(((Sprite) colisionable).getforma()) ? true : false;
 	}
 
 }
