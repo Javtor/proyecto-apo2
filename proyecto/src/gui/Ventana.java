@@ -3,7 +3,6 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 
 import hilos.HiloInvulnerabilidad;
@@ -11,6 +10,7 @@ import hilos.HiloBonus;
 import hilos.HiloJuego;
 import hilos.HiloNave;
 import hilos.HiloPelotas;
+
 import modelo.Bonificacion;
 import modelo.Juego;
 import modelo.Nave;

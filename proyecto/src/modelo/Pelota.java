@@ -5,11 +5,13 @@ import java.util.ArrayList;
 
 public class Pelota extends SpriteMovimiento implements Colisionable {
 
+	public static final String UBICACION = "img/pelota.jpg";
 	public static final int VELOCIDAD_BASE = 5;
+	
 	private int vida;
 	private Pelota izq;
 	private Pelota der;
-	public static final String UBICACION = "img/pelota.jpg";
+	
 
 	public Pelota() {
 		super(0, 0, UBICACION);

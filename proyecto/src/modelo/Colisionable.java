@@ -1,10 +1,13 @@
 package modelo;
 
+import java.awt.geom.Rectangle2D;
 
-	/**
-	 * 
-	 * @param Colisionable
-	 */
-	public void colisionaCon(int Colisionable);
+public interface Colisionable {
+	
+	public boolean hayColision(Colisionable c);
+	
+	public void colisionaCon(Colisionable c);
+	
+	public Rectangle2D getHitbox();
 
 }

@@ -1,16 +1,23 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Jugador implements Serializable, Comparable{
 	
 	private String nickname;
 	private int puntaje;
 	private int nivel;
+	
+	private Jugador izq;
+	private Jugador der;
 
 	public Jugador(String nickname) {
 		super();
 		this.nickname = nickname;
+		
+		izq=null;
+		der=null;
 	}
 
 	public String getNickname() {
@@ -60,6 +67,50 @@ public class Jugador implements Serializable, Comparable{
 		// TODO Auto-generated method stub
 		Jugador j = (Jugador)arg0;
 		return this.puntaje == j.getPuntaje() && this.nickname.equals(j.getNickname());
+	}
+	
+	public Jugador buscar (int puntaje) {
+		Jugador j = this;
+		while (j!=null) {
+			int comp = j.compareTo(puntaje);
+			
+			if (comp == 0) {
+				return j;
+			}else if (comp>0) {
+				j=j.izq;
+			}else {
+				j=j.der;
+			}
+		}
+		return null;
+	}
+	
+	
+	public void insertar (Jugador j) {
+		if (compareTo(j)==0) {
+			//tienen el mismo puntaje
+		}else if (compareTo(j)>0) {
+			if (izq == null)
+				izq = j;
+			else
+				izq.insertar(j);
+		}else {
+			if (der==null)
+				der=j;
+			else
+				der.insertar(j);
+		}
+	}
+	
+	public void crearArreglo(ArrayList<Jugador> a) {
+		if(izq != null) {
+			izq.crearArreglo(a);
+		}
+		a.add(this);
+		if(der != null) {
+			der.crearArreglo(a);
+		}
+		
 	}
 	
 }

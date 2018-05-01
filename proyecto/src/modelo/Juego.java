@@ -8,9 +8,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,12 +26,13 @@ import javax.sound.sampled.LineUnavailableException;
 
 import hilos.HiloJuego;
 
-public class Juego {
+public class Juego implements Serializable{
 	public static final int ANCHO = 800;
 	public static final int ALTO = 600;
 
 	public static final String DIREC_DATOS = "data/ultimapartida.txt";
 	public static final String NOM_DATOS = "data/datospartida.txt";
+	public static final String DIREC_JUGADORES = "data/users.txt";
 	public static final int FPS = 45;
 
 	private int puntaje;
@@ -40,9 +45,7 @@ public class Juego {
 	private Bonificacion primerbonus;
 
 	private Pelota raizPelota;
-
-	// se supone que iba a ser un arbol
-	private ArrayList<Jugador> listjugadores;
+	private Jugador raizjugador;
 
 	public Juego() {
 		nivel = 1;
@@ -59,6 +62,7 @@ public class Juego {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		nave = new Nave();
 		numPelotas = nivel / 2 + 3;
 		iniciarPelotas();
@@ -114,22 +118,42 @@ public class Juego {
 		throw new UnsupportedOperationException();
 	}
 
-	public void guardarpartida() {
-		// TODO - implement Juego.guardarpartida
-		throw new UnsupportedOperationException();
+	public void guardarpartida() throws FileNotFoundException, IOException{
+		guardarJugadores();
+	}
+	
+	public void guardarJugadores() throws FileNotFoundException, IOException {
+		File file = new File (DIREC_JUGADORES);
+		
+		if (file.exists())
+			file.delete();
+		
+		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
+		oos.writeObject(raizjugador);
+		oos.close();
+		
 	}
 
 	public void cargarpartida() {
-		// TODO - implement Juego.cargarpartida
-		throw new UnsupportedOperationException();
+		
+	}
+	
+	public void recuperarJugadores() throws IOException, ClassNotFoundException {
+		File file = new File(DIREC_JUGADORES);
+		boolean existe = file.exists() && file.isFile();
+		
+		if (existe) {
+			ObjectInputStream ois = new ObjectInputStream (new FileInputStream (file));
+			raizjugador = (Jugador) ois.readObject();
+		}else {
+			throw new FileNotFoundException("No se ha encontrado el archivo");
+		}
 	}
 
 	public void guardardatos() throws FileNotFoundException {
-		// TODO - implement Juego.guardardatos
-
-		// Falta manejo de archivos de texto
 		jugador.setNivel(nivel);
 		jugador.setPuntaje(puntaje);
+		addJugador();
 
 		File archivo = new File(NOM_DATOS);
 		PrintWriter pw = new PrintWriter(archivo);
@@ -279,7 +303,9 @@ public class Juego {
 		}
 	}
 
-	public void ordernarNombreAscendente() {
+	
+	public ArrayList<Jugador> ordernarNombreAscendente() {
+		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador menor = listjugadores.get(i);
@@ -294,9 +320,11 @@ public class Juego {
 			listjugadores.set(i, menor);
 			listjugadores.set(cual, tmp);
 		}
+		return listjugadores;
 	}
 
-	public void ordernarNombreDescencente() {
+	public ArrayList<Jugador> ordernarNombreDescencente() {
+		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador mayor = listjugadores.get(i);
@@ -311,9 +339,11 @@ public class Juego {
 			listjugadores.set(i, mayor);
 			listjugadores.set(cual, tmp);
 		}
+		return listjugadores;
 	}
 
-	public void ordernarPuntajeAscendente() {
+	public ArrayList<Jugador> ordernarPuntajeAscendente() {
+		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
 			for (int j = 0; j < i - 1; j++) {
@@ -324,9 +354,11 @@ public class Juego {
 				}
 			}
 		}
+		return listjugadores;
 	}
 
-	public void ordernarPuntajeDescendente() {
+	public ArrayList<Jugador> ordernarPuntajeDescendente() {
+		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
 			for (int j = 0; j < i - 1; j++) {
@@ -337,9 +369,11 @@ public class Juego {
 				}
 			}
 		}
+		return listjugadores;
 	}
 
-	public void ordernarNivelAscendente() {
+	public ArrayList<Jugador> ordernarNivelAscendente() {
+		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
 			for (int j = i; j > 0 && listjugadores.get(j - 1).compararNivel(listjugadores.get(j)) > 0; j--) {
@@ -348,9 +382,11 @@ public class Juego {
 				listjugadores.set(j - 1, tmp);
 			}
 		}
+		return listjugadores;
 	}
 
-	public void ordernarNivelDescendente() {
+	public ArrayList<Jugador> ordernarNivelDescendente() {
+		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
 			for (int j = i; j > 0 && listjugadores.get(j - 1).compararNivel(listjugadores.get(j)) < 0; j--) {
@@ -359,7 +395,9 @@ public class Juego {
 				listjugadores.set(j - 1, tmp);
 			}
 		}
+		return listjugadores;
 	}
+
 
 	public void cicloJuego() {
 		verificarColisionNave();
@@ -371,4 +409,27 @@ public class Juego {
 			nave.colisionaCon(new Pelota());
 		}
 	}
+	
+	public void addJugador() {
+		if (raizjugador == null) {
+			raizjugador = jugador;
+		}else {
+			raizjugador.insertar(jugador);
+		}
+	}
+	
+	public ArrayList<Jugador> toArrayListJugador(){
+		ArrayList<Jugador> alj = new ArrayList<Jugador>();
+		if (raizjugador != null) {
+			raizjugador.crearArreglo(alj);
+		}
+		return alj;
+		
+	}
+	
+	public Jugador buscarJugadorPuntos(int puntos) {
+		return raizjugador==null? null: raizjugador.buscar(puntos);
+	}
+	
+	
 }
