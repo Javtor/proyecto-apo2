@@ -1,14 +1,22 @@
 package modelo;
 
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import hilos.HiloJuego;
 
 public class Juego {
-
 	public static final int ANCHO = 800;
 	public static final int ALTO = 600;
+
+	public static final String DIREC_DATOS = "data/ultimapartida.txt";
+	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final int FPS = 45;
 
 	private int puntaje;
@@ -97,19 +105,40 @@ public class Juego {
 		throw new UnsupportedOperationException();
 	}
 
-	public void guardardatos() {
+	public void guardardatos() throws FileNotFoundException {
 		// TODO - implement Juego.guardardatos
 
 		// Falta manejo de archivos de texto
 		jugador.setNivel(nivel);
 		jugador.setPuntaje(puntaje);
 
-		throw new UnsupportedOperationException();
+		File archivo = new File(NOM_DATOS);
+		PrintWriter pw = new PrintWriter(archivo);
+
+		if (archivo.exists())
+			archivo.delete();
+
+		pw.write(jugador.getNickname());
+		pw.write("Puntaje:" + jugador.getPuntaje());
+		pw.write("Nivel:" + jugador.getNivel());
+		pw.close();
 	}
 
-	public void cargardatos() {
-		// TODO - implement Juego.cargardatos
-		throw new UnsupportedOperationException();
+	public void cargardatos() throws IOException {
+		File archivo = new File(NOM_DATOS);
+		boolean existe = archivo.exists() && archivo.isFile();
+		if (existe) {
+			BufferedReader read = new BufferedReader(new FileReader(archivo));
+			String usuario = read.readLine();
+			String[] level = read.readLine().split(":");
+			String[] puntuacion = read.readLine().split(":");
+			jugador.setNickname(usuario);
+			puntaje = Integer.parseInt(level[1]);
+			nivel = Integer.parseInt(puntuacion[1]);
+			read.close();
+		} else {
+			throw new FileNotFoundException("No se ha encontrado el archivo");
+		}
 	}
 
 	/**
@@ -150,6 +179,10 @@ public class Juego {
 		this.jugando = jugando;
 	}
 
+	public Bonificacion getBonus() {
+		return primerbonus;
+	}
+
 	public void crearBonus() {
 
 		borrarbonusinvisibles();
@@ -187,10 +220,44 @@ public class Juego {
 
 		while (actual != null) {
 			if (!actual.esVisible()) {
-				actual.getAnterior().desconectarsiguiente();
-				actual.getSiguiente().desconectaranterior();
+				actual.getAnterior().desconectarSiguiente();
+				actual.getSiguiente().desconectarAnterior();
 			}
 			actual = actual.getSiguiente();
+		}
+	}
+
+	public void verificarColisionBonus() {
+		Bonificacion actual = primerbonus;
+		while (actual != null) {
+			boolean colisiona = actual.hayColision(nave);
+			System.out.println("Entra");
+			if (colisiona) {
+				System.out.println("Colisiona");
+				actual.setVisible(false);
+				doBonus(actual.getTipo());
+			}
+			actual = actual.getSiguiente();
+		}
+	}
+
+	public void doBonus(int tipo) {
+		switch (tipo) {
+		case 1:
+			// n proyectiles
+			break;
+		case 2:
+			// tipo proyectiles
+
+			break;
+		case 3:
+			nave.aumentarVida();
+			// bonus vida
+			break;
+		case 4:
+			puntaje += 100;
+			// bonus puntos
+			break;
 		}
 	}
 
@@ -278,13 +345,12 @@ public class Juego {
 
 	public void cicloJuego() {
 		verificarColisionNave();
-
+		verificarColisionBonus();
 	}
 
 	public void verificarColisionNave() {
-		if (raizPelota != null && raizPelota.existenColisiones(nave) && nave.esVisible()) {	
+		if (raizPelota != null && raizPelota.existenColisiones(nave) && nave.esVisible()) {
 			nave.colisionaCon(new Pelota());
 		}
 	}
-
 }

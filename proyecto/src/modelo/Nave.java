@@ -114,5 +114,11 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 			setImagen(UBICACION_INVULNERABLE);
 		}
 	}
+	
+	public void aumentarVida() {
+		if (vidas<3) {
+			vidas++;
+		}
+	}
 
 }

@@ -1,6 +1,7 @@
 package modelo;
 
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
 
@@ -62,5 +63,5 @@ public class Sprite {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-
+	
 }
