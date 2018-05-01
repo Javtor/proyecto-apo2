@@ -24,6 +24,10 @@ public class Jugador implements Serializable, Comparable{
 	public int getNivel() {
 		return nivel;
 	}
+	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;

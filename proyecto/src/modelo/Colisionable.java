@@ -1,6 +1,5 @@
 package modelo;
 
-public interface Colisionable {
 
 	/**
 	 * 

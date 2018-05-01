@@ -7,10 +7,12 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
 import modelo.Juego;
+import modelo.Pelota;
 
 public class PanelJuego extends JPanel implements KeyListener{
 
@@ -32,6 +34,8 @@ public class PanelJuego extends JPanel implements KeyListener{
 		//		g.setColor(Color.BLACK);
 //		g.fillRect(0, 0, Juego.ANCHO, Juego.ALTO);
 		dibujarNave(g2);
+		dibujarPelotas(g2);
+		dibujarBonus(g2);
 	}
 	
 	public void dibujarNave(Graphics2D g2) {
@@ -39,6 +43,26 @@ public class PanelJuego extends JPanel implements KeyListener{
 		int x = principal.getNave().getX();
 		int y = principal.getNave().getY();				
 		g2.drawImage(img, x, y, null);
+	}
+	
+	public void dibujarPelotas(Graphics2D g2) {
+		ArrayList<Pelota> a = principal.getPelotas();
+		for (int i = 0; i < a.size(); i++) {
+			Image img = a.get(i).getImagen();
+			int x = a.get(i).getX();
+			int y = a.get(i).getY();				
+			g2.drawImage(img, x, y, null);
+		}
+		
+	}
+
+	public void dibujarBonus(Graphics2D g2) {
+		if (principal.getBonus()!=null) {
+			Image img = principal.getBonus().getImagen();
+			int x = principal.getBonus().getX();
+			int y = principal.getBonus().getY();
+			g2.drawImage(img, x, y , null);
+		}
 	}
 	
 	@Override

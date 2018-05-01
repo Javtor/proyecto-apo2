@@ -1,16 +1,20 @@
 package modelo;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
 
 public class Nave extends SpriteMovimiento implements Colisionable {
 	
-	public static final int VELOCIDAD_BASE = 5;
+	public static final int VELOCIDAD_BASE = 10;
 	public static final int VIDAS_INICIAL = 3;
+	public static final String UBICACION = "img/nave.png";
+	public static final String UBICACION_INVULNERABLE = "img/invulnerable.jpg";
 	
 	private int vidas;
+	private boolean invulnerable;
 	
 	public Nave() {
-		super(Juego.ANCHO/2, Juego.ALTO/2, "img/lennon.png");
+		super(Juego.ANCHO/2, Juego.ALTO/2, "img/nave.png");
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS_INICIAL;
@@ -27,21 +31,23 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	@Override
-	public void colisionaCon(int Colisionable) {
-		// TODO Auto-generated method stub
-		
+	public void colisionaCon(Colisionable c) {
+		if(c instanceof Pelota && !esInvulnerable()) {
+			System.out.println("pum");
+			setInvulnerable(true);
+		}
 	}
 	
 	@Override
 	public void mover() {
 		super.mover();
-		if(getX()<0) {
+		if(getX()<Math.abs(getDX())) {
 			setX(0);
-		} else if(getX()+getAncho()>Juego.ANCHO) {
+		} else if(getX()+getAncho()>Juego.ANCHO-Math.abs(getDX())) {
 			setX(Juego.ANCHO-getAncho());
-		} else if(getY()<0) {
+		} else if(getY()<Math.abs(getDY())) {
 			setY(0);
-		} else if(getY()+getAlto()>Juego.ALTO) {
+		} else if(getY()+getAlto()>Juego.ALTO-Math.abs(getDY())) {
 			setY(Juego.ALTO-getAlto());
 		}
 	}
@@ -87,5 +93,32 @@ public class Nave extends SpriteMovimiento implements Colisionable {
         	setDY(0);
         }
     }
+
+	@Override
+	public boolean hayColision(Colisionable c) {
+		return getHitbox().intersects(c.getHitbox());
+	}
+
+	@Override
+	public Rectangle2D getHitbox() {
+		return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
+	}
+
+	public boolean esInvulnerable() {
+		return invulnerable;
+	}
+
+	public void setInvulnerable(boolean invulnerable) {
+		this.invulnerable = invulnerable;
+		if(this.invulnerable) {
+			setImagen(UBICACION_INVULNERABLE);
+		}
+	}
+	
+	public void aumentarVida() {
+		if (vidas<3) {
+			vidas++;
+		}
+	}
 
 }

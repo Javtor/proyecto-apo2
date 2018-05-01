@@ -1,6 +1,7 @@
 package modelo;
 
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
 
@@ -25,6 +26,10 @@ public class Sprite {
 
 	public Image getImagen() {
 		return new ImageIcon(imagen).getImage();
+	}
+	
+	public void setImagen(String imagen) {
+		this.imagen=imagen;
 	}
 
 	public int getX() {
@@ -58,5 +63,5 @@ public class Sprite {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-
+	
 }
