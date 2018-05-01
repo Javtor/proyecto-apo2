@@ -1,7 +1,5 @@
 package modelo;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.event.KeyEvent;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
