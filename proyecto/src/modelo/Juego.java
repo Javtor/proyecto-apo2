@@ -49,6 +49,11 @@ public class Juego implements Serializable{
 		nivel = 1;
 		jugando = true;
 		iniciarNivel();
+		
+	}
+	
+	public void setJugador(String nick) {
+		jugador = new Jugador (nick);
 	}
 
 	public void iniciarNivel() {

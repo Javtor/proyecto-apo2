@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import modelo.Juego;
@@ -31,7 +32,7 @@ public class PanelInicio extends JPanel implements ActionListener {
 	private JButton butsalir;
 	
 	private Ventana ventana;
-	private JDialog ranking;
+	private DialogRanking ranking;
 	private MenuInicio menu;
 	
 
@@ -108,13 +109,13 @@ public class PanelInicio extends JPanel implements ActionListener {
 		String comando = e.getActionCommand();
 		
 		if (comando.equals(NUEVO)) {
-			
+			nuevaPartida();
 		}
 		if (comando.equals(CARGAR)) {
 			
 		}
 		if (comando.equals(RANKING)) {
-	
+			abrirRanking();
 		}
 		if (comando.equals(SALIR)) {
 			menu.dispose();
@@ -129,6 +130,18 @@ public class PanelInicio extends JPanel implements ActionListener {
 		Graphics2D g2 = (Graphics2D)g;
 		Image bg = new ImageIcon(FONDO).getImage();
 		g2.drawImage(bg,0,0,Juego.ANCHO, Juego.ALTO,null);
+	}
+	
+	public void nuevaPartida() {
+		String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
+		if (!nick.equals(""))
+		menu.getJuego().setJugador(nick);
+		else
+		JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void abrirRanking() {
+		ranking = new DialogRanking(menu);
 	}
 
 

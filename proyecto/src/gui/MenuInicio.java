@@ -32,6 +32,9 @@ public class MenuInicio extends JFrame {
 
 	}
 		
+	public Juego getJuego() {
+		return juego;
+	}
 	
 
 	public static void main(String[] args) {
