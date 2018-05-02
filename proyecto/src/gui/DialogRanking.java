@@ -6,11 +6,13 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -44,6 +46,7 @@ public class DialogRanking extends JDialog implements ActionListener{
 		
 		this.menu=menu;
 		
+		setTitle("Ranking");
 		setSize(Juego.ANCHO, Juego.ALTO);
 		setResizable(false);
 		setVisible(true);
@@ -111,8 +114,15 @@ public class DialogRanking extends JDialog implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
+		String comando = e.getActionCommand();
 		
+		if (comando.equals(BUSCAR)) {
+			buscar();
+		}
+		if (comando.equals(GENERAR)) {
+			generar();
+		}
 		
 	}
 	
@@ -125,4 +135,21 @@ public class DialogRanking extends JDialog implements ActionListener{
 
 	}
 	 */
+	
+	public void buscar() {
+		int puntos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese puntaje a buscar"));
+		
+		
+		String nombre = menu.getJuego().buscarJugadorPuntos(puntos).getNickname();
+		
+		if (nombre.equals(null)) {
+			JOptionPane.showMessageDialog(this, "No existe un jugador con ese puntaje", "Not Found", JOptionPane.WARNING_MESSAGE);
+		}else {
+			JOptionPane.showMessageDialog(this, nombre+" tiene ese puntaje");
+		}
+	}
+	
+	public void generar() {
+		
+	}
 }

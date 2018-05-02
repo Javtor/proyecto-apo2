@@ -196,15 +196,6 @@ public class Juego implements Serializable{
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param puntaje
-	 */
-	public Jugador buscarpuntaje(int puntaje) {
-		// TODO - implement Juego.buscarpuntaje
-		throw new UnsupportedOperationException();
-	}
-
 	public Nave getNave() {
 		return nave;
 	}
