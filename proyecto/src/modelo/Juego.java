@@ -187,15 +187,6 @@ public class Juego implements Serializable{
 		}
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 */
-	public Jugador buscarjugador(String nombre) {
-		// TODO - implement Juego.buscarjugador
-		throw new UnsupportedOperationException();
-	}
-
 	public Nave getNave() {
 		return nave;
 	}
@@ -421,8 +412,36 @@ public class Juego implements Serializable{
 		
 	}
 	
+	public Jugador buscarJugadorNombre(String nombre) {
+		Jugador j = raizjugador==null? null: raizjugador.buscarNombre(nombre);
+		if (j==null)
+			throw new NombreNoExisteException ();
+		
+		return j;
+	}
+	
 	public Jugador buscarJugadorPuntos(int puntos) {
-		return raizjugador==null? null: raizjugador.buscar(puntos);
+		ArrayList<Jugador> array = ordernarNombreDescencente();
+		Jugador j = null;
+		boolean resultado = false;
+		int inicio = 0;
+		int fin = array.size()-1;
+		
+		while (inicio<=fin && !resultado) {
+			int medio = (inicio+fin)/2;
+			if (array.get(medio).getPuntaje()==puntos) {
+				resultado = true;
+				j = array.get(medio);
+			}else if (array.get(medio).getPuntaje()>puntos) {
+				fin = medio - 1;
+			}else {
+				inicio = medio +1 ;
+			}
+		}
+		
+		if (j==null)
+			throw new PuntajeNoExisteException();
+		return j;
 	}
 	
 	

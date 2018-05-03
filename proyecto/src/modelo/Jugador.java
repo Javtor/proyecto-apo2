@@ -69,10 +69,10 @@ public class Jugador implements Serializable, Comparable{
 		return this.puntaje == j.getPuntaje() && this.nickname.equals(j.getNickname());
 	}
 	
-	public Jugador buscar (int puntaje) {
+	public Jugador buscarNombre (String nombre) {
 		Jugador j = this;
 		while (j!=null) {
-			int comp = j.compareTo(puntaje);
+			int comp = j.compareTo(nombre);
 			
 			if (comp == 0) {
 				return j;
@@ -87,9 +87,9 @@ public class Jugador implements Serializable, Comparable{
 	
 	
 	public void insertar (Jugador j) {
-		if (compareTo(j)==0) {
-			//tienen el mismo puntaje
-		}else if (compareTo(j)>0) {
+		if (compararNombre(j)==0) {
+			throw new JugadorRepetidoException ();
+		}else if (compararNombre(j)>0) {
 			if (izq == null)
 				izq = j;
 			else
