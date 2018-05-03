@@ -43,6 +43,24 @@ public class Jugador implements Serializable, Comparable{
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
+	
+	
+
+	public Jugador getIzq() {
+		return izq;
+	}
+
+	public Jugador getDer() {
+		return der;
+	}
+
+	public void setIzq(Jugador izq) {
+		this.izq = izq;
+	}
+
+	public void setDer(Jugador der) {
+		this.der = der;
+	}
 
 	@Override
 	public int compareTo(Object arg0) {

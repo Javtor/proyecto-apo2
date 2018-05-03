@@ -48,12 +48,22 @@ public class Juego implements Serializable{
 	public Juego() {
 		nivel = 1;
 		jugando = true;
+		raizjugador=null;
+		jugador = new Jugador(null);
 		iniciarNivel();
 		
 	}
 	
-	public void setJugador(String nick) {
-		jugador = new Jugador (nick);
+	public Jugador getRaizJugador() {
+		return raizjugador;
+	}
+	
+	public Jugador getJugador() {
+		return jugador;
+	}
+	
+	public void setJugador(Jugador jugador) {
+		this.jugador=jugador;
 	}
 
 	public void iniciarNivel() {

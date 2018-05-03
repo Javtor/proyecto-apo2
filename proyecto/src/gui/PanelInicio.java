@@ -135,7 +135,7 @@ public class PanelInicio extends JPanel implements ActionListener {
 	public void nuevaPartida() {
 		String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
 		if (!nick.equals(""))
-		menu.getJuego().setJugador(nick);
+		menu.getJuego().getJugador().setNickname(nick);
 		else
 		JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
 	}
