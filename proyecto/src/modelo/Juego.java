@@ -400,6 +400,13 @@ public class Juego implements Serializable{
 	public void cicloJuego() {
 		verificarColisionNave();
 		verificarColisionBonus();
+		verificarVidas();
+	}
+
+	private void verificarVidas() {
+		if(nave.getVidas()==0) {
+			jugando=false;
+		}
 	}
 
 	public void verificarColisionNave() {
