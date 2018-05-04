@@ -261,8 +261,12 @@ public class Juego implements Serializable{
 
 		while (actual != null) {
 			if (!actual.esVisible()) {
-				actual.getAnterior().desconectarSiguiente();
-				actual.getSiguiente().desconectarAnterior();
+				if(actual.getAnterior() != null) {
+					actual.getAnterior().desconectarSiguiente();
+				}
+				if(actual.getSiguiente() != null) {
+					actual.getSiguiente().desconectarAnterior();
+				}
 			}
 			actual = actual.getSiguiente();
 		}
@@ -272,10 +276,8 @@ public class Juego implements Serializable{
 		Bonificacion actual = primerbonus;
 		while (actual != null) {
 			boolean colisiona = actual.hayColision(nave);
-			if (colisiona) {
-				System.out.println("Colisiona");
-				actual.setVisible(false);
-				doBonus(actual.getTipo());
+			if (actual.esVisible() && colisiona) {
+				actual.colisionaCon(nave);
 			}
 			actual = actual.getSiguiente();
 		}

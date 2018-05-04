@@ -65,8 +65,9 @@ public class Bonificacion extends Sprite implements Colisionable {
 	
 	@Override
 	public void colisionaCon(Colisionable c) {
-		// TODO Auto-generated method stub
-		
+		setVisible(false);
+		System.out.println("cuchau");
+//		doBonus(actual.getTipo());
 	}
 
 	@Override

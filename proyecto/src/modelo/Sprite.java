@@ -30,6 +30,9 @@ public class Sprite {
 	
 	public void setImagen(String imagen) {
 		this.imagen=imagen;
+		Image img = new ImageIcon(imagen).getImage();
+		ancho = img.getWidth(null);
+		alto = img.getHeight(null);
 	}
 
 	public int getX() {

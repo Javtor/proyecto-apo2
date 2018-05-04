@@ -12,6 +12,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	
 	private int vidas;
 	private boolean invulnerable;
+	private Proyectil primerPro;
 	
 	public Nave() {
 		super(Juego.ANCHO/2, Juego.ALTO/2, "img/nave.png");
@@ -33,7 +34,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	@Override
 	public void colisionaCon(Colisionable c) {
 		if(c instanceof Pelota && !esInvulnerable()) {
-			System.out.println("pum");
+//			System.out.println("pum");
 			setInvulnerable(true);
 		}
 	}

@@ -48,10 +48,12 @@ public class PanelJuego extends JPanel implements KeyListener{
 	public void dibujarPelotas(Graphics2D g2) {
 		ArrayList<Pelota> a = principal.getPelotas();
 		for (int i = 0; i < a.size(); i++) {
-			Image img = a.get(i).getImagen();
-			int x = a.get(i).getX();
-			int y = a.get(i).getY();				
-			g2.drawImage(img, x, y, null);
+			if (a.get(i).esVisible()) {
+				Image img = a.get(i).getImagen();
+				int x = a.get(i).getX();
+				int y = a.get(i).getY();
+				g2.drawImage(img, x, y, null);
+			}
 		}
 		
 	}
