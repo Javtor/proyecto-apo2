@@ -1,7 +1,6 @@
 package modelo;
 
 import java.awt.event.KeyEvent;
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,14 +12,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
 
 import hilos.HiloJuego;
 
@@ -402,6 +397,13 @@ public class Juego implements Serializable{
 	public void cicloJuego() {
 		verificarColisionNave();
 		verificarColisionBonus();
+		verificarVidas();
+	}
+
+	private void verificarVidas() {
+		if(nave.getVidas()==0) {
+			jugando=false;
+		}
 	}
 
 	public void verificarColisionNave() {

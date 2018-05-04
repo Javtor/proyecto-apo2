@@ -21,9 +21,8 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		vidas = VIDAS_INICIAL;
 	}
 
-	public void disminuirvida() {
-		// TODO - implement Nave.disminuirvida
-		throw new UnsupportedOperationException();
+	public void disminuirVida() {
+		vidas--;
 	}
 
 	public boolean validarvida() {
@@ -34,7 +33,8 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	@Override
 	public void colisionaCon(Colisionable c) {
 		if(c instanceof Pelota && !esInvulnerable()) {
-//			System.out.println("pum");
+			disminuirVida();
+			System.out.println("pum");
 			setInvulnerable(true);
 		}
 	}
@@ -120,6 +120,10 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		if (vidas<3) {
 			vidas++;
 		}
+	}
+
+	public int getVidas() {
+		return vidas;
 	}
 
 }
