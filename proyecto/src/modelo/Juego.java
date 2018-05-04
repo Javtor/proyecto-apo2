@@ -302,11 +302,12 @@ public class Juego implements Serializable{
 	public ArrayList<Jugador> ordernarNombreAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
+		
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador menor = listjugadores.get(i);
-			int cual = 0;
+			int cual = i;
 			for (int j = i + 1; j < listjugadores.size(); j++) {
-				if (listjugadores.get(j).compararNombre(menor) < 0) {
+				if (menor.compararNombre(listjugadores.get(j).getNickname()) < 0) {
 					menor = listjugadores.get(j);
 					cual = j;
 				}
@@ -318,14 +319,14 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNombreDescencente() {
+	public ArrayList<Jugador> ordernarNombreDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador mayor = listjugadores.get(i);
-			int cual = 0;
+			int cual = i;
 			for (int j = i + 1; j < listjugadores.size(); j++) {
-				if (listjugadores.get(j).compararNombre(mayor) > 0) {
+				if (mayor.compararNombre(listjugadores.get(j).getNickname()) > 0) {
 					mayor = listjugadores.get(j);
 					cual = j;
 				}
@@ -367,7 +368,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNivelAscendente() {
+	public ArrayList<Jugador> ordenarNivelAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
@@ -380,7 +381,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNivelDescendente() {
+	public ArrayList<Jugador> ordenarNivelDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
@@ -431,17 +432,20 @@ public class Juego implements Serializable{
 	}
 	
 	public Jugador buscarJugadorPuntos(int puntos) {
-		ArrayList<Jugador> array = ordernarNombreDescencente();
+		ArrayList<Jugador> array = ordernarPuntajeAscendente();
 		Jugador j = null;
 		boolean resultado = false;
 		int inicio = 0;
 		int fin = array.size()-1;
 		
 		while (inicio<=fin && !resultado) {
+			
 			int medio = (inicio+fin)/2;
+			
 			if (array.get(medio).getPuntaje()==puntos) {
-				resultado = true;
 				j = array.get(medio);
+				resultado = true;
+		
 			}else if (array.get(medio).getPuntaje()>puntos) {
 				fin = medio - 1;
 			}else {
@@ -451,6 +455,7 @@ public class Juego implements Serializable{
 		
 		if (j==null)
 			throw new PuntajeNoExisteException();
+		
 		return j;
 	}
 	

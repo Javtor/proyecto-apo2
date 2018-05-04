@@ -110,6 +110,10 @@ public class DialogRanking extends JDialog implements ActionListener{
 		add(panelchoices, BorderLayout.CENTER);
 		add(panelbotones, BorderLayout.SOUTH);
 		
+		listjugadores.setListData(menu.getJuego().toArrayListJugador().toArray());
+		
+		//actualizarlista();
+		
 		pack();
 	}
 
@@ -126,15 +130,22 @@ public class DialogRanking extends JDialog implements ActionListener{
 		
 	}
 	
-	/*
-	public void actualizarlista() {
-		String index = ven.getVentana().getPanelselecciones().getindex();
-		System.out.println(index);
-		listjugadores.setListData(ven.getVentana().getMundial().buscarseleccion(index).toArrayList().toArray());
-		listjugadores.setSelectedIndex(0);
-
+	
+	public void actualizarlista(int tipo, int criterio) {
+		switch (tipo) {
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		}
+		listjugadores.setListData(menu.getJuego().toArrayListJugador().toArray());
 	}
-	 */
+	 
 	
 	public void buscar() {
 		int puntos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese puntaje a buscar"));
@@ -150,6 +161,21 @@ public class DialogRanking extends JDialog implements ActionListener{
 	}
 	
 	public void generar() {
+		int tipo = 0;
+		if (rbnombre.isSelected())
+			tipo=1;
+		else if (rbpuntaje.isSelected())
+			tipo=2;
+		else
+			tipo=3;
 		
+		int criterio=0;
+		if (rbascendente.isSelected())
+			criterio=1;
+		else
+			criterio=2;
+		
+		actualizarlista(tipo, criterio);
+			
 	}
 }
