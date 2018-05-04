@@ -299,7 +299,7 @@ public class Juego implements Serializable{
 	}
 
 	
-	public ArrayList<Jugador> ordernarNombreAscendente() {
+	public ArrayList<Jugador> ordenarNombreAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
 		
@@ -319,7 +319,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNombreDescendente() {
+	public ArrayList<Jugador> ordenarNombreDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
@@ -338,7 +338,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarPuntajeAscendente() {
+	public ArrayList<Jugador> ordenarPuntajeAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
@@ -353,7 +353,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarPuntajeDescendente() {
+	public ArrayList<Jugador> ordenarPuntajeDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
@@ -432,7 +432,7 @@ public class Juego implements Serializable{
 	}
 	
 	public Jugador buscarJugadorPuntos(int puntos) {
-		ArrayList<Jugador> array = ordernarPuntajeAscendente();
+		ArrayList<Jugador> array = ordenarPuntajeAscendente();
 		Jugador j = null;
 		boolean resultado = false;
 		int inicio = 0;

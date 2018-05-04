@@ -115,7 +115,7 @@ class JuegoTest {
 	void testOrdenarPuntajeAscendente() {
 		setUpEscenario4();
 		
-		ArrayList<Jugador> array = juego.ordernarPuntajeAscendente();
+		ArrayList<Jugador> array = juego.ordenarPuntajeAscendente();
 		
 		assertEquals (array.get(0).getNickname(), "Alejandro");
 		assertEquals (array.get(1).getNickname(), "Julian");
@@ -128,7 +128,7 @@ class JuegoTest {
 	void testOrdenarPuntajeDescendente() {
 		setUpEscenario4();
 		
-		ArrayList<Jugador> array = juego.ordernarPuntajeDescendente();
+		ArrayList<Jugador> array = juego.ordenarPuntajeDescendente();
 		
 		assertEquals (array.get(0).getNickname(), "Manyolml");
 		assertEquals (array.get(1).getNickname(), "JuanMa");
@@ -141,7 +141,7 @@ class JuegoTest {
 	void testOrdenarNombreAscendente() {
 		setUpEscenario4();
 		
-		ArrayList<Jugador> array = juego.ordernarNombreAscendente();
+		ArrayList<Jugador> array = juego.ordenarNombreAscendente();
 		
 		assertEquals (array.get(0).getNickname(), "Manyolml");
 		assertEquals (array.get(1).getNickname(), "Julian");
@@ -154,7 +154,7 @@ class JuegoTest {
 	void testOrdenarNombreDescendente() {
 		setUpEscenario4();
 		
-		ArrayList<Jugador> array = juego.ordernarNombreDescendente();
+		ArrayList<Jugador> array = juego.ordenarNombreDescendente();
 		
 		assertEquals (array.get(0).getNickname(), "Alejandro");
 		assertEquals (array.get(1).getNickname(), "Javier");

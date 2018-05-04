@@ -112,8 +112,6 @@ public class DialogRanking extends JDialog implements ActionListener{
 		
 		listjugadores.setListData(menu.getJuego().toArrayListJugador().toArray());
 		
-		//actualizarlista();
-		
 		pack();
 	}
 
@@ -134,16 +132,25 @@ public class DialogRanking extends JDialog implements ActionListener{
 	public void actualizarlista(int tipo, int criterio) {
 		switch (tipo) {
 		case 1:
-			
+			//Nombre
+				if (criterio==1)
+					listjugadores.setListData(menu.getJuego().ordenarNombreAscendente().toArray());
+				else
+					listjugadores.setListData(menu.getJuego().ordenarNombreDescendente().toArray());
 			break;
 		case 2:
-			
+			if (criterio==1)
+				listjugadores.setListData(menu.getJuego().ordenarPuntajeAscendente().toArray());
+			else
+				listjugadores.setListData(menu.getJuego().ordenarPuntajeAscendente().toArray());
 			break;
 		case 3:
-			
+			if (criterio==1)
+				listjugadores.setListData(menu.getJuego().ordenarNivelAscendente().toArray());
+			else
+				listjugadores.setListData(menu.getJuego().ordenarNivelDescendente().toArray());
 			break;
 		}
-		listjugadores.setListData(menu.getJuego().toArrayListJugador().toArray());
 	}
 	 
 	
