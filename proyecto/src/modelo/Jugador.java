@@ -43,6 +43,24 @@ public class Jugador implements Serializable, Comparable{
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
+	
+	
+
+	public Jugador getIzq() {
+		return izq;
+	}
+
+	public Jugador getDer() {
+		return der;
+	}
+
+	public void setIzq(Jugador izq) {
+		this.izq = izq;
+	}
+
+	public void setDer(Jugador der) {
+		this.der = der;
+	}
 
 	@Override
 	public int compareTo(Object arg0) {
@@ -51,10 +69,8 @@ public class Jugador implements Serializable, Comparable{
 		return this.puntaje-j.getPuntaje();
 	}
 	
-	public int compararNombre(Object arg0) {
-		// TODO Auto-generated method stub
-		Jugador j = (Jugador)arg0;
-		return this.nickname.compareToIgnoreCase(j.getNickname());
+	public int compararNombre(String nombre) {
+		return this.nickname.compareToIgnoreCase(nombre);
 	}
 	
 	public int compararNivel(Object arg0) {
@@ -69,10 +85,10 @@ public class Jugador implements Serializable, Comparable{
 		return this.puntaje == j.getPuntaje() && this.nickname.equals(j.getNickname());
 	}
 	
-	public Jugador buscar (int puntaje) {
+	public Jugador buscarNombre (String nombre) {
 		Jugador j = this;
 		while (j!=null) {
-			int comp = j.compareTo(puntaje);
+			int comp = j.compararNombre(nombre);
 			
 			if (comp == 0) {
 				return j;
@@ -85,11 +101,10 @@ public class Jugador implements Serializable, Comparable{
 		return null;
 	}
 	
-	
 	public void insertar (Jugador j) {
-		if (compareTo(j)==0) {
-			//tienen el mismo puntaje
-		}else if (compareTo(j)>0) {
+		if (compararNombre(j.getNickname())==0) {
+			throw new JugadorRepetidoException ();
+		}else if (compararNombre(j.getNickname())>0) {
 			if (izq == null)
 				izq = j;
 			else
@@ -111,6 +126,11 @@ public class Jugador implements Serializable, Comparable{
 			der.crearArreglo(a);
 		}
 		
+	}
+	
+	@Override
+	public String toString () {
+		return nickname +"        "+puntaje+"       "+nivel;
 	}
 	
 }

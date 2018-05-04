@@ -43,7 +43,22 @@ public class Juego implements Serializable{
 	public Juego() {
 		nivel = 1;
 		jugando = true;
+		raizjugador=null;
+		jugador = new Jugador(null);
 		iniciarNivel();
+		
+	}
+	
+	public Jugador getRaizJugador() {
+		return raizjugador;
+	}
+	
+	public Jugador getJugador() {
+		return jugador;
+	}
+	
+	public void setJugador(Jugador jugador) {
+		this.jugador=jugador;
 	}
 
 	public void iniciarNivel() {
@@ -177,24 +192,6 @@ public class Juego implements Serializable{
 		}
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 */
-	public Jugador buscarjugador(String nombre) {
-		// TODO - implement Juego.buscarjugador
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param puntaje
-	 */
-	public Jugador buscarpuntaje(int puntaje) {
-		// TODO - implement Juego.buscarpuntaje
-		throw new UnsupportedOperationException();
-	}
-
 	public Nave getNave() {
 		return nave;
 	}
@@ -299,14 +296,15 @@ public class Juego implements Serializable{
 	}
 
 	
-	public ArrayList<Jugador> ordernarNombreAscendente() {
+	public ArrayList<Jugador> ordenarNombreAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
+		
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador menor = listjugadores.get(i);
-			int cual = 0;
+			int cual = i;
 			for (int j = i + 1; j < listjugadores.size(); j++) {
-				if (listjugadores.get(j).compararNombre(menor) < 0) {
+				if (menor.compararNombre(listjugadores.get(j).getNickname()) < 0) {
 					menor = listjugadores.get(j);
 					cual = j;
 				}
@@ -318,14 +316,14 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNombreDescencente() {
+	public ArrayList<Jugador> ordenarNombreDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador mayor = listjugadores.get(i);
-			int cual = 0;
+			int cual = i;
 			for (int j = i + 1; j < listjugadores.size(); j++) {
-				if (listjugadores.get(j).compararNombre(mayor) > 0) {
+				if (mayor.compararNombre(listjugadores.get(j).getNickname()) > 0) {
 					mayor = listjugadores.get(j);
 					cual = j;
 				}
@@ -337,7 +335,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarPuntajeAscendente() {
+	public ArrayList<Jugador> ordenarPuntajeAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
@@ -352,7 +350,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarPuntajeDescendente() {
+	public ArrayList<Jugador> ordenarPuntajeDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
@@ -367,7 +365,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNivelAscendente() {
+	public ArrayList<Jugador> ordenarNivelAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
@@ -380,7 +378,7 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-	public ArrayList<Jugador> ordernarNivelDescendente() {
+	public ArrayList<Jugador> ordenarNivelDescendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
@@ -429,8 +427,40 @@ public class Juego implements Serializable{
 		
 	}
 	
+	public Jugador buscarJugadorNombre(String nombre) {
+		Jugador j = raizjugador==null? null: raizjugador.buscarNombre(nombre);
+		if (j==null)
+			throw new NombreNoExisteException ();
+		
+		return j;
+	}
+	
 	public Jugador buscarJugadorPuntos(int puntos) {
-		return raizjugador==null? null: raizjugador.buscar(puntos);
+		ArrayList<Jugador> array = ordenarPuntajeAscendente();
+		Jugador j = null;
+		boolean resultado = false;
+		int inicio = 0;
+		int fin = array.size()-1;
+		
+		while (inicio<=fin && !resultado) {
+			
+			int medio = (inicio+fin)/2;
+			
+			if (array.get(medio).getPuntaje()==puntos) {
+				j = array.get(medio);
+				resultado = true;
+		
+			}else if (array.get(medio).getPuntaje()>puntos) {
+				fin = medio - 1;
+			}else {
+				inicio = medio +1 ;
+			}
+		}
+		
+		if (j==null)
+			throw new PuntajeNoExisteException();
+		
+		return j;
 	}
 	
 	
