@@ -6,7 +6,6 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 
 	public Proyectil(int x, int y, String imagen) {
 		super(x, y, imagen);
-		// TODO Auto-generated constructor stub
 	}
 
 	private int daño;

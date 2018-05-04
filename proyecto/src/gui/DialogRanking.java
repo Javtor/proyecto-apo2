@@ -155,16 +155,18 @@ public class DialogRanking extends JDialog implements ActionListener{
 	 
 	
 	public void buscar() {
-		int puntos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese puntaje a buscar"));
-		
-		
-		String nombre = menu.getJuego().buscarJugadorPuntos(puntos).getNickname();
-		
-		if (nombre.equals(null)) {
-			JOptionPane.showMessageDialog(this, "No existe un jugador con ese puntaje", "Not Found", JOptionPane.WARNING_MESSAGE);
-		}else {
-			JOptionPane.showMessageDialog(this, nombre+" tiene ese puntaje");
-		}
+		try {
+			int puntos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese puntaje a buscar"));
+			String nombre = menu.getJuego().buscarJugadorPuntos(puntos).getNickname();
+			
+			if (nombre.equals(null)) {
+				JOptionPane.showMessageDialog(this, "No existe un jugador con ese puntaje", "Not Found", JOptionPane.WARNING_MESSAGE);
+			}else {
+				JOptionPane.showMessageDialog(this, nombre+" tiene ese puntaje");
+			}
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(this, "Ingrese un número valido", "Error", JOptionPane.WARNING_MESSAGE);
+		}	
 	}
 	
 	public void generar() {
