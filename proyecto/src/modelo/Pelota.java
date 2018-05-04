@@ -91,9 +91,9 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	@Override
 	public void mover() {
 		super.mover();
-		if(getX()<=Math.abs(getDX())+5 || getX()+getAncho()>=Juego.ANCHO-Math.abs(getDX())) {
+		if(getX()<=Math.abs(getDX()) || getX()+getAncho()>=Juego.ANCHO-Math.abs(getDX())) {
 			setDX(-getDX());
-		} else if((getY()<=Math.abs(getDY()) && getDY()<0)|| getY()+getAlto()+Math.abs(getDY())>=Juego.ALTO-Math.abs(getDY())) {
+		} if((getY()<=Math.abs(getDY()) && getDY()<0)|| getY()+getAlto()>=Juego.ALTO-Math.abs(getDY())) {
 			setDY(-getDY());
 		} 
 	}

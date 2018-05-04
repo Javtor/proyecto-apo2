@@ -20,7 +20,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS_INICIAL;
-		proyectil = new Proyectil(getX(), getY());
+		proyectil = new Proyectil(getX()+getAncho()/2, getY()+getAlto()/2);
 	}
 
 	public void disminuirVida() {
@@ -48,7 +48,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 			setX(0);
 		} else if(getX()+getAncho()>Juego.ANCHO-Math.abs(getDX())) {
 			setX(Juego.ANCHO-getAncho());
-		} else if(getY()<Math.abs(getDY())) {
+		} if(getY()<Math.abs(getDY())) {
 			setY(0);
 		} else if(getY()+getAlto()>Juego.ALTO-Math.abs(getDY())) {
 			setY(Juego.ALTO-getAlto());
@@ -130,7 +130,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	
 	public void disparar(int x, int y) {
 		System.out.println("cataplum");
-		proyectil.disparar(getX(), getY(), x, y);
+		proyectil.disparar(getX()+getAncho()/2, getY()+getAlto()/2, x, y);
 	}
 
 	public Proyectil getProyectil() {

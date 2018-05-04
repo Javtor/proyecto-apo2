@@ -18,8 +18,8 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public void disparar(int x, int y, int x2, int y2) {
 		setX(x);
 		setY(y);
-		int difX = x2-getX();
-		int difY = y2-getY();
+		int difX = x2-getX()+getAncho()/2;
+		int difY = y2-getY()+getAlto()/2;
 		double hip = Math.sqrt(difX*difX+difY*difY);
 		double prop = VELOCIDAD/hip;
 		setDX((int)(prop*(x2-getX())));
