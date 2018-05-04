@@ -10,7 +10,7 @@ import hilos.HiloBonus;
 import hilos.HiloJuego;
 import hilos.HiloNave;
 import hilos.HiloPelotas;
-
+import hilos.HiloProyectil;
 import modelo.Bonificacion;
 import modelo.Juego;
 import modelo.Nave;
@@ -25,6 +25,8 @@ public class Ventana extends JFrame{
 	private HiloJuego hJ;
 	private HiloNave hN;
 	private HiloInvulnerabilidad hI;
+	private HiloPelotas hPel;
+	private HiloProyectil hPro;
 	
 	public Ventana() {
 		juego = new Juego();
@@ -54,20 +56,26 @@ public class Ventana extends JFrame{
 		hI = new HiloInvulnerabilidad(this, getNave());
 		hJ = new HiloJuego(this, juego);
 		hN = new HiloNave(this, getNave());
+		hPro = new HiloProyectil(this, getNave().getProyectil());
 		
 		hJ.start();
 		hN.start();
 		hI.start();
+		hPro.start();
 	}
 	
 	public void generarPelotas() {
-		HiloPelotas hP = new HiloPelotas(this,getPelotas());
-		hP.start();
+		hPel = new HiloPelotas(this,getPelotas());
+		hPel.start();
 	}
 	
 	public void generarBonificaciones() {
 		hB = new HiloBonus (this, juego);
 		hB.start();
+	}
+	
+	public void dispararProyectil(int x, int y) {
+		juego.disparar(x,y);
 	}
 	
 	public Nave getNave() {

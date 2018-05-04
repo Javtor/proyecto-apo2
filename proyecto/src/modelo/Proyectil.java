@@ -1,21 +1,23 @@
 package modelo;
 
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 
 public class Proyectil extends SpriteMovimiento implements Colisionable {
 	
 	public static final int VELOCIDAD = 10;
-	private Proyectil siguiente;
+	public static final String UBICACION = "img"+File.separator+"proyectil.jpg";
 
-	public Proyectil(int x, int y, String imagen, int x2, int y2) {
-		super(x, y, imagen);
-		calcularVelocidades(x2,y2);
+	public Proyectil(int x, int y) {
+		super(x, y, UBICACION);
 	}
 
 	private int daño;
 	private char tipo;
 	
-	public void calcularVelocidades(int x2, int y2) {
+	public void disparar(int x, int y, int x2, int y2) {
+		setX(x);
+		setY(y);
 		int difX = x2-getX();
 		int difY = y2-getY();
 		double hip = Math.sqrt(difX*difX+difY*difY);

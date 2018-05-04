@@ -432,6 +432,10 @@ public class Juego implements Serializable{
 	public Jugador buscarJugadorPuntos(int puntos) {
 		return raizjugador==null? null: raizjugador.buscar(puntos);
 	}
+
+	public void disparar(int x, int y) {
+		nave.disparar(x, y);
+	}
 	
 	
 }

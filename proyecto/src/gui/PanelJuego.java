@@ -7,14 +7,18 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.xml.crypto.dsig.spec.DigestMethodParameterSpec;
 
 import modelo.Juego;
 import modelo.Pelota;
+import modelo.Proyectil;
 
-public class PanelJuego extends JPanel implements KeyListener{
+public class PanelJuego extends JPanel implements KeyListener, MouseListener{
 
 	private Ventana principal;
 	
@@ -23,6 +27,7 @@ public class PanelJuego extends JPanel implements KeyListener{
 		setPreferredSize(new Dimension(Juego.ANCHO, Juego.ALTO));
 		setFocusable(true);
 		addKeyListener(this);
+		addMouseListener(this);
 	}
 
 	@Override
@@ -33,9 +38,10 @@ public class PanelJuego extends JPanel implements KeyListener{
 		g2.drawImage(bg,0,0,Juego.ANCHO, Juego.ALTO,null);
 		//		g.setColor(Color.BLACK);
 //		g.fillRect(0, 0, Juego.ANCHO, Juego.ALTO);
-		dibujarNave(g2);
-		dibujarPelotas(g2);
 		dibujarBonus(g2);
+		dibujarNave(g2);
+		dibujarProyectil(g2);
+		dibujarPelotas(g2);
 	}
 	
 	public void dibujarNave(Graphics2D g2) {
@@ -55,7 +61,6 @@ public class PanelJuego extends JPanel implements KeyListener{
 				g2.drawImage(img, x, y, null);
 			}
 		}
-		
 	}
 
 	public void dibujarBonus(Graphics2D g2) {
@@ -65,6 +70,14 @@ public class PanelJuego extends JPanel implements KeyListener{
 			int y = principal.getBonus().getY();
 			g2.drawImage(img, x, y , null);
 		}
+	}
+	
+	public void dibujarProyectil(Graphics2D g2) {
+		Proyectil a = principal.getNave().getProyectil();
+		Image img = a.getImagen();
+		int x = a.getX();
+		int y = a.getY();
+		g2.drawImage(img, x, y, null);
 	}
 	
 	@Override
@@ -79,6 +92,35 @@ public class PanelJuego extends JPanel implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		principal.dispararProyectil(e.getX(), e.getY());
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
