@@ -62,15 +62,19 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	}
 	
 	public void insertar(Pelota p) {
-		if(izq == null) {
-			izq = p;
-		} else if (der == null) {
-			der = p;
-		} else if(Math.random()<0.5) {
-			izq.insertar(p);
+		if(this.getX()>p.getX()) {
+			if(izq == null) {
+				izq = p;
+			} else {
+				izq.insertar(p);
+			}
 		} else {
-			der.insertar(p);
-		}
+			if(der == null) {
+				der = p;
+			} else {
+				der.insertar(p);
+			}
+		} 
 	}
 
 	@Override
@@ -93,7 +97,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		super.mover();
 		if(getX()<=Math.abs(getDX()) || getX()+getAncho()>=Juego.ANCHO-Math.abs(getDX())) {
 			setDX(-getDX());
-		} if((getY()<=Math.abs(getDY()) && getDY()<0)|| getY()+getAlto()>=Juego.ALTO-Math.abs(getDY())) {
+		} if((getY()<=Math.abs(getDY()) && getDY()<0)|| getY()+getAlto() >=Juego.ALTO-Math.abs(getDY())) {
 			setDY(-getDY());
 		} 
 	}

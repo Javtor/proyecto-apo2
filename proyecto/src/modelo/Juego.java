@@ -33,6 +33,7 @@ public class Juego implements Serializable{
 	private Nave nave;
 	private boolean jugando;
 	private int numPelotas;
+	private Clip cancionFondo;
 
 	private Jugador jugador;
 	private Bonificacion primerbonus;
@@ -48,9 +49,9 @@ public class Juego implements Serializable{
 
 	public void iniciarNivel() {
 		try {
-			Clip sonido = AudioSystem.getClip();
-			sonido.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));
-			sonido.loop(sonido.LOOP_CONTINUOUSLY);
+			cancionFondo = AudioSystem.getClip();
+			cancionFondo.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));
+			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -400,9 +401,10 @@ public class Juego implements Serializable{
 		verificarVidas();
 	}
 
-	private void verificarVidas() {
+	public void verificarVidas() {
 		if(nave.getVidas()==0) {
 			jugando=false;
+			cancionFondo.stop();
 		}
 	}
 
