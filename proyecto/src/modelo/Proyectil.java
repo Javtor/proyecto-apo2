@@ -7,15 +7,17 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	
 	public static final int VELOCIDAD = 15;
 	public static final String UBICACION = "img"+File.separator+"proyectil.jpg";
+	public static final int DANIO = 1;
+	
+	private int danio;
+	private char tipo;
 
 	public Proyectil(int x, int y) {
 		super(x, y, UBICACION);
+		danio = DANIO;
 		setVisible(false);
 	}
 
-	private int danho;
-	private char tipo;
-	
 	public void disparar(int x, int y, int x2, int y2) {
 		if ( !esVisible() ) {
 			setX(x);
@@ -45,7 +47,9 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	
 	@Override
 	public void colisionaCon(Colisionable c) {
-
+		if(c instanceof Pelota) {
+			setVisible(false);
+		}
 	}
 
 	@Override
@@ -57,4 +61,13 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public Rectangle2D getHitbox() {
 		return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
 	}
+
+	public int getDanio() {
+		return danio;
+	}
+
+	public void setDanio(int danio) {
+		this.danio = danio;
+	}
+	
 }

@@ -396,6 +396,7 @@ public class Juego implements Serializable{
 	public void cicloJuego() {
 		verificarColisionNave();
 		verificarColisionBonus();
+		verificarColisionProyectil();
 		verificarVidas();
 	}
 
@@ -409,6 +410,20 @@ public class Juego implements Serializable{
 	public void verificarColisionNave() {
 		if (raizPelota != null && raizPelota.existenColisiones(nave) && nave.esVisible()) {
 			nave.colisionaCon(new Pelota());
+		}
+	}
+	
+	public void verificarColisionProyectil() {
+		if (nave.getProyectil().esVisible()) {
+			boolean sigue = true;
+			ArrayList<Pelota> p = getPelotas();
+			for (int i = 0; i < p.size() && sigue; i++) {
+				if (p.get(i).hayColision(nave.getProyectil())) {
+					p.get(i).colisionaCon(nave.getProyectil());
+					nave.getProyectil().colisionaCon(p.get(i));
+					sigue = false;
+				}
+			} 
 		}
 	}
 	
