@@ -17,7 +17,7 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	private char tipo;
 	
 	public void disparar(int x, int y, int x2, int y2) {
-		if (!esVisible()) {
+		if ( !esVisible() ) {
 			setX(x);
 			setY(y);
 			setVisible(true);
