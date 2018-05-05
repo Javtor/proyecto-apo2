@@ -8,18 +8,9 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public static final int VELOCIDAD = 15;
 	public static final String UBICACION = "img"+File.separator+"proyectil.jpg";
 
-<<<<<<< HEAD
 	public Proyectil(int x, int y) {
 		super(x, y, UBICACION);
 		setVisible(false);
-||||||| merged common ancestors
-	public Proyectil(int x, int y, String imagen) {
-		super(x, y, imagen);
-		// TODO Auto-generated constructor stub
-=======
-	public Proyectil(int x, int y, String imagen) {
-		super(x, y, imagen);
->>>>>>> Ranking
 	}
 
 	private int danho;
