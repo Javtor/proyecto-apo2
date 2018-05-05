@@ -43,10 +43,9 @@ public class Juego implements Serializable{
 
 	public Juego() {
 		nivel = 1;
-		jugando = true;
 		raizjugador=null;
 		jugador = new Jugador(null);
-		iniciarNivel();
+//		iniciarNivel();
 		
 	}
 	
@@ -63,6 +62,7 @@ public class Juego implements Serializable{
 	}
 
 	public void iniciarNivel() {
+		jugando = true;
 		try {
 			cancionFondo = AudioSystem.getClip();
 			cancionFondo.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));

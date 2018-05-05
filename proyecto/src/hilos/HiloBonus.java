@@ -1,5 +1,6 @@
 package hilos;
 
+import gui.MenuInicio;
 import gui.Ventana;
 import modelo.Juego;
 
