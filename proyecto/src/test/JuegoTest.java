@@ -190,8 +190,14 @@ class JuegoTest {
 	@Test
 	void testBuscarJugadorPuntaje1() {
 		setUpEscenario4();
-		Jugador jugador = juego.buscarJugadorPuntos(500);
-		assertEquals (jugador.getNickname(), "Manyolml");
+		Jugador jugador;
+		try {
+			jugador = juego.buscarJugadorPuntos(500);
+			assertEquals (jugador.getNickname(), "Manyolml");
+		} catch (PuntajeNoExisteException e) {
+			fail("");
+		}
+		
 	}
 	
 	@Test
@@ -209,8 +215,14 @@ class JuegoTest {
 	@Test
 	void testBuscarJugadorNombre1() {
 		setUpEscenario4();
-		Jugador jugador = juego.buscarJugadorNombre("Javier");
-		assertEquals (jugador.getNickname(), "Javier");
+		Jugador jugador;
+		try {
+			jugador = juego.buscarJugadorNombre("Javier");
+			assertEquals (jugador.getNickname(), "Javier");
+		} catch (NombreNoExisteException e) {
+			fail("");
+		}
+		
 	}
 	
 	@Test

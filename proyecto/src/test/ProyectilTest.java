@@ -17,9 +17,9 @@ public class ProyectilTest {
 	@Test
 	public void testCalcularVelocidades() {
 		setupEscenario1();
-		p.disparar(20,20,23, 24);
-		System.out.println(p.getDX());
-		System.out.println(p.getDY());
+		p.disparar(20,20,25, 24);
+
+
 	}
 
 }

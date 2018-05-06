@@ -444,7 +444,7 @@ public class Juego implements Serializable{
 		
 	}
 	
-	public Jugador buscarJugadorNombre(String nombre) {
+	public Jugador buscarJugadorNombre(String nombre) throws NombreNoExisteException {
 		Jugador j = raizjugador==null? null: raizjugador.buscarNombre(nombre);
 		if (j==null)
 			throw new NombreNoExisteException ();
@@ -452,7 +452,7 @@ public class Juego implements Serializable{
 		return j;
 	}
 	
-	public Jugador buscarJugadorPuntos(int puntos) {
+	public Jugador buscarJugadorPuntos(int puntos) throws PuntajeNoExisteException {
 		ArrayList<Jugador> array = ordenarPuntajeAscendente();
 		Jugador j = null;
 		boolean resultado = false;

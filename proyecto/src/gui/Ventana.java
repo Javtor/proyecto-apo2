@@ -17,11 +17,13 @@ import modelo.Juego;
 import modelo.Jugador;
 import modelo.Nave;
 import modelo.Pelota;
+import modelo.PuntajeNoExisteException;
 
 public class Ventana extends JFrame {
 
 	private PanelJuego panelJuego;
 	private PanelInicio panelInicio;
+	private DialogRanking ranking;
 	private Juego juego;
 
 	private HiloBonus hB;
@@ -38,7 +40,7 @@ public class Ventana extends JFrame {
 		setLayout(new BorderLayout());
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
+
 		panelInicio = new PanelInicio(this);
 		add(panelInicio, BorderLayout.CENTER);
 
@@ -46,7 +48,6 @@ public class Ventana extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
-	
 
 	public void iniciarPartida() {
 		juego.iniciarNivel();
@@ -118,22 +119,58 @@ public class Ventana extends JFrame {
 
 	public void nuevaPartida() {
 		juego = new Juego();
-		registrarNickname();	
+		registrarNickname();
 	}
-	
+
 	public void registrarNickname() {
-			String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
-			if (nick != null) {
-				if (nick.equals("")) {
-					JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning",
-							JOptionPane.WARNING_MESSAGE);
-				} else {
-					juego.getJugador().setNickname(nick);
-					iniciarPartida();
-				} 
+		String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
+		if (nick != null) {
+			if (nick.equals("")) {
+				JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
+			} else {
+				juego.getJugador().setNickname(nick);
+				iniciarPartida();
 			}
+		}
 	}
-	
+
+	public void mostrarTablaOrdenada(int tipo, int criterio) {
+		switch (tipo) {
+		case 1:
+			// Nombre
+			if (criterio == 1)
+				ranking.actualizarLista(juego.ordenarNombreAscendente());
+			else
+				ranking.actualizarLista(juego.ordenarNombreDescendente());
+			break;
+		case 2:
+			if (criterio == 1)
+				ranking.actualizarLista(juego.ordenarPuntajeAscendente());
+			else
+				ranking.actualizarLista(juego.ordenarPuntajeAscendente());
+			break;
+		case 3:
+			if (criterio == 1)
+				ranking.actualizarLista(juego.ordenarNivelAscendente());
+			else
+				ranking.actualizarLista(juego.ordenarNivelDescendente());
+			break;
+		}
+	}
+
+	public void buscarPuntaje() {
+		try {
+			int puntos = Integer.parseInt(JOptionPane.showInputDialog(ranking,"Ingrese puntaje a buscar"));
+			String nombre = juego.buscarJugadorPuntos(puntos).getNickname();
+			JOptionPane.showMessageDialog(ranking, nombre + " tiene "+puntos+" puntos");
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(ranking, "Ingrese un número valido", "Error", JOptionPane.WARNING_MESSAGE);
+		} catch (PuntajeNoExisteException e) {
+			JOptionPane.showMessageDialog(ranking, "No existe un jugador con ese puntaje", "Not Found",
+					JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
 	public void mostrarInicio() {
 		remove(panelJuego);
 		panelInicio = new PanelInicio(this);
@@ -145,15 +182,16 @@ public class Ventana extends JFrame {
 	}
 
 	public void abrirRanking() {
-//		ranking = new DialogRanking(this);
+		ranking = new DialogRanking(this);
+		ranking.actualizarLista(juego.toArrayListJugador());
 	}
-	
-	public ArrayList<Jugador> getJugadores(){
+
+	public ArrayList<Jugador> getJugadores() {
 		return juego.toArrayListJugador();
 	}
 
 	public static void main(String[] args) {
 		Ventana v = new Ventana();
 	}
-	
+
 }

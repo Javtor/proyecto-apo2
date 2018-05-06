@@ -1,6 +1,6 @@
 package modelo;
 
-public class PuntajeNoExisteException extends NullPointerException {
+public class PuntajeNoExisteException extends Exception {
 
 	public PuntajeNoExisteException() {
 		// TODO Auto-generated constructor stub

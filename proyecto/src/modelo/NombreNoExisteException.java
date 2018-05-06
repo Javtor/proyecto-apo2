@@ -1,6 +1,6 @@
 package modelo;
 
-public class NombreNoExisteException extends NullPointerException {
+public class NombreNoExisteException extends Exception {
 
 	public NombreNoExisteException() {
 		// TODO Auto-generated constructor stub
