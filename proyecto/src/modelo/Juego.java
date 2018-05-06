@@ -27,6 +27,8 @@ public class Juego implements Serializable{
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
 	public static final int FPS = 45;
+	
+	public static final int INCREMENTO = 5;
 
 	private int puntaje;
 	private int nivel;
@@ -62,6 +64,7 @@ public class Juego implements Serializable{
 	}
 
 	public void iniciarNivel() {
+		jugador.setNivel(nivel);
 		jugando = true;
 		try {
 			cancionFondo = AudioSystem.getClip();
@@ -87,15 +90,17 @@ public class Juego implements Serializable{
 
 	public void iniciarPelotas() {
 		for (int i = 0; i < numPelotas; i++) {
-			boolean generar = true;
+//			boolean generar = true;
 			Pelota p = null;
-			while (generar) {
-				generar = false;
+//			while (generar) {
+//				generar = false;
 				p = new Pelota();
-				if (raizPelota != null && raizPelota.existenColisiones(p)) {
-					generar = true;
-				}
-			}
+//				if (raizPelota != null && raizPelota.existenColisiones(p)) {
+//					if(ANCHO/(numPelotas-2)>raizPelota.getAncho()) {
+//						generar = true;
+//					}
+//				}
+//			}
 			insertarPelota(p);
 		}
 	}
@@ -413,6 +418,11 @@ public class Juego implements Serializable{
 		}
 	}
 	
+	public void aumentarPuntaje() {
+		puntaje+=INCREMENTO;
+		jugador.setPuntaje(puntaje);
+	}
+	
 	public void verificarColisionProyectil() {
 		if (nave.getProyectil().esVisible()) {
 			boolean sigue = true;
@@ -421,6 +431,9 @@ public class Juego implements Serializable{
 				if (p.get(i).hayColision(nave.getProyectil())) {
 					p.get(i).colisionaCon(nave.getProyectil());
 					nave.getProyectil().colisionaCon(p.get(i));
+					if(!(p.get(i).esVisible())) {
+						aumentarPuntaje();
+					}
 					sigue = false;
 				}
 			} 

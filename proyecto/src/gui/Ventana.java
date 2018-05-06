@@ -70,6 +70,7 @@ public class Ventana extends JFrame {
 		panelDatos.setJugador(juego.getJugador().getNickname());
 		panelDatos.setPuntos(""+juego.getJugador().getPuntaje());
 		panelDatos.setNivel(""+juego.getJugador().getNivel());
+		panelDatos.setVidas(""+juego.getNave().getVidas());
 	}
 
 	public Bonificacion getBonus() {
