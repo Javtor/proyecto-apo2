@@ -4,11 +4,11 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 
 public class Proyectil extends SpriteMovimiento implements Colisionable {
-
+	
 	public static final int VELOCIDAD = 15;
-	public static final String UBICACION = "img" + File.separator + "proyectil.jpg";
+	public static final String UBICACION = "img"+File.separator+"proyectil.jpg";
 	public static final int DANIO = 1;
-
+	
 	private int danio;
 	private char tipo;
 
@@ -19,18 +19,32 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	}
 
 	public void disparar(int x, int y, int x2, int y2) {
-		if (!esVisible()) {
+		if ( !esVisible() ) {
 			setX(x);
 			setY(y);
-			int difX = x2 - getX();
-			int difY = y2 - getY();
+			setVisible(true);
+			int difX = x2 - getX() + getAncho() / 2;
+			int difY = y2 - getY() + getAlto() / 2;
 			double hip = Math.sqrt(difX * difX + difY * difY);
 			double prop = VELOCIDAD / hip;
 			setDX((int) (prop * (x2 - getX())));
 			setDY((int) (prop * (y2 - getY())));
 		}
 	}
-
+	
+	@Override
+	public void mover() {
+		super.mover();
+		if(getX()<0 
+				|| getX()+getAncho()>Juego.ANCHO
+				|| getY()<0
+				|| getY()+getAlto()>Juego.ALTO) {
+			setVisible(false);
+			setDX(0);
+			setDY(0);
+		} 
+	}
+	
 	@Override
 	public void colisionaCon(Colisionable c) {
 		if(c instanceof Pelota) {
@@ -47,7 +61,6 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public Rectangle2D getHitbox() {
 		return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
 	}
-	
 
 	public int getDanio() {
 		return danio;
