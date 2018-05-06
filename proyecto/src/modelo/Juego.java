@@ -63,7 +63,7 @@ public class Juego implements Serializable{
 		this.jugador=jugador;
 	}
 
-	public void iniciarNivel() {
+	public void iniciarJuego() {
 		jugador.setNivel(nivel);
 		jugando = true;
 		try {
@@ -115,21 +115,6 @@ public class Juego implements Serializable{
 
 	public void iniciarjuego(String nombre) {
 		jugador = new Jugador(nombre);
-	}
-
-	public void eliminarpelota() {
-		// TODO - implement Juego.eliminarpelota
-		throw new UnsupportedOperationException();
-	}
-
-	public void aumentarpuntaje() {
-		// TODO - implement Juego.aumentarpuntaje
-		throw new UnsupportedOperationException();
-	}
-
-	public void subirnivel() {
-		// TODO - implement Juego.subirnivel
-		throw new UnsupportedOperationException();
 	}
 
 	public void guardarpartida() throws FileNotFoundException, IOException{
@@ -403,6 +388,9 @@ public class Juego implements Serializable{
 		verificarColisionBonus();
 		verificarColisionProyectil();
 		verificarVidas();
+		if(!(raizPelota.hayVivas())) {
+			subirNivel();
+		}
 	}
 
 	public void verificarVidas() {
@@ -421,6 +409,16 @@ public class Juego implements Serializable{
 	public void aumentarPuntaje() {
 		puntaje+=INCREMENTO;
 		jugador.setPuntaje(puntaje);
+	}
+	
+	public void subirNivel() {
+		nivel++;
+		nave.setX(ANCHO/2-nave.getAncho()/2);
+		nave.setY(Juego.ALTO-100-nave.getAlto()/2);
+		jugador.setNivel(nivel);	
+		numPelotas = nivel / 2 + 3;
+		raizPelota = null;
+		iniciarPelotas();
 	}
 	
 	public void verificarColisionProyectil() {

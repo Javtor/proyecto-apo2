@@ -16,7 +16,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	private Proyectil proyectil;
 	
 	public Nave() {
-		super(Juego.ANCHO/2, Juego.ALTO/2, "img/nave.png");
+		super(Juego.ANCHO/2, Juego.ALTO-100, "img/nave.png");
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS_INICIAL;

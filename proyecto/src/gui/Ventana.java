@@ -51,7 +51,7 @@ public class Ventana extends JFrame {
 	}
 
 	public void iniciarPartida() {
-		juego.iniciarNivel();
+		juego.iniciarJuego();
 		remove(panelInicio);
 		panelJuego = new PanelJuego(this);
 		add(panelJuego, BorderLayout.CENTER);
@@ -90,7 +90,7 @@ public class Ventana extends JFrame {
 	}
 
 	public void generarPelotas() {
-		hPel = new HiloPelotas(this, getPelotas());
+		hPel = new HiloPelotas(this);
 		hPel.start();
 	}
 
