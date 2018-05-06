@@ -13,14 +13,14 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	private Pelota izq;
 	private Pelota der;
 
-	public Pelota() {
+	public Pelota(int nivel) {
 		super(0, 0, UBICACION);
 		vida = VIDA_MAX;
 		this.setX((int) (Math.random() * (Juego.ANCHO - getAncho() * 2)) + getAncho() / 2);
-//		this.setY(-this.getAlto());
+		this.setY(-this.getAlto());
 		int velReal = (int) (VELOCIDAD_BASE * (Math.random() * 0.8 + 1));
-		this.setDY(velReal);
-		this.setDX(Math.random() < 0.5 ? velReal : -velReal);
+		this.setDY(velReal+nivel/2);
+		this.setDX(Math.random() < 0.5 ? velReal+nivel/2 : -velReal-nivel/2);
 	}
 
 	public void disminuirVida(Proyectil p) {

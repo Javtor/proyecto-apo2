@@ -5,7 +5,7 @@ import java.io.File;
 
 public class Proyectil extends SpriteMovimiento implements Colisionable {
 	
-	public static final int VELOCIDAD = 15;
+	public static final int VELOCIDAD = 17;
 	public static final String UBICACION = "img"+File.separator+"proyectil.jpg";
 	public static final int DANIO = 1;
 	

@@ -6,8 +6,8 @@ import java.io.File;
 
 public class Nave extends SpriteMovimiento implements Colisionable {
 	
-	public static final int VELOCIDAD_BASE = 10;
-	public static final int VIDAS_INICIAL = 3;
+	public static final int VELOCIDAD_BASE = 13;
+	public static final int VIDAS_INICIAL = 4;
 	public static final String UBICACION = "img"+File.separator+"nave.png";
 	public static final String UBICACION_INVULNERABLE = "img"+File.separator+"invulnerable.jpg";
 	
@@ -27,9 +27,8 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		vidas--;
 	}
 
-	public boolean validarvida() {
-		// TODO - implement Nave.validarvida
-		throw new UnsupportedOperationException();
+	public boolean validarViva() {
+		return vidas >=0;
 	}
 
 	@Override
@@ -119,7 +118,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 	
 	public void aumentarVida() {
-		if (vidas<3) {
+		if (vidas<VIDAS_INICIAL) {
 			vidas++;
 		}
 	}
@@ -133,7 +132,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	public Proyectil getProyectil() {
-		// TODO Auto-generated method stub
 		return this.proyectil;
 	}
 

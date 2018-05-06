@@ -26,9 +26,11 @@ public class Juego implements Serializable{
 	public static final String DIREC_DATOS = "data/ultimapartida.txt";
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
-	public static final int FPS = 45;
 	
-	public static final int INCREMENTO = 5;
+	public static final int FPS = 35;
+	
+	public static final int INCREMENTO_PELOTA = 5;
+	public static final int CADA_CUANTO_PELOTA = 3;
 
 	private int puntaje;
 	private int nivel;
@@ -76,7 +78,7 @@ public class Juego implements Serializable{
 		}
 		
 		nave = new Nave();
-		numPelotas = nivel / 2 + 3;
+		numPelotas = nivel / 3 + 3;
 		iniciarPelotas();
 	}
 
@@ -94,7 +96,7 @@ public class Juego implements Serializable{
 			Pelota p = null;
 //			while (generar) {
 //				generar = false;
-				p = new Pelota();
+				p = new Pelota(nivel);
 //				if (raizPelota != null && raizPelota.existenColisiones(p)) {
 //					if(ANCHO/(numPelotas-2)>raizPelota.getAncho()) {
 //						generar = true;
@@ -394,7 +396,7 @@ public class Juego implements Serializable{
 	}
 
 	public void verificarVidas() {
-		if(nave.getVidas()==0) {
+		if(!(nave.validarViva())) {
 			jugando=false;
 			cancionFondo.stop();
 		}
@@ -402,12 +404,12 @@ public class Juego implements Serializable{
 
 	public void verificarColisionNave() {
 		if (raizPelota != null && raizPelota.existenColisiones(nave) && nave.esVisible()) {
-			nave.colisionaCon(new Pelota());
+			nave.colisionaCon(new Pelota(0));
 		}
 	}
 	
 	public void aumentarPuntaje() {
-		puntaje+=INCREMENTO;
+		puntaje+=INCREMENTO_PELOTA;
 		jugador.setPuntaje(puntaje);
 	}
 	
@@ -416,7 +418,7 @@ public class Juego implements Serializable{
 		nave.setX(ANCHO/2-nave.getAncho()/2);
 		nave.setY(Juego.ALTO-100-nave.getAlto()/2);
 		jugador.setNivel(nivel);	
-		numPelotas = nivel / 2 + 3;
+		numPelotas = nivel / CADA_CUANTO_PELOTA + 3;
 		raizPelota = null;
 		iniciarPelotas();
 	}
