@@ -2,25 +2,23 @@ package modelo;
 
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
-import java.io.File;
 
 public class Nave extends SpriteMovimiento implements Colisionable {
 	
 	public static final int VELOCIDAD_BASE = 10;
 	public static final int VIDAS_INICIAL = 3;
-	public static final String UBICACION = "img"+File.separator+"nave.png";
-	public static final String UBICACION_INVULNERABLE = "img"+File.separator+"invulnerable.jpg";
+	public static final String UBICACION = "img/nave.png";
+	public static final String UBICACION_INVULNERABLE = "img/invulnerable.jpg";
 	
 	private int vidas;
 	private boolean invulnerable;
-	private Proyectil proyectil;
+	private Proyectil primerPro;
 	
 	public Nave() {
 		super(Juego.ANCHO/2, Juego.ALTO/2, "img/nave.png");
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS_INICIAL;
-		proyectil = new Proyectil(getX()+getAncho()/2, getY()+getAlto()/2);
 	}
 
 	public void disminuirVida() {
@@ -48,7 +46,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 			setX(0);
 		} else if(getX()+getAncho()>Juego.ANCHO-Math.abs(getDX())) {
 			setX(Juego.ANCHO-getAncho());
-		} if(getY()<Math.abs(getDY())) {
+		} else if(getY()<Math.abs(getDY())) {
 			setY(0);
 		} else if(getY()+getAlto()>Juego.ALTO-Math.abs(getDY())) {
 			setY(Juego.ALTO-getAlto());
@@ -127,6 +125,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	public int getVidas() {
 		return vidas;
 	}
+<<<<<<< HEAD
 	
 	public void disparar(int x, int y) {
 		proyectil.disparar(getX()+getAncho()/2, getY()+getAlto()/2, x, y);
@@ -136,5 +135,18 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		// TODO Auto-generated method stub
 		return this.proyectil;
 	}
+||||||| 17ab745... Merge branch 'master' of https://github.com/jatr190201/proyecto-apo2
+	
+	public void disparar(int x, int y) {
+		System.out.println("cataplum");
+		proyectil.disparar(getX()+getAncho()/2, getY()+getAlto()/2, x, y);
+	}
+
+	public Proyectil getProyectil() {
+		// TODO Auto-generated method stub
+		return this.proyectil;
+	}
+=======
+>>>>>>> parent of 17ab745... Merge branch 'master' of https://github.com/jatr190201/proyecto-apo2
 
 }

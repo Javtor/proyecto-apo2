@@ -7,7 +7,6 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 
 	public static final String UBICACION = "img/pelota.jpg";
 	public static final int VELOCIDAD_BASE = 5;
-	public static final int VIDA_MAX = 3;
 	
 	private int vida;
 	private Pelota izq;
@@ -16,21 +15,31 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 
 	public Pelota() {
 		super(0, 0, UBICACION);
+<<<<<<< HEAD
 		vida = VIDA_MAX;
 		this.setX((int)(Math.random()*(Juego.ANCHO-this.getAncho()-getDX())));
+||||||| 17ab745... Merge branch 'master' of https://github.com/jatr190201/proyecto-apo2
+		vida = VIDA_MAX;
+		this.setX((int)(Math.random()*(Juego.ANCHO-this.getAncho())));
+=======
+		this.setX((int)(Math.random()*(Juego.ANCHO-this.getAncho())));
+>>>>>>> parent of 17ab745... Merge branch 'master' of https://github.com/jatr190201/proyecto-apo2
 		this.setY(-this.getAlto());
 		int velReal = (int) (VELOCIDAD_BASE*(Math.random()*0.1+1));
 		this.setDY(velReal);
 		this.setDX(Math.random()<0.5? velReal: -velReal);
 	}
 
-	public void disminuirVida(Proyectil p) {
-		vida-=p.getDanio();
-		if(vida <= 0) {
-			setVisible(false);
-		}
+	public void disminuirvida(int Proyectil) {
+		// TODO - implement Pelota.disminuirvida
+		throw new UnsupportedOperationException();
 	}
 
+	public boolean verificarviva() {
+		// TODO - implement Pelota.verificarviva
+		throw new UnsupportedOperationException();
+	}
+	
 	public boolean esHoja() {
 		return izq == null && der == null;
 	}
@@ -61,26 +70,20 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	}
 	
 	public void insertar(Pelota p) {
-		if(this.getX()>p.getX()) {
-			if(izq == null) {
-				izq = p;
-			} else {
-				izq.insertar(p);
-			}
+		if(izq == null) {
+			izq = p;
+		} else if (der == null) {
+			der = p;
+		} else if(Math.random()<0.5) {
+			izq.insertar(p);
 		} else {
-			if(der == null) {
-				der = p;
-			} else {
-				der.insertar(p);
-			}
-		} 
+			der.insertar(p);
+		}
 	}
 
 	@Override
 	public void colisionaCon(Colisionable c) {
-		if(c instanceof Proyectil) {
-			disminuirVida((Proyectil) c);
-		}
+		
 	}
 
 	@Override
@@ -96,9 +99,9 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	@Override
 	public void mover() {
 		super.mover();
-		if(getX()<=Math.abs(getDX()) || getX()+getAncho()>=Juego.ANCHO-Math.abs(getDX())) {
+		if(getX()<=Math.abs(getDX())+5 || getX()+getAncho()>=Juego.ANCHO-Math.abs(getDX())) {
 			setDX(-getDX());
-		} if((getY()<=Math.abs(getDY()) && getDY()<0)|| getY()+getAlto() >=Juego.ALTO-Math.abs(getDY())) {
+		} else if((getY()<=Math.abs(getDY()) && getDY()<0)|| getY()+getAlto()+Math.abs(getDY())>=Juego.ALTO-Math.abs(getDY())) {
 			setDY(-getDY());
 		} 
 	}

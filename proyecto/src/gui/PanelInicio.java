@@ -31,13 +31,16 @@ public class PanelInicio extends JPanel implements ActionListener {
 	private JButton butranking;
 	private JButton butsalir;
 	
-	private Ventana principal;	
+	private Ventana ventana;
+	private DialogRanking ranking;
+	private MenuInicio menu;
+	
 
-	public PanelInicio(Ventana principal) {
+	public PanelInicio(MenuInicio menu) {
 		
 		//debe abrirse cuando de clic en el boton iniciar
 		//ventana = new Ventana ();
-		this.principal = principal;
+		this.menu=menu;
 		
 		setPreferredSize(new Dimension(Juego.ANCHO, Juego.ALTO));
 		setFocusable(true);
@@ -106,16 +109,16 @@ public class PanelInicio extends JPanel implements ActionListener {
 		String comando = e.getActionCommand();
 		
 		if (comando.equals(NUEVO)) {
-			principal.nuevaPartida();
+			nuevaPartida();
 		}
 		if (comando.equals(CARGAR)) {
 			
 		}
 		if (comando.equals(RANKING)) {
-			principal.abrirRanking();
+			abrirRanking();
 		}
 		if (comando.equals(SALIR)) {
-			principal.dispose();
+			menu.dispose();
 		}
 		
 	}
@@ -129,4 +132,17 @@ public class PanelInicio extends JPanel implements ActionListener {
 		g2.drawImage(bg,0,0,Juego.ANCHO, Juego.ALTO,null);
 	}
 	
+	public void nuevaPartida() {
+		String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
+		if (!nick.equals(""))
+		menu.getJuego().getJugador().setNickname(nick);
+		else
+		JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void abrirRanking() {
+		ranking = new DialogRanking(menu);
+	}
+
+
 }

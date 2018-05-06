@@ -40,9 +40,9 @@ public class DialogRanking extends JDialog implements ActionListener{
 	private JPanel panelchoices;
 	private JPanel panelbotones;
 	
-	private Ventana menu;
+	private MenuInicio menu;
 	
-	public DialogRanking(Ventana menu) {
+	public DialogRanking(MenuInicio menu) {
 		
 		this.menu=menu;
 		
