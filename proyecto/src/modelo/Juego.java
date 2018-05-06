@@ -43,8 +43,8 @@ public class Juego implements Serializable{
 
 	public Juego() {
 		nivel = 1;
-		raizjugador=null;
 		jugador = new Jugador(null);
+		raizjugador=null;
 //		iniciarNivel();
 		
 	}

@@ -18,6 +18,7 @@ public class HiloJuego extends Thread{
 		while (principal.isJugando()) {
 			try {
 				principal.refrescarTablero();
+				principal.mostrarDatos();
 				juego.cicloJuego();
 				Thread.sleep(1000 / Juego.FPS);
 			} catch (InterruptedException e) {

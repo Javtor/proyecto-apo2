@@ -24,6 +24,7 @@ public class Ventana extends JFrame {
 	private PanelJuego panelJuego;
 	private PanelInicio panelInicio;
 	private DialogRanking ranking;
+	private PanelDatos panelDatos;
 	private Juego juego;
 
 	private HiloBonus hB;
@@ -54,6 +55,8 @@ public class Ventana extends JFrame {
 		remove(panelInicio);
 		panelJuego = new PanelJuego(this);
 		add(panelJuego, BorderLayout.CENTER);
+		panelDatos = new PanelDatos();
+		add(panelDatos, BorderLayout.SOUTH);
 
 		pack();
 		setLocationRelativeTo(null);
@@ -61,6 +64,12 @@ public class Ventana extends JFrame {
 		moverNave();
 		generarPelotas();
 		generarBonificaciones();
+	}
+	
+	public void mostrarDatos() {
+		panelDatos.setJugador(juego.getJugador().getNickname());
+		panelDatos.setPuntos(""+juego.getJugador().getPuntaje());
+		panelDatos.setNivel(""+juego.getJugador().getNivel());
 	}
 
 	public Bonificacion getBonus() {
@@ -173,6 +182,7 @@ public class Ventana extends JFrame {
 
 	public void mostrarInicio() {
 		remove(panelJuego);
+		remove(panelDatos);
 		panelInicio = new PanelInicio(this);
 		add(panelInicio, BorderLayout.CENTER);
 
