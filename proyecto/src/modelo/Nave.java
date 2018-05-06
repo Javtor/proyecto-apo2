@@ -129,7 +129,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 	
 	public void disparar(int x, int y) {
-		System.out.println("cataplum");
 		proyectil.disparar(getX()+getAncho()/2, getY()+getAlto()/2, x, y);
 	}
 

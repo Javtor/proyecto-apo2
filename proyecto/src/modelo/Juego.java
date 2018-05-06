@@ -62,6 +62,7 @@ public class Juego implements Serializable{
 	}
 
 	public void iniciarNivel() {
+		raizPelota = null;
 		jugando = true;
 		try {
 			cancionFondo = AudioSystem.getClip();

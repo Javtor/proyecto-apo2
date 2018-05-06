@@ -17,7 +17,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	public Pelota() {
 		super(0, 0, UBICACION);
 		vida = VIDA_MAX;
-		this.setX((int)(Math.random()*(Juego.ANCHO-this.getAncho())));
+		this.setX((int)(Math.random()*(Juego.ANCHO-this.getAncho()-getDX())));
 		this.setY(-this.getAlto());
 		int velReal = (int) (VELOCIDAD_BASE*(Math.random()*0.1+1));
 		this.setDY(velReal);
