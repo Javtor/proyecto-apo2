@@ -2,7 +2,6 @@ package hilos;
 
 import gui.Ventana;
 import modelo.Juego;
-
 public class HiloBonus extends Thread{
 
 	

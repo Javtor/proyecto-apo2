@@ -27,13 +27,16 @@ public class DialogRanking extends JDialog implements ActionListener{
 	
 	private JList listjugadores;
 	private JScrollPane scroll;
+	
 	private ButtonGroup grupochoice;
 	private ButtonGroup grupocriterio;
+	
 	private JRadioButton rbnombre;
 	private JRadioButton rbpuntaje;
 	private JRadioButton rbnivel;
 	private JRadioButton rbascendente;
 	private JRadioButton rbdescendente;
+	
 	private JButton butbuscar;
 	private JButton butgenerar;
 	private JPanel panellista;

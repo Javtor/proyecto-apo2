@@ -14,6 +14,7 @@ import hilos.HiloPelotas;
 import hilos.HiloProyectil;
 import modelo.Bonificacion;
 import modelo.Juego;
+import modelo.Jugador;
 import modelo.Nave;
 import modelo.Pelota;
 
@@ -21,7 +22,6 @@ public class Ventana extends JFrame {
 
 	private PanelJuego panelJuego;
 	private PanelInicio panelInicio;
-	private DialogRanking ranking;
 	private Juego juego;
 
 	private HiloBonus hB;
@@ -48,7 +48,7 @@ public class Ventana extends JFrame {
 	}
 	
 
-	private void iniciarPartida() {
+	public void iniciarPartida() {
 		juego.iniciarNivel();
 		remove(panelInicio);
 		panelJuego = new PanelJuego(this);
@@ -118,17 +118,20 @@ public class Ventana extends JFrame {
 
 	public void nuevaPartida() {
 		juego = new Juego();
-		boolean agregar = true;
-		while (agregar) {
+		registrarNickname();	
+	}
+	
+	public void registrarNickname() {
 			String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
-			if (!nick.equals("")) {
-				juego.getJugador().setNickname(nick);
-				agregar = false;
-			} else {
-				JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
+			if (nick != null) {
+				if (nick.equals("")) {
+					JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning",
+							JOptionPane.WARNING_MESSAGE);
+				} else {
+					juego.getJugador().setNickname(nick);
+					iniciarPartida();
+				} 
 			}
-		}
-		iniciarPartida();
 	}
 	
 	public void mostrarInicio() {
@@ -144,9 +147,13 @@ public class Ventana extends JFrame {
 	public void abrirRanking() {
 //		ranking = new DialogRanking(this);
 	}
+	
+	public ArrayList<Jugador> getJugadores(){
+		return juego.toArrayListJugador();
+	}
 
 	public static void main(String[] args) {
 		Ventana v = new Ventana();
 	}
-
+	
 }
