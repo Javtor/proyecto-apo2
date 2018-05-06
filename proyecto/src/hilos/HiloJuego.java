@@ -26,5 +26,13 @@ public class HiloJuego extends Thread{
 			}
 
 		}
+		principal.refrescarTablero();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		principal.mostrarInicio();
 	}
 }

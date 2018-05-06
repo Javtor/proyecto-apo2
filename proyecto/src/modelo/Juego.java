@@ -33,6 +33,7 @@ public class Juego implements Serializable{
 	private Nave nave;
 	private boolean jugando;
 	private int numPelotas;
+	private Clip cancionFondo;
 
 	private Jugador jugador;
 	private Bonificacion primerbonus;
@@ -42,10 +43,9 @@ public class Juego implements Serializable{
 
 	public Juego() {
 		nivel = 1;
-		jugando = true;
 		raizjugador=null;
 		jugador = new Jugador(null);
-		iniciarNivel();
+//		iniciarNivel();
 		
 	}
 	
@@ -62,17 +62,12 @@ public class Juego implements Serializable{
 	}
 
 	public void iniciarNivel() {
-<<<<<<< HEAD
 		raizPelota = null;
 		jugando = true;
-||||||| 17ab745... Merge branch 'master' of https://github.com/jatr190201/proyecto-apo2
-		jugando = true;
-=======
->>>>>>> parent of 17ab745... Merge branch 'master' of https://github.com/jatr190201/proyecto-apo2
 		try {
-			Clip sonido = AudioSystem.getClip();
-			sonido.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));
-			sonido.loop(sonido.LOOP_CONTINUOUSLY);
+			cancionFondo = AudioSystem.getClip();
+			cancionFondo.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));
+			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -402,18 +397,34 @@ public class Juego implements Serializable{
 	public void cicloJuego() {
 		verificarColisionNave();
 		verificarColisionBonus();
+		verificarColisionProyectil();
 		verificarVidas();
 	}
 
-	private void verificarVidas() {
+	public void verificarVidas() {
 		if(nave.getVidas()==0) {
 			jugando=false;
+			cancionFondo.stop();
 		}
 	}
 
 	public void verificarColisionNave() {
 		if (raizPelota != null && raizPelota.existenColisiones(nave) && nave.esVisible()) {
 			nave.colisionaCon(new Pelota());
+		}
+	}
+	
+	public void verificarColisionProyectil() {
+		if (nave.getProyectil().esVisible()) {
+			boolean sigue = true;
+			ArrayList<Pelota> p = getPelotas();
+			for (int i = 0; i < p.size() && sigue; i++) {
+				if (p.get(i).hayColision(nave.getProyectil())) {
+					p.get(i).colisionaCon(nave.getProyectil());
+					nave.getProyectil().colisionaCon(p.get(i));
+					sigue = false;
+				}
+			} 
 		}
 	}
 	
@@ -468,6 +479,10 @@ public class Juego implements Serializable{
 			throw new PuntajeNoExisteException();
 		
 		return j;
+	}
+
+	public void disparar(int x, int y) {
+		nave.disparar(x, y);
 	}
 	
 	

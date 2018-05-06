@@ -19,7 +19,7 @@ public class HiloInvulnerabilidad extends Thread {
 		while (principal.isJugando()) {
 			if (nave.esInvulnerable()) {
 				try {
-					Thread.sleep(3000);
+					Thread.sleep(1500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
