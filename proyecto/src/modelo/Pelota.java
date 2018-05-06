@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Pelota extends SpriteMovimiento implements Colisionable {
 
-	public static final String UBICACION = "img/pelota.jpg";
-	public static final int VELOCIDAD_BASE = 3;
+	public static final String UBICACION = "img/pelota.png";
+	public static final int VELOCIDAD_BASE = 4;
 	public static final int VIDA_MAX = 3;
 
 	private int vida;

@@ -38,8 +38,8 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 			Image bg = new ImageIcon("img/bg.jpg").getImage();
 			g2.drawImage(bg, 0, 0, Juego.ANCHO, Juego.ALTO, null);
 			dibujarBonus(g2);
-			dibujarNave(g2);
 			dibujarProyectil(g2);
+			dibujarNave(g2);
 			dibujarPelotas(g2);
 		} else {
 			dibujarFin(g2);

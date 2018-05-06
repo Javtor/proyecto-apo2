@@ -3,6 +3,8 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -41,6 +43,10 @@ public class Ventana extends JFrame {
 		setLayout(new BorderLayout());
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		ImageIcon icon = new ImageIcon("img/icono.png");
+		if(icon.getIconWidth()!=-1) {
+			setIconImage(icon.getImage());
+		}
 
 		panelInicio = new PanelInicio(this);
 		add(panelInicio, BorderLayout.CENTER);

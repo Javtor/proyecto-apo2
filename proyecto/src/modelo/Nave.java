@@ -9,7 +9,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	public static final int VELOCIDAD_BASE = 13;
 	public static final int VIDAS_INICIAL = 4;
 	public static final String UBICACION = "img"+File.separator+"nave.png";
-	public static final String UBICACION_INVULNERABLE = "img"+File.separator+"invulnerable.jpg";
+	public static final String UBICACION_INVULNERABLE = "img"+File.separator+"invulnerable.png";
 	
 	private int vidas;
 	private boolean invulnerable;
