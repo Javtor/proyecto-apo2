@@ -35,7 +35,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	public void colisionaCon(Colisionable c) {
 		if(c instanceof Pelota && !esInvulnerable()) {
 			disminuirVida();
-			System.out.println("pum");
 			setInvulnerable(true);
 		}
 	}
@@ -79,19 +78,19 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_A) {
+        if (key == KeyEvent.VK_A && getDX()<0) {
         	setDX(0);
         }
 
-        if (key == KeyEvent.VK_D) {
+        if (key == KeyEvent.VK_D && getDX()>0) {
         	setDX(0);
         }
 
-        if (key == KeyEvent.VK_W) {
+        if (key == KeyEvent.VK_W && getDY()<0) {
         	setDY(0);
         }
 
-        if (key == KeyEvent.VK_S) {
+        if (key == KeyEvent.VK_S && getDY()>0) {
         	setDY(0);
         }
     }
