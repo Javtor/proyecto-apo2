@@ -23,9 +23,11 @@ public class Juego implements Serializable{
 	public static final int ANCHO = 800;
 	public static final int ALTO = 600;
 
-	public static final String DIREC_DATOS = "data/ultimapartida.txt";
+	public static final String DIREC_NAVE = "data/nave.txt";
+	public static final String DIREC_PELOTAS = "data/pelotas.txt";
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
+	public static final String SONG = "img/bgmusic.wav";
 	
 	public static final int FPS = 35;
 	
@@ -64,13 +66,19 @@ public class Juego implements Serializable{
 	public void setJugador(Jugador jugador) {
 		this.jugador=jugador;
 	}
+	
+	public int getPuntaje() {
+		return puntaje;
+	}
+	
+	
 
 	public void iniciarJuego() {
 		jugador.setNivel(nivel);
 		jugando = true;
 		try {
 			cancionFondo = AudioSystem.getClip();
-			cancionFondo.open(AudioSystem.getAudioInputStream(new File("img/bgmusic.wav")));
+			cancionFondo.open(AudioSystem.getAudioInputStream(new File(SONG)));
 			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -120,23 +128,67 @@ public class Juego implements Serializable{
 	}
 
 	public void guardarpartida() throws FileNotFoundException, IOException{
+		guardarNave();
+		guardarPelotas();
 		guardarJugadores();
 	}
 	
 	public void guardarJugadores() throws FileNotFoundException, IOException {
 		File file = new File (DIREC_JUGADORES);
-		
 		if (file.exists())
 			file.delete();
-		
 		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
 		oos.writeObject(raizjugador);
 		oos.close();
-		
+	}
+	
+	public void guardarNave() throws FileNotFoundException, IOException {
+		File file = new File (DIREC_NAVE);
+		if (file.exists())
+			file.delete();
+		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
+		oos.writeObject(nave);
+		oos.close();
+	}
+	
+	public void guardarPelotas() throws FileNotFoundException, IOException {
+		File file = new File (DIREC_PELOTAS);
+		if (file.exists())
+			file.delete();
+		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
+		oos.writeObject(raizPelota);
+		oos.close();
 	}
 
-	public void cargarpartida() {
+
+	public void cargarpartida() throws FileNotFoundException, IOException, ClassNotFoundException {
+		recuperarPelotas();
+		recuperarNave();
+		recuperarJugadores();
+	}
+	
+	public void recuperarPelotas()throws IOException, ClassNotFoundException {
+		File file = new File(DIREC_PELOTAS);
+		boolean existe = file.exists() && file.isFile();
 		
+		if (existe) {
+			ObjectInputStream ois = new ObjectInputStream (new FileInputStream (file));
+			raizPelota = (Pelota) ois.readObject();
+		}else {
+			throw new FileNotFoundException("No se ha encontrado el archivo");
+		}
+	}
+	
+	public void recuperarNave()throws IOException, ClassNotFoundException {
+		File file = new File(DIREC_NAVE);
+		boolean existe = file.exists() && file.isFile();
+		
+		if (existe) {
+			ObjectInputStream ois = new ObjectInputStream (new FileInputStream (file));
+			nave = (Nave) ois.readObject();
+		}else {
+			throw new FileNotFoundException("No se ha encontrado el archivo");
+		}
 	}
 	
 	public void recuperarJugadores() throws IOException, ClassNotFoundException {

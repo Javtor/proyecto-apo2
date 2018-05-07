@@ -35,8 +35,6 @@ public class PanelInicio extends JPanel implements ActionListener {
 
 	public PanelInicio(Ventana principal) {
 		
-		//debe abrirse cuando de clic en el boton iniciar
-		//ventana = new Ventana ();
 		this.principal = principal;
 		
 		setPreferredSize(new Dimension(Juego.ANCHO, Juego.ALTO));

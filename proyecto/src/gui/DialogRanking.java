@@ -51,7 +51,6 @@ public class DialogRanking extends JDialog implements ActionListener {
 		this.menu = menu;
 
 		setTitle("Ranking");
-//		setSize(Juego.ANCHO, Juego.ALTO);
 		setResizable(false);
 
 		listjugadores = new JList();
@@ -60,7 +59,6 @@ public class DialogRanking extends JDialog implements ActionListener {
 		listjugadores.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//		scroll.setPreferredSize(new Dimension(Juego.ANCHO, 300));
 
 		panellista = new JPanel();
 		panellista.add(scroll);
@@ -105,7 +103,6 @@ public class DialogRanking extends JDialog implements ActionListener {
 		panelbotones.setLayout(new GridLayout(1, 2));
 		panelbotones.add(butbuscar);
 		panelbotones.add(butgenerar);
-//		panelbotones.setPreferredSize(new Dimension(Juego.ANCHO, 100));
 
 		setLayout(new BorderLayout());
 

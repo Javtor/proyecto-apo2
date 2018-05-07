@@ -63,7 +63,6 @@ public class Ventana extends JFrame {
 		add(panelJuego, BorderLayout.CENTER);
 		panelDatos = new PanelDatos();
 		add(panelDatos, BorderLayout.SOUTH);
-
 		pack();
 		setLocationRelativeTo(null);
 
