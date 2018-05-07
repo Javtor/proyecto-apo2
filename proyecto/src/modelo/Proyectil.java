@@ -10,7 +10,6 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public static final int DANIO = 1;
 	
 	private int danio;
-	private char tipo;
 
 	public Proyectil(int x, int y) {
 		super(x, y, UBICACION);
@@ -68,6 +67,16 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 
 	public void setDanio(int danio) {
 		this.danio = danio;
+	}
+	
+	public void subirDanio() {
+		danio++;
+	}
+	
+	
+	//debe haber un método que aumente la velocidad de los proyectiles
+	public void subirVelocidad() {
+		
 	}
 	
 }

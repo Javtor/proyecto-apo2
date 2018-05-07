@@ -127,7 +127,7 @@ public class Juego implements Serializable{
 		jugador = new Jugador(nombre);
 	}
 
-	public void guardarpartida() throws FileNotFoundException, IOException{
+	public void guardarPartida() throws FileNotFoundException, IOException{
 		guardarNave();
 		guardarPelotas();
 		guardarJugadores();
@@ -161,7 +161,7 @@ public class Juego implements Serializable{
 	}
 
 
-	public void cargarpartida() throws FileNotFoundException, IOException, ClassNotFoundException {
+	public void cargarPartida() throws FileNotFoundException, IOException, ClassNotFoundException {
 		recuperarPelotas();
 		recuperarNave();
 		recuperarJugadores();
@@ -203,7 +203,7 @@ public class Juego implements Serializable{
 		}
 	}
 
-	public void guardardatos() throws FileNotFoundException {
+	public void guardarDatos() throws FileNotFoundException {
 		jugador.setNivel(nivel);
 		jugador.setPuntaje(puntaje);
 		addJugador();
@@ -220,7 +220,7 @@ public class Juego implements Serializable{
 		pw.close();
 	}
 
-	public void cargardatos() throws IOException {
+	public void cargarDatos() throws IOException {
 		File archivo = new File(NOM_DATOS);
 		boolean existe = archivo.exists() && archivo.isFile();
 		if (existe) {
@@ -241,8 +241,14 @@ public class Juego implements Serializable{
 		return nave;
 	}
 
-	public void keyPressed(KeyEvent e) {
-		nave.keyPressed(e);
+	public void keyPressed(KeyEvent e) throws IOException {
+		if (e.getKeyCode()!=KeyEvent.VK_G) {
+			nave.keyPressed(e);
+		}else {
+			guardarDatos();
+			guardarPartida();
+		}
+		
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -324,10 +330,11 @@ public class Juego implements Serializable{
 		switch (tipo) {
 		case 1:
 			// n proyectiles
+			
 			break;
 		case 2:
-			// tipo proyectiles
-
+			// sube daño proyectil
+			nave.getProyectil().subirDanio();
 			break;
 		case 3:
 			nave.aumentarVida();

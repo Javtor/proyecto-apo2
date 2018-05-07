@@ -107,7 +107,7 @@ public class PanelInicio extends JPanel implements ActionListener {
 			principal.nuevaPartida();
 		}
 		if (comando.equals(CARGAR)) {
-			
+			principal.cargarDatos();
 		}
 		if (comando.equals(RANKING)) {
 			principal.abrirRanking();

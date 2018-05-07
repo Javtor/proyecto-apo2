@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -117,7 +119,11 @@ public class Ventana extends JFrame {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		juego.keyPressed(e);
+		try {
+			juego.keyPressed(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -206,6 +212,20 @@ public class Ventana extends JFrame {
 		return juego.toArrayListJugador();
 	}
 
+	public void cargarDatos() {
+		try {
+			juego.cargarPartida();
+			juego.guardarDatos();
+			
+			panelDatos.setJugador(juego.getJugador().getNickname());
+			panelDatos.setNivel(""+juego.getJugador().getNivel());
+			panelDatos.setPuntos(""+juego.getJugador().getPuntaje());
+			
+		} catch (ClassNotFoundException | IOException e) {
+			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning", JOptionPane.WARNING_MESSAGE);
+		}
+	}
+	
 	public static void main(String[] args) {
 		Ventana v = new Ventana();
 	}
