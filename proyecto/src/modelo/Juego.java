@@ -40,9 +40,11 @@ public class Juego implements Serializable{
 	private boolean jugando;
 	private int numPelotas;
 	private Clip cancionFondo;
+	private int numDecoraciones;
 
 	private Jugador jugador;
 	private Bonificacion primerbonus;
+	private Decoracion primeradeco;
 
 	private Pelota raizPelota;
 	private Jugador raizjugador;
@@ -88,6 +90,7 @@ public class Juego implements Serializable{
 		nave = new Nave();
 		numPelotas = nivel / 3 + 3;
 		iniciarPelotas();
+		crearDecoraciones();
 	}
 
 	public void insertarPelota(Pelota p) {
@@ -555,6 +558,29 @@ public class Juego implements Serializable{
 	public void disparar(int x, int y) {
 		nave.disparar(x, y);
 	}
-	
+	public void crearDecoraciones() {
+		for(int i=0;i<4;i++) {
+			boolean creado=false;
+			while(creado==false) {
+				int x=(int)(Math.random()*ANCHO);
+				int y=(int)(Math.random()*ALTO);				
+				if(primeradeco==null) {
+					primeradeco=new Decoracion(x,y,"");
+					creado=true;
+				}else {
+					Decoracion actual=primeradeco;
+					while(actual.darSiguiente()!=null) {
+						actual=actual.darSiguiente();
+					}
+					Decoracion nueva=new Decoracion(x,y,"");
+//					if(!nueva.getHitbox()intersects(actual.getHitbox()) {
+						actual.setSiguiente(nueva);
+						nueva.setAnterior(actual);
+						creado=true;
+//					}
+				}
+			}
+		}
+	}
 	
 }
