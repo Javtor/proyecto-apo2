@@ -4,49 +4,73 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 
 public class Proyectil extends SpriteMovimiento implements Colisionable {
-	
-	public static final int VELOCIDAD = 17;
-	public static final String UBICACION = "img"+File.separator+"proyectil.jpg";
-	public static final int DANIO = 1;
+
+	public static final int RAPIDO = 0;
+	public static final int NORMAL = 1;
+	public static final int FUERTE = 2;
+
+	public static final int VELOCIDAD_FUERTE = 14;
+	public static final int VELOCIDAD_NORMAL = 17;
+	public static final int VELOCIDAD_RAPIDO = 20;
+	public static final int DANIO_RAPIDO = 1;
+	public static final int DANIO_NORMAL = 3;
+	public static final int DANIO_FUERTE = 5;
+	public static final String IMG_NORMAL = "img" + File.separator + "proyectil.jpg";
+	public static final String IMG_RAPIDO = "img" + File.separator + "proyectil.jpg";
+	public static final String IMG_FUERTE = "img" + File.separator + "proyectil.jpg";
 	
 	private int danio;
+	private int velocidad;
 
-	public Proyectil(int x, int y) {
-		super(x, y, UBICACION);
-		danio = DANIO;
+	public Proyectil(int x, int y, int tipo) {
+		super(x, y, IMG_NORMAL);
 		setVisible(false);
+		switch (tipo) {
+		case RAPIDO:
+			setImagen(IMG_RAPIDO);
+			danio = DANIO_RAPIDO;
+			velocidad = VELOCIDAD_RAPIDO;
+			break;
+		case NORMAL:
+			setImagen(IMG_NORMAL);
+			danio = DANIO_NORMAL;
+			velocidad = VELOCIDAD_NORMAL;
+			break;
+		case FUERTE:
+			setImagen(IMG_FUERTE);
+			danio = DANIO_FUERTE;
+			velocidad = VELOCIDAD_FUERTE;
+			break;
+		}
 	}
 
 	public void disparar(int x, int y, int x2, int y2) {
-		if ( !esVisible() ) {
+		if (!esVisible()) {
 			setX(x);
 			setY(y);
 			setVisible(true);
 			int difX = x2 - getX() + getAncho() / 2;
 			int difY = y2 - getY() + getAlto() / 2;
 			double hip = Math.sqrt(difX * difX + difY * difY);
-			double prop = VELOCIDAD / hip;
+			double prop = velocidad / hip;
 			setDX((int) (prop * (x2 - getX())));
 			setDY((int) (prop * (y2 - getY())));
 		}
 	}
-	
+
 	@Override
 	public void mover() {
 		super.mover();
-		if(getX()<0 
-				|| getX()+getAncho()>Juego.ANCHO
-				|| getY()<0
-				|| getY()+getAlto()>Juego.ALTO) {
+		if (getX() < 0 || getX() + getAncho() > Juego.ANCHO || getY() < 0 || getY() + getAlto() > Juego.ALTO) {
 			setVisible(false);
 			setDX(0);
 			setDY(0);
-		} 
+		}
 	}
-	
+
 	@Override
 	public void colisionaCon(Colisionable c) {
-		if(c instanceof Pelota) {
+		if (c instanceof Pelota) {
 			setVisible(false);
 		}
 	}
@@ -68,15 +92,5 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public void setDanio(int danio) {
 		this.danio = danio;
 	}
-	
-	public void subirDanio() {
-		danio++;
-	}
-	
-	
-	//debe haber un método que aumente la velocidad de los proyectiles
-	public void subirVelocidad() {
-		
-	}
-	
+
 }

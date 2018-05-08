@@ -334,7 +334,7 @@ public class Juego implements Serializable{
 			break;
 		case 2:
 			// sube daño proyectil
-			nave.getProyectil().subirDanio();
+
 			break;
 		case 3:
 			nave.aumentarVida();
