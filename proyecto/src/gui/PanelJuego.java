@@ -49,13 +49,13 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	}
 
 	private void dibujarDecoracion(Graphics2D g2) {
-		Object actual=principal.getPrimeraDeco();
-		while(actual.getSiguiente()!=null) {
-		Image img=principal.getPrimeraDeco().getImagen();
-		int x = principal.getPrimeraDeco().getX();
-		int y = principal.getPrimeraDeco().getY();
-		g2.drawImage(img,x,y,null);
-		}
+//		Object actual=principal.getPrimeraDeco();
+//		while(actual.getSiguiente()!=null) {
+//		Image img=principal.getPrimeraDeco().getImagen();
+//		int x = principal.getPrimeraDeco().getX();
+//		int y = principal.getPrimeraDeco().getY();
+//		g2.drawImage(img,x,y,null);
+//		}
 	}
 
 	public void dibujarFin(Graphics2D g) {
