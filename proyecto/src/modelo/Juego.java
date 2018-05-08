@@ -582,5 +582,8 @@ public class Juego implements Serializable{
 			}
 		}
 	}
-	
+
+	public Decoracion darPrimeraDeco() {
+		return primeradeco;
+	}
 }
