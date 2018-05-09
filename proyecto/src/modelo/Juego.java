@@ -310,8 +310,11 @@ public class Juego implements Serializable{
 		jugador.setPuntaje(puntaje);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 74f046d4decc2199e0a897cc5c69ffdaa9299206
 	
 >>>>>>> 74f046d4decc2199e0a897cc5c69ffdaa9299206
 	public ArrayList<Jugador> ordenarNombreAscendente() {
