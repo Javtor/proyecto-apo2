@@ -9,9 +9,6 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public static final int NORMAL = 1;
 	public static final int FUERTE = 2;
 
-	public static final int VELOCIDAD_FUERTE = 14;
-	public static final int VELOCIDAD_NORMAL = 17;
-	public static final int VELOCIDAD_RAPIDO = 20;
 	public static final int VELOCIDAD_FUERTE = 15;
 	public static final int VELOCIDAD_NORMAL = 20;
 	public static final int VELOCIDAD_RAPIDO = 25;
@@ -25,8 +22,6 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	private int danio;
 	private int velocidad;
 
-	public Proyectil(int x, int y, int tipo) {
-		super(x, y, IMG_NORMAL);
 	public Proyectil(int tipo) {
 		super(0, 0, IMG_NORMAL);
 		setVisible(false);
