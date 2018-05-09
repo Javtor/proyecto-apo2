@@ -19,6 +19,7 @@ public class HiloProyectil extends Thread {
 	public void run() {
 		while (principal.isJugando()) {
 			pro.mover();
+			pro = principal.getNave().getProyectil();
 			try {
 				Thread.sleep(1000 / Juego.FPS);
 			} catch (InterruptedException e) {

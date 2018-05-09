@@ -22,6 +22,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS_INICIAL;
 		proyectil = new Proyectil(getX()+getAncho()/2, getY()+getAlto()/2,Proyectil.NORMAL);
+		proyectil = new Proyectil(Proyectil.NORMAL);
 	}
 
 	public void disminuirVida() {
@@ -114,12 +115,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		this.invulnerable = invulnerable;
 		if(this.invulnerable) {
 			setImagen(UBICACION_INVULNERABLE);
-		}
-	}
-	
-	public void aumentarVida() {
-		if (vidas<VIDAS_INICIAL) {
-			vidas++;
 		}
 	}
 
