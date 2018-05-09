@@ -231,8 +231,8 @@ public class Ventana extends JFrame {
 		Ventana v = new Ventana();
 	}
 
-	public Decoracion getPrimeraDeco() {
-		return juego.darPrimeraDeco();
+	public ArrayList<Decoracion> getPrimeraDeco() {
+		return juego.darDecoraciones();
 	}
 
 }

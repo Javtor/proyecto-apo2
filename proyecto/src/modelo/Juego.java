@@ -583,7 +583,15 @@ public class Juego implements Serializable{
 		}
 	}
 
-	public Decoracion darPrimeraDeco() {
-		return primeradeco;
+	public ArrayList<Decoracion> darDecoraciones() {
+		ArrayList<Decoracion> decos=new ArrayList();
+		if(primeradeco!=null) {
+			Decoracion actual=primeradeco;
+			while (actual.darSiguiente()!=null) {
+				decos.add(actual);
+				actual=actual.darSiguiente();
+			}
+		}
+		return decos;
 	}
 }

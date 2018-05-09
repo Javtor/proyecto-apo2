@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.xml.crypto.dsig.spec.DigestMethodParameterSpec;
 
+import modelo.Bonificacion;
+import modelo.Decoracion;
 import modelo.Juego;
 import modelo.Pelota;
 import modelo.Proyectil;
@@ -49,13 +51,13 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	}
 
 	private void dibujarDecoracion(Graphics2D g2) {
-//		Object actual=principal.getPrimeraDeco();
-//		while(actual.getSiguiente()!=null) {
-//		Image img=principal.getPrimeraDeco().getImagen();
-//		int x = principal.getPrimeraDeco().getX();
-//		int y = principal.getPrimeraDeco().getY();
-//		g2.drawImage(img,x,y,null);
-//		}
+		ArrayList<Decoracion> a=principal.getPrimeraDeco();
+			for(int i=0;i<a.size();i++) {
+				Image img=a.get(i).getImagen();
+				int x = a.get(i).getX();
+				int y = a.get(i).getY();
+				g2.drawImage(img,x,y,null);
+			}
 	}
 
 	public void dibujarFin(Graphics2D g) {
