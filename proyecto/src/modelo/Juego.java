@@ -591,6 +591,7 @@ public class Juego implements Serializable{
 				decos.add(actual);
 				actual=actual.darSiguiente();
 			}
+			decos.add(actual);
 		}
 		return decos;
 	}
