@@ -2,10 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -215,11 +213,9 @@ public class Ventana extends JFrame {
 	public void cargarDatos() {
 		try {
 			juego.cargarPartida();
-			juego.guardarDatos();
-			
-			panelDatos.setJugador(juego.getJugador().getNickname());
-			panelDatos.setNivel(""+juego.getJugador().getNivel());
-			panelDatos.setPuntos(""+juego.getJugador().getPuntaje());
+			juego.cargarDatos();
+			iniciarPartida();
+			mostrarDatos();
 			
 		} catch (ClassNotFoundException | IOException e) {
 			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning", JOptionPane.WARNING_MESSAGE);

@@ -17,14 +17,17 @@ public class PanelDatos extends JPanel {
 		TitledBorder border = new TitledBorder("Info");
 		setBorder(border);
 
+		Font font = new Font("Calibri", Font.BOLD, 14);
+		
 		lblJugador = new JLabel("Jugador: ");
-		lblJugador.setFont(new Font("Calibri", Font.BOLD, 14));
 		lblPuntos = new JLabel("Puntos: ");
-		lblPuntos.setFont(new Font("Calibri", Font.BOLD, 14));
 		lblNivel = new JLabel("Nivel: ");
-		lblNivel.setFont(new Font("Calibri", Font.BOLD, 14));
 		lblVidas = new JLabel("Vidas: ");
-		lblVidas.setFont(new Font("Calibri", Font.BOLD, 14));
+
+		lblJugador.setFont(font);
+		lblPuntos.setFont(font);
+		lblNivel.setFont(font);
+		lblVidas.setFont(font);
 
 		add(lblJugador);
 		add(lblPuntos);

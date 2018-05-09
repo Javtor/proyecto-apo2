@@ -117,5 +117,11 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 			setDY(-getDY());
 		}
 	}
+	
+	public int darPeso() {
+		int p1 = (izq==null) ? 0 : izq.darPeso();
+		int p2 = (der==null) ? 0 : der.darPeso();
+		return 1+p1+p2;
+	}
 
 }

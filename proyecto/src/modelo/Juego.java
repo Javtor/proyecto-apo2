@@ -32,6 +32,7 @@ public class Juego implements Serializable{
 	public static final int FPS = 35;
 	
 	public static final int INCREMENTO_PELOTA = 5;
+	public static final int INCREMENTO_BONUS = 10;
 	public static final int CADA_CUANTO_PELOTA = 3;
 
 	private int puntaje;
@@ -51,8 +52,6 @@ public class Juego implements Serializable{
 		nivel = 1;
 		jugador = new Jugador(null);
 		raizjugador=null;
-//		iniciarNivel();
-		
 	}
 	
 	public Jugador getRaizJugador() {
@@ -71,8 +70,6 @@ public class Juego implements Serializable{
 		return puntaje;
 	}
 	
-	
-
 	public void iniciarJuego() {
 		jugador.setNivel(nivel);
 		jugando = true;
@@ -81,11 +78,10 @@ public class Juego implements Serializable{
 			cancionFondo.open(AudioSystem.getAudioInputStream(new File(SONG)));
 			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		nave = new Nave();
+		nave = nave!=null ? nave : new Nave();
 		numPelotas = nivel / 3 + 3;
 		iniciarPelotas();
 	}
@@ -214,9 +210,9 @@ public class Juego implements Serializable{
 		if (archivo.exists())
 			archivo.delete();
 
-		pw.write(jugador.getNickname());
-		pw.write("Puntaje:" + jugador.getPuntaje());
-		pw.write("Nivel:" + jugador.getNivel());
+		pw.println(jugador.getNickname());
+		pw.println("Puntaje:" + jugador.getPuntaje());
+		pw.println("Nivel:" + jugador.getNivel());
 		pw.close();
 	}
 
@@ -275,7 +271,7 @@ public class Juego implements Serializable{
 		Bonificacion anadida = new Bonificacion();
 
 		if (primerBonus != null) {
-			Bonificacion actual = localizarUltimo();
+			Bonificacion actual = localizarUltimoBonus();
 			actual.setSiguiente(anadida);
 		} else {
 			primerBonus = anadida;
@@ -283,7 +279,7 @@ public class Juego implements Serializable{
 
 	}
 
-	public Bonificacion localizarUltimo() {
+	public Bonificacion localizarUltimoBonus() {
 		Bonificacion actual = primerBonus;
 		if (actual != null) {
 			while (actual.getSiguiente() != null) {
@@ -299,33 +295,25 @@ public class Juego implements Serializable{
 			boolean colisiona = actual.hayColision(nave);
 			if (actual.esVisible() && colisiona) {
 				actual.colisionaCon(nave);
+				if(actual.getTipo()==Bonificacion.PUNTOS) {
+					bonusPuntaje();
+				} else {
+					nave.colisionaCon(actual);
+				}
 			}
 			actual = actual.getSiguiente();
 		}
 	}
-
-	public void doBonus(int tipo) {
-		switch (tipo) {
-		case 1:
-			// n proyectiles
-			
-			break;
-		case 2:
-			// sube daño proyectil
-
-			break;
-		case 3:
-			nave.aumentarVida();
-			// bonus vida
-			break;
-		case 4:
-			puntaje += 100;
-			// bonus puntos
-			break;
-		}
-	}
-
 	
+	public void bonusPuntaje() {
+		puntaje+=INCREMENTO_BONUS;
+		jugador.setPuntaje(puntaje);
+	}
+<<<<<<< HEAD
+
+=======
+	
+>>>>>>> 74f046d4decc2199e0a897cc5c69ffdaa9299206
 	public ArrayList<Jugador> ordenarNombreAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion
