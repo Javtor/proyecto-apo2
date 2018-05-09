@@ -21,7 +21,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		setX(getX()-getAncho()/2);
 		setY(getY()-getAlto()/2);
 		vidas = VIDAS_INICIAL;
-		proyectil = new Proyectil(getX()+getAncho()/2, getY()+getAlto()/2,Proyectil.NORMAL);
+		proyectil = new Proyectil(Proyectil.NORMAL);
 	}
 
 	public void disminuirVida() {
@@ -37,6 +37,22 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		if(c instanceof Pelota && !esInvulnerable()) {
 			disminuirVida();
 			setInvulnerable(true);
+		} else if(c instanceof Bonificacion) {
+			Bonificacion b = (Bonificacion)c;
+			switch(b.getTipo()) {
+			case Bonificacion.VIDA:
+				vidas++;
+				break;
+			case Bonificacion.PROYECTIL_F:
+				proyectil = new Proyectil(Proyectil.FUERTE);
+				break;
+			case Bonificacion.PROYECTIL_N:
+				proyectil = new Proyectil(Proyectil.NORMAL);
+				break;
+			case Bonificacion.PROYECTIL_R:
+				proyectil = new Proyectil(Proyectil.RAPIDO);
+				break;
+			}
 		}
 	}
 	
@@ -114,12 +130,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		this.invulnerable = invulnerable;
 		if(this.invulnerable) {
 			setImagen(UBICACION_INVULNERABLE);
-		}
-	}
-	
-	public void aumentarVida() {
-		if (vidas<VIDAS_INICIAL) {
-			vidas++;
 		}
 	}
 

@@ -32,6 +32,7 @@ public class Juego implements Serializable{
 	public static final int FPS = 35;
 	
 	public static final int INCREMENTO_PELOTA = 5;
+	public static final int INCREMENTO_BONUS = 10;
 	public static final int CADA_CUANTO_PELOTA = 3;
 
 	private int puntaje;
@@ -275,7 +276,7 @@ public class Juego implements Serializable{
 		Bonificacion anadida = new Bonificacion();
 
 		if (primerBonus != null) {
-			Bonificacion actual = localizarUltimo();
+			Bonificacion actual = localizarUltimoBonus();
 			actual.setSiguiente(anadida);
 		} else {
 			primerBonus = anadida;
@@ -283,7 +284,7 @@ public class Juego implements Serializable{
 
 	}
 
-	public Bonificacion localizarUltimo() {
+	public Bonificacion localizarUltimoBonus() {
 		Bonificacion actual = primerBonus;
 		if (actual != null) {
 			while (actual.getSiguiente() != null) {
@@ -299,32 +300,20 @@ public class Juego implements Serializable{
 			boolean colisiona = actual.hayColision(nave);
 			if (actual.esVisible() && colisiona) {
 				actual.colisionaCon(nave);
+				if(actual.getTipo()==Bonificacion.PUNTOS) {
+					bonusPuntaje();
+				} else {
+					nave.colisionaCon(actual);
+				}
 			}
 			actual = actual.getSiguiente();
 		}
 	}
-
-	public void doBonus(int tipo) {
-		switch (tipo) {
-		case 1:
-			// n proyectiles
-			
-			break;
-		case 2:
-			// sube daño proyectil
-
-			break;
-		case 3:
-			nave.aumentarVida();
-			// bonus vida
-			break;
-		case 4:
-			puntaje += 100;
-			// bonus puntos
-			break;
-		}
+	
+	public void bonusPuntaje() {
+		puntaje+=INCREMENTO_BONUS;
+		jugador.setPuntaje(puntaje);
 	}
-
 	
 	public ArrayList<Jugador> ordenarNombreAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
