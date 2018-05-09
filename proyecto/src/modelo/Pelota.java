@@ -7,7 +7,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 
 	public static final String UBICACION = "img/pelota.png";
 	public static final int VELOCIDAD_BASE = 4;
-	public static final int VIDA_MAX = 3;
+	public static final int VIDA_MAX = 5;
 
 	private int vida;
 	private Pelota izq;

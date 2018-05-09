@@ -22,7 +22,7 @@ public class HiloBonus extends Thread{
 		while (principal.isJugando()) {
 			try {
 				juego.crearBonus();
-				Thread.sleep(10000);
+				Thread.sleep((int)(Math.random()*10+5)*1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

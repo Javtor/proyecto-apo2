@@ -11,7 +11,7 @@ public class ProyectilTest {
 	private Proyectil p;
 	
 	private void setupEscenario1() {
-		p = new Proyectil(20, 20);
+		p = new Proyectil(20, 20,Proyectil.NORMAL);
 	}
 
 	@Test

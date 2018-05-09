@@ -80,7 +80,7 @@ public class Ventana extends JFrame {
 		panelDatos.setVidas(""+juego.getNave().getVidas());
 	}
 
-	public Bonificacion getBonus() {
+	public ArrayList<Bonificacion> getBonus() {
 		return juego.getBonus();
 	}
 

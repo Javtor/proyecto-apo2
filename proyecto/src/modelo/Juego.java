@@ -42,7 +42,7 @@ public class Juego implements Serializable{
 	private Clip cancionFondo;
 
 	private Jugador jugador;
-	private Bonificacion primerbonus;
+	private Bonificacion primerBonus;
 
 	private Pelota raizPelota;
 	private Jugador raizjugador;
@@ -263,34 +263,28 @@ public class Juego implements Serializable{
 		this.jugando = jugando;
 	}
 
-	public Bonificacion getBonus() {
-		return primerbonus;
+	public ArrayList<Bonificacion> getBonus() {
+		ArrayList<Bonificacion> b = new ArrayList<Bonificacion>();
+		if(primerBonus != null) {
+			primerBonus.aArrayList(b);
+		}
+		return b;
 	}
 
 	public void crearBonus() {
+		Bonificacion anadida = new Bonificacion();
 
-		borrarbonusinvisibles();
-
-		int cx, cy, tipo;
-
-		tipo = (int) ((Math.random() * 3) + 1);
-		cx = (int) ((Math.random() * ANCHO) + 10);
-		cy = (int) ((Math.random() * ALTO) + 10);
-
-		Bonificacion anadida = new Bonificacion(cx, cy, null, tipo);
-
-		if (primerbonus != null) {
-			Bonificacion actual = localizarultimo();
+		if (primerBonus != null) {
+			Bonificacion actual = localizarUltimo();
 			actual.setSiguiente(anadida);
-			anadida.setAnterior(actual);
 		} else {
-			primerbonus = anadida;
+			primerBonus = anadida;
 		}
 
 	}
 
-	public Bonificacion localizarultimo() {
-		Bonificacion actual = primerbonus;
+	public Bonificacion localizarUltimo() {
+		Bonificacion actual = primerBonus;
 		if (actual != null) {
 			while (actual.getSiguiente() != null) {
 				actual = actual.getSiguiente();
@@ -299,24 +293,8 @@ public class Juego implements Serializable{
 		return actual;
 	}
 
-	public void borrarbonusinvisibles() {
-		Bonificacion actual = primerbonus;
-
-		while (actual != null) {
-			if (!actual.esVisible()) {
-				if(actual.getAnterior() != null) {
-					actual.getAnterior().desconectarSiguiente();
-				}
-				if(actual.getSiguiente() != null) {
-					actual.getSiguiente().desconectarAnterior();
-				}
-			}
-			actual = actual.getSiguiente();
-		}
-	}
-
 	public void verificarColisionBonus() {
-		Bonificacion actual = primerbonus;
+		Bonificacion actual = primerBonus;
 		while (actual != null) {
 			boolean colisiona = actual.hayColision(nave);
 			if (actual.esVisible() && colisiona) {

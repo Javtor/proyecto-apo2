@@ -35,8 +35,8 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	@Override
 	public void colisionaCon(Colisionable c) {
 		if(c instanceof Pelota && !esInvulnerable()) {
-			disminuirVida();
-			setInvulnerable(true);
+//			disminuirVida();
+//			setInvulnerable(true);
 		}
 	}
 	

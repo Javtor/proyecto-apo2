@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.xml.crypto.dsig.spec.DigestMethodParameterSpec;
 
+import modelo.Bonificacion;
 import modelo.Juego;
 import modelo.Pelota;
 import modelo.Proyectil;
@@ -74,11 +75,14 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	}
 
 	public void dibujarBonus(Graphics2D g2) {
-		if (principal.getBonus() != null && principal.getBonus().esVisible()) {
-			Image img = principal.getBonus().getImagen();
-			int x = principal.getBonus().getX();
-			int y = principal.getBonus().getY();
-			g2.drawImage(img, x, y, null);
+		ArrayList<Bonificacion> b = principal.getBonus();
+		for (int i = 0; i < b.size(); i++) {
+			if (b.get(i).esVisible()) {
+				Image img = b.get(i).getImagen();
+				int x = b.get(i).getX();
+				int y = b.get(i).getY();
+				g2.drawImage(img, x, y, null);
+			}
 		}
 	}
 
