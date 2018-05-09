@@ -2,10 +2,11 @@ package modelo;
 
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
-public class Sprite {
+public class Sprite implements Serializable{
 
 	private int x;
 	private int y;

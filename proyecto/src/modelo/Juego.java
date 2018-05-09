@@ -51,8 +51,6 @@ public class Juego implements Serializable{
 		nivel = 1;
 		jugador = new Jugador(null);
 		raizjugador=null;
-//		iniciarNivel();
-		
 	}
 	
 	public Jugador getRaizJugador() {
@@ -71,8 +69,6 @@ public class Juego implements Serializable{
 		return puntaje;
 	}
 	
-	
-
 	public void iniciarJuego() {
 		jugador.setNivel(nivel);
 		jugando = true;
@@ -81,11 +77,10 @@ public class Juego implements Serializable{
 			cancionFondo.open(AudioSystem.getAudioInputStream(new File(SONG)));
 			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		nave = new Nave();
+		nave = nave!=null ? nave : new Nave();
 		numPelotas = nivel / 3 + 3;
 		iniciarPelotas();
 	}
@@ -214,9 +209,9 @@ public class Juego implements Serializable{
 		if (archivo.exists())
 			archivo.delete();
 
-		pw.write(jugador.getNickname());
-		pw.write("Puntaje:" + jugador.getPuntaje());
-		pw.write("Nivel:" + jugador.getNivel());
+		pw.println(jugador.getNickname());
+		pw.println("Puntaje:" + jugador.getPuntaje());
+		pw.println("Nivel:" + jugador.getNivel());
 		pw.close();
 	}
 
@@ -325,7 +320,6 @@ public class Juego implements Serializable{
 		}
 	}
 
-	
 	public ArrayList<Jugador> ordenarNombreAscendente() {
 		ArrayList<Jugador> listjugadores = toArrayListJugador ();
 		// Seleccion

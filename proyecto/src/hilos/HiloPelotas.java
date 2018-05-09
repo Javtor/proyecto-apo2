@@ -27,7 +27,6 @@ public class HiloPelotas extends Thread{
 			try {
 				Thread.sleep(1000 / Juego.FPS);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
