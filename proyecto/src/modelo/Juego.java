@@ -20,6 +20,7 @@ import javax.sound.sampled.Clip;
 import hilos.HiloJuego;
 
 public class Juego implements Serializable{
+	
 	public static final int ANCHO = 800;
 	public static final int ALTO = 600;
 
