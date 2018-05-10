@@ -87,7 +87,6 @@ public class DialogRanking extends JDialog implements ActionListener {
 		panelchoices.add(rbpuntaje);
 		panelchoices.add(rbdescendente);
 		panelchoices.add(rbnivel);
-//		panelchoices.setPreferredSize(new Dimension(Juego.ANCHO, 200));
 
 		butbuscar = new JButton("Buscar");
 		butbuscar.setActionCommand(BUSCAR);
@@ -145,5 +144,9 @@ public class DialogRanking extends JDialog implements ActionListener {
 	@SuppressWarnings("unchecked")
 	public void actualizarLista(ArrayList<Jugador> jugadores) {
 		listjugadores.setListData(jugadores.toArray());
+		
+		for (int i =0; i<jugadores.size(); i++) {
+			System.out.println("opa");
+		}
 	}
 }

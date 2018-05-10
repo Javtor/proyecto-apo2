@@ -65,10 +65,14 @@ public class Ventana extends JFrame {
 		add(panelDatos, BorderLayout.SOUTH);
 		pack();
 		setLocationRelativeTo(null);
-
 		moverNave();
 		generarPelotas();
 		generarBonificaciones();
+		try {
+			juego.recuperarJugadores();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void mostrarDatos() {
