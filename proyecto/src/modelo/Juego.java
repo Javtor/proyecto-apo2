@@ -19,7 +19,8 @@ import javax.sound.sampled.Clip;
 
 import hilos.HiloJuego;
 
-public class Juego implements Serializable{
+public class Juego implements Serializable {
+
 	public static final int ANCHO = 800;
 	public static final int ALTO = 600;
 
@@ -28,9 +29,9 @@ public class Juego implements Serializable{
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
 	public static final String SONG = "img/bgmusic.wav";
-	
+
 	public static final int FPS = 35;
-	
+
 	public static final int INCREMENTO_PELOTA = 5;
 	public static final int INCREMENTO_BONUS = 10;
 	public static final int CADA_CUANTO_PELOTA = 3;
@@ -51,25 +52,25 @@ public class Juego implements Serializable{
 	public Juego() {
 		nivel = 1;
 		jugador = new Jugador(null);
-		raizjugador=null;
+		raizjugador = null;
 	}
-	
+
 	public Jugador getRaizJugador() {
 		return raizjugador;
 	}
-	
+
 	public Jugador getJugador() {
 		return jugador;
 	}
-	
+
 	public void setJugador(Jugador jugador) {
-		this.jugador=jugador;
+		this.jugador = jugador;
 	}
-	
+
 	public int getPuntaje() {
 		return puntaje;
 	}
-	
+
 	public void iniciarJuego() {
 		jugador.setNivel(nivel);
 		jugando = true;
@@ -80,8 +81,8 @@ public class Juego implements Serializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		nave = nave!=null ? nave : new Nave();
+
+		nave = nave != null ? nave : new Nave();
 		numPelotas = nivel / 3 + 3;
 		iniciarPelotas();
 	}
@@ -96,17 +97,17 @@ public class Juego implements Serializable{
 
 	public void iniciarPelotas() {
 		for (int i = 0; i < numPelotas; i++) {
-//			boolean generar = true;
+			// boolean generar = true;
 			Pelota p = null;
-//			while (generar) {
-//				generar = false;
-				p = new Pelota(nivel);
-//				if (raizPelota != null && raizPelota.existenColisiones(p)) {
-//					if(ANCHO/(numPelotas-2)>raizPelota.getAncho()) {
-//						generar = true;
-//					}
-//				}
-//			}
+			// while (generar) {
+			// generar = false;
+			p = new Pelota(nivel);
+			// if (raizPelota != null && raizPelota.existenColisiones(p)) {
+			// if(ANCHO/(numPelotas-2)>raizPelota.getAncho()) {
+			// generar = true;
+			// }
+			// }
+			// }
 			insertarPelota(p);
 		}
 	}
@@ -123,78 +124,77 @@ public class Juego implements Serializable{
 		jugador = new Jugador(nombre);
 	}
 
-	public void guardarPartida() throws FileNotFoundException, IOException{
+	public void guardarPartida() throws FileNotFoundException, IOException {
 		guardarNave();
 		guardarPelotas();
 		guardarJugadores();
 	}
-	
+
 	public void guardarJugadores() throws FileNotFoundException, IOException {
-		File file = new File (DIREC_JUGADORES);
+		File file = new File(DIREC_JUGADORES);
 		if (file.exists())
 			file.delete();
-		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(raizjugador);
 		oos.close();
 	}
-	
+
 	public void guardarNave() throws FileNotFoundException, IOException {
-		File file = new File (DIREC_NAVE);
+		File file = new File(DIREC_NAVE);
 		if (file.exists())
 			file.delete();
-		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(nave);
 		oos.close();
 	}
-	
+
 	public void guardarPelotas() throws FileNotFoundException, IOException {
-		File file = new File (DIREC_PELOTAS);
+		File file = new File(DIREC_PELOTAS);
 		if (file.exists())
 			file.delete();
-		ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream (file));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(raizPelota);
 		oos.close();
 	}
-
 
 	public void cargarPartida() throws FileNotFoundException, IOException, ClassNotFoundException {
 		recuperarPelotas();
 		recuperarNave();
 		recuperarJugadores();
 	}
-	
-	public void recuperarPelotas()throws IOException, ClassNotFoundException {
+
+	public void recuperarPelotas() throws IOException, ClassNotFoundException {
 		File file = new File(DIREC_PELOTAS);
 		boolean existe = file.exists() && file.isFile();
-		
+
 		if (existe) {
-			ObjectInputStream ois = new ObjectInputStream (new FileInputStream (file));
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 			raizPelota = (Pelota) ois.readObject();
-		}else {
+		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
 	}
-	
-	public void recuperarNave()throws IOException, ClassNotFoundException {
+
+	public void recuperarNave() throws IOException, ClassNotFoundException {
 		File file = new File(DIREC_NAVE);
 		boolean existe = file.exists() && file.isFile();
-		
+
 		if (existe) {
-			ObjectInputStream ois = new ObjectInputStream (new FileInputStream (file));
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 			nave = (Nave) ois.readObject();
-		}else {
+		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
 	}
-	
+
 	public void recuperarJugadores() throws IOException, ClassNotFoundException {
 		File file = new File(DIREC_JUGADORES);
 		boolean existe = file.exists() && file.isFile();
-		
+
 		if (existe) {
-			ObjectInputStream ois = new ObjectInputStream (new FileInputStream (file));
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 			raizjugador = (Jugador) ois.readObject();
-		}else {
+		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
 	}
@@ -238,13 +238,13 @@ public class Juego implements Serializable{
 	}
 
 	public void keyPressed(KeyEvent e) throws IOException {
-		if (e.getKeyCode()!=KeyEvent.VK_G) {
+		if (e.getKeyCode() != KeyEvent.VK_G) {
 			nave.keyPressed(e);
-		}else {
+		} else {
 			guardarDatos();
 			guardarPartida();
 		}
-		
+
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -261,7 +261,7 @@ public class Juego implements Serializable{
 
 	public ArrayList<Bonificacion> getBonus() {
 		ArrayList<Bonificacion> b = new ArrayList<Bonificacion>();
-		if(primerBonus != null) {
+		if (primerBonus != null) {
 			primerBonus.aArrayList(b);
 		}
 		return b;
@@ -295,7 +295,7 @@ public class Juego implements Serializable{
 			boolean colisiona = actual.hayColision(nave);
 			if (actual.esVisible() && colisiona) {
 				actual.colisionaCon(nave);
-				if(actual.getTipo()==Bonificacion.PUNTOS) {
+				if (actual.getTipo() == Bonificacion.PUNTOS) {
 					bonusPuntaje();
 				} else {
 					nave.colisionaCon(actual);
@@ -304,16 +304,17 @@ public class Juego implements Serializable{
 			actual = actual.getSiguiente();
 		}
 	}
-	
+
 	public void bonusPuntaje() {
-		puntaje+=INCREMENTO_BONUS;
+		puntaje += INCREMENTO_BONUS;
 		jugador.setPuntaje(puntaje);
+
 	}
 
 	public ArrayList<Jugador> ordenarNombreAscendente() {
-		ArrayList<Jugador> listjugadores = toArrayListJugador ();
+		ArrayList<Jugador> listjugadores = toArrayListJugador();
 		// Seleccion
-		
+
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador menor = listjugadores.get(i);
 			int cual = i;
@@ -331,7 +332,7 @@ public class Juego implements Serializable{
 	}
 
 	public ArrayList<Jugador> ordenarNombreDescendente() {
-		ArrayList<Jugador> listjugadores = toArrayListJugador ();
+		ArrayList<Jugador> listjugadores = toArrayListJugador();
 		// Seleccion
 		for (int i = 0; i < listjugadores.size() - 1; i++) {
 			Jugador mayor = listjugadores.get(i);
@@ -350,7 +351,7 @@ public class Juego implements Serializable{
 	}
 
 	public ArrayList<Jugador> ordenarPuntajeAscendente() {
-		ArrayList<Jugador> listjugadores = toArrayListJugador ();
+		ArrayList<Jugador> listjugadores = toArrayListJugador();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
 			for (int j = 0; j < i - 1; j++) {
@@ -365,7 +366,7 @@ public class Juego implements Serializable{
 	}
 
 	public ArrayList<Jugador> ordenarPuntajeDescendente() {
-		ArrayList<Jugador> listjugadores = toArrayListJugador ();
+		ArrayList<Jugador> listjugadores = toArrayListJugador();
 		// Burbuja
 		for (int i = listjugadores.size(); i > 0; i--) {
 			for (int j = 0; j < i - 1; j++) {
@@ -380,7 +381,7 @@ public class Juego implements Serializable{
 	}
 
 	public ArrayList<Jugador> ordenarNivelAscendente() {
-		ArrayList<Jugador> listjugadores = toArrayListJugador ();
+		ArrayList<Jugador> listjugadores = toArrayListJugador();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
 			for (int j = i; j > 0 && listjugadores.get(j - 1).compararNivel(listjugadores.get(j)) > 0; j--) {
@@ -393,7 +394,7 @@ public class Juego implements Serializable{
 	}
 
 	public ArrayList<Jugador> ordenarNivelDescendente() {
-		ArrayList<Jugador> listjugadores = toArrayListJugador ();
+		ArrayList<Jugador> listjugadores = toArrayListJugador();
 		// Insercion
 		for (int i = 1; i < listjugadores.size(); i++) {
 			for (int j = i; j > 0 && listjugadores.get(j - 1).compararNivel(listjugadores.get(j)) < 0; j--) {
@@ -405,20 +406,19 @@ public class Juego implements Serializable{
 		return listjugadores;
 	}
 
-
 	public void cicloJuego() {
 		verificarColisionNave();
 		verificarColisionBonus();
 		verificarColisionProyectil();
 		verificarVidas();
-		if(!(raizPelota.hayVivas())) {
+		if (!(raizPelota.hayVivas())) {
 			subirNivel();
 		}
 	}
 
 	public void verificarVidas() {
-		if(!(nave.validarViva())) {
-			jugando=false;
+		if (!(nave.validarViva())) {
+			jugando = false;
 			cancionFondo.stop();
 		}
 	}
@@ -428,22 +428,22 @@ public class Juego implements Serializable{
 			nave.colisionaCon(new Pelota(0));
 		}
 	}
-	
+
 	public void aumentarPuntaje() {
-		puntaje+=INCREMENTO_PELOTA;
+		puntaje += INCREMENTO_PELOTA;
 		jugador.setPuntaje(puntaje);
 	}
-	
+
 	public void subirNivel() {
 		nivel++;
-		nave.setX(ANCHO/2-nave.getAncho()/2);
-		nave.setY(Juego.ALTO-100-nave.getAlto()/2);
-		jugador.setNivel(nivel);	
+		nave.setX(ANCHO / 2 - nave.getAncho() / 2);
+		nave.setY(Juego.ALTO - 100 - nave.getAlto() / 2);
+		jugador.setNivel(nivel);
 		numPelotas = nivel / CADA_CUANTO_PELOTA + 3;
 		raizPelota = null;
 		iniciarPelotas();
 	}
-	
+
 	public void verificarColisionProyectil() {
 		if (nave.getProyectil().esVisible()) {
 			boolean sigue = true;
@@ -452,71 +452,70 @@ public class Juego implements Serializable{
 				if (p.get(i).hayColision(nave.getProyectil())) {
 					p.get(i).colisionaCon(nave.getProyectil());
 					nave.getProyectil().colisionaCon(p.get(i));
-					if(!(p.get(i).esVisible())) {
+					if (!(p.get(i).esVisible())) {
 						aumentarPuntaje();
 					}
 					sigue = false;
 				}
-			} 
+			}
 		}
 	}
-	
+
 	public void addJugador() {
 		if (raizjugador == null) {
 			raizjugador = jugador;
-		}else {
+		} else {
 			raizjugador.insertar(jugador);
 		}
 	}
-	
-	public ArrayList<Jugador> toArrayListJugador(){
+
+	public ArrayList<Jugador> toArrayListJugador() {
 		ArrayList<Jugador> alj = new ArrayList<Jugador>();
 		if (raizjugador != null) {
 			raizjugador.crearArreglo(alj);
 		}
 		return alj;
-		
+
 	}
-	
+
 	public Jugador buscarJugadorNombre(String nombre) throws NombreNoExisteException {
-		Jugador j = raizjugador==null? null: raizjugador.buscarNombre(nombre);
-		if (j==null)
-			throw new NombreNoExisteException ();
-		
+		Jugador j = raizjugador == null ? null : raizjugador.buscarNombre(nombre);
+		if (j == null)
+			throw new NombreNoExisteException();
+
 		return j;
 	}
-	
+
 	public Jugador buscarJugadorPuntos(int puntos) throws PuntajeNoExisteException {
 		ArrayList<Jugador> array = ordenarPuntajeAscendente();
 		Jugador j = null;
 		boolean resultado = false;
 		int inicio = 0;
-		int fin = array.size()-1;
-		
-		while (inicio<=fin && !resultado) {
-			
-			int medio = (inicio+fin)/2;
-			
-			if (array.get(medio).getPuntaje()==puntos) {
+		int fin = array.size() - 1;
+
+		while (inicio <= fin && !resultado) {
+
+			int medio = (inicio + fin) / 2;
+
+			if (array.get(medio).getPuntaje() == puntos) {
 				j = array.get(medio);
 				resultado = true;
-		
-			}else if (array.get(medio).getPuntaje()>puntos) {
+
+			} else if (array.get(medio).getPuntaje() > puntos) {
 				fin = medio - 1;
-			}else {
-				inicio = medio +1 ;
+			} else {
+				inicio = medio + 1;
 			}
 		}
-		
-		if (j==null)
+
+		if (j == null)
 			throw new PuntajeNoExisteException();
-		
+
 		return j;
 	}
 
 	public void disparar(int x, int y) {
 		nave.disparar(x, y);
 	}
-	
-	
+
 }
