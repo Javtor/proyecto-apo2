@@ -12,7 +12,7 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public static final int VELOCIDAD_FUERTE = 15;
 	public static final int VELOCIDAD_NORMAL = 20;
 	public static final int VELOCIDAD_RAPIDO = 25;
-	public static final int DANIO_RAPIDO = 1;
+	public static final int DANIO_RAPIDO = 2;
 	public static final int DANIO_NORMAL = 3;
 	public static final int DANIO_FUERTE = 5;
 	public static final String IMG_NORMAL = "img" + File.separator + "proyectil_n.png";
