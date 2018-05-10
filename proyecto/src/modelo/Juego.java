@@ -559,7 +559,7 @@ public class Juego implements Serializable{
 		nave.disparar(x, y);
 	}
 	public void crearDecoraciones() {
-		for(int i=0;i<4;i++) {
+		for(int i=0;i<6;i++) {
 			boolean creado=false;
 			while(creado==false) {
 				int x=(int)(Math.random()*ANCHO);
