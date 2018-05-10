@@ -294,6 +294,7 @@ public class Juego implements Serializable{
 			boolean colisiona = actual.hayColision(nave);
 			if (actual.esVisible() && colisiona) {
 				actual.colisionaCon(nave);
+				doBonus(actual.getTipo());
 			}
 			actual = actual.getSiguiente();
 		}
@@ -302,12 +303,12 @@ public class Juego implements Serializable{
 	public void doBonus(int tipo) {
 		switch (tipo) {
 		case 1:
-			// n proyectiles
-			
+			// sube velocidad proyectiles
+			nave.getProyectil().setElements(Proyectil.RAPIDO);
 			break;
 		case 2:
 			// sube daño proyectil
-
+			nave.getProyectil().setElements(Proyectil.FUERTE);
 			break;
 		case 3:
 			nave.aumentarVida();

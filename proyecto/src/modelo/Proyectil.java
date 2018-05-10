@@ -25,23 +25,7 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 	public Proyectil(int x, int y, int tipo) {
 		super(x, y, IMG_NORMAL);
 		setVisible(false);
-		switch (tipo) {
-		case RAPIDO:
-			setImagen(IMG_RAPIDO);
-			danio = DANIO_RAPIDO;
-			velocidad = VELOCIDAD_RAPIDO;
-			break;
-		case NORMAL:
-			setImagen(IMG_NORMAL);
-			danio = DANIO_NORMAL;
-			velocidad = VELOCIDAD_NORMAL;
-			break;
-		case FUERTE:
-			setImagen(IMG_FUERTE);
-			danio = DANIO_FUERTE;
-			velocidad = VELOCIDAD_FUERTE;
-			break;
-		}
+		setElements(tipo);
 	}
 
 	public void disparar(int x, int y, int x2, int y2) {
@@ -91,6 +75,26 @@ public class Proyectil extends SpriteMovimiento implements Colisionable {
 
 	public void setDanio(int danio) {
 		this.danio = danio;
+	}
+	
+	public void setElements(int tipo) {
+		switch (tipo) {
+		case RAPIDO:
+			setImagen(IMG_RAPIDO);
+			danio = DANIO_RAPIDO;
+			velocidad = VELOCIDAD_RAPIDO;
+			break;
+		case NORMAL:
+			setImagen(IMG_NORMAL);
+			danio = DANIO_NORMAL;
+			velocidad = VELOCIDAD_NORMAL;
+			break;
+		case FUERTE:
+			setImagen(IMG_FUERTE);
+			danio = DANIO_FUERTE;
+			velocidad = VELOCIDAD_FUERTE;
+			break;
+		}
 	}
 
 }

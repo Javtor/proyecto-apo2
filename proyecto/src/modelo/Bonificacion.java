@@ -13,11 +13,11 @@ public class Bonificacion extends Sprite implements Colisionable {
 	public static String DIREC_BONUS_PROYECTIL_N = "img/bonus/proyectil_n.png";
 	public static String DIREC_BONUS_PROYECTIL_F = "img/bonus/proyectil_f.png";
 	
-	public static final int VIDA = 0;
-	public static final int PUNTOS = 1;
-	public static final int PROYECTIL_R = 2;
-	public static final int PROYECTIL_N = 3;
-	public static final int PROYECTIL_F = 4;
+	
+	public static final int PROYECTIL_R = 1;
+	public static final int PROYECTIL_F = 2;
+	public static final int VIDA = 3;
+	public static final int PUNTOS = 4;
 	
 	private int tipo;
 	private Bonificacion siguiente;
@@ -25,7 +25,7 @@ public class Bonificacion extends Sprite implements Colisionable {
 	
 	public Bonificacion() {
 		super(0, 0, null);
-		tipo = (int) (Math.random() * 5);
+		tipo = (int) (Math.random() * 4);
 		setX((int)(Math.random()*Juego.ANCHO-getAncho()));
 		setY((int)(Math.random()*Juego.ALTO-getAlto()));
 		switch (tipo){
@@ -37,9 +37,6 @@ public class Bonificacion extends Sprite implements Colisionable {
 			break;
 			case PROYECTIL_R:
 				setImagen(DIREC_BONUS_PROYECTIL_R);
-			break;
-			case PROYECTIL_N:
-				setImagen(DIREC_BONUS_PROYECTIL_N);
 			break;
 			case PROYECTIL_F:
 				setImagen(DIREC_BONUS_PROYECTIL_F);
