@@ -156,8 +156,8 @@ public class Juego implements Serializable {
 	}
 
 	public void cargarPartida() throws FileNotFoundException, IOException, ClassNotFoundException {
-		recuperarPelotas();
-		recuperarNave();
+//		recuperarPelotas();
+//		recuperarNave();
 		recuperarJugadores();
 	}
 

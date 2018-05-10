@@ -216,15 +216,17 @@ public class Ventana extends JFrame {
 	}
 
 	public void cargarDatos() {
-//		try {
-//			juego.cargarDatos();
-//			juego.cargarPartida();
+		try {
+			juego.cargarDatos();
+			juego.cargarPartida();
+			JOptionPane.showMessageDialog(this, "El juego se ha cargado correctamente");
 			iniciarPartida();
-//			mostrarDatos();
+			mostrarDatos();
 			
-//		} catch (IOException e) {
+		} catch (IOException | ClassNotFoundException e) {
 //			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning", JOptionPane.WARNING_MESSAGE);
-//		}
+		e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {
