@@ -1,9 +1,10 @@
 package modelo;
 
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pelota extends SpriteMovimiento implements Colisionable {
+public class Pelota extends SpriteMovimiento implements Colisionable, Serializable {
 
 	public static final String UBICACION = "img/pelota.png";
 	public static final int VELOCIDAD_BASE = 4;

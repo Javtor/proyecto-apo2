@@ -143,6 +143,7 @@ public class Ventana extends JFrame {
 	public void nuevaPartida() {
 		juego = new Juego();
 		registrarNickname();
+		iniciarPartida();
 	}
 
 	public void registrarNickname() {
@@ -152,7 +153,7 @@ public class Ventana extends JFrame {
 				JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
 			} else {
 				juego.getJugador().setNickname(nick);
-				iniciarPartida();
+				
 			}
 		}
 	}
@@ -215,15 +216,15 @@ public class Ventana extends JFrame {
 	}
 
 	public void cargarDatos() {
-		try {
-			juego.cargarPartida();
-			juego.cargarDatos();
+//		try {
+//			juego.cargarDatos();
+//			juego.cargarPartida();
 			iniciarPartida();
-			mostrarDatos();
+//			mostrarDatos();
 			
-		} catch (ClassNotFoundException | IOException e) {
-			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning", JOptionPane.WARNING_MESSAGE);
-		}
+//		} catch (IOException e) {
+//			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning", JOptionPane.WARNING_MESSAGE);
+//		}
 	}
 	
 	public static void main(String[] args) {

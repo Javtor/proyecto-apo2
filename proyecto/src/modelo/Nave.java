@@ -3,8 +3,9 @@ package modelo;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
+import java.io.Serializable;
 
-public class Nave extends SpriteMovimiento implements Colisionable {
+public class Nave extends SpriteMovimiento implements Colisionable, Serializable {
 	
 	public static final int VELOCIDAD_BASE = 13;
 	public static final int VIDAS_INICIAL = 4;

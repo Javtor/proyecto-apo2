@@ -141,8 +141,6 @@ public class Juego implements Serializable {
 
 	public void guardarNave() throws FileNotFoundException, IOException {
 		File file = new File(DIREC_NAVE);
-		if (file.exists())
-			file.delete();
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(nave);
 		oos.close();
@@ -206,9 +204,6 @@ public class Juego implements Serializable {
 
 		File archivo = new File(NOM_DATOS);
 		PrintWriter pw = new PrintWriter(archivo);
-
-		if (archivo.exists())
-			archivo.delete();
 
 		pw.println(jugador.getNickname());
 		pw.println("Puntaje:" + jugador.getPuntaje());

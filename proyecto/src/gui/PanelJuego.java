@@ -98,6 +98,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		
 		principal.keyPressed(e);
 	}
 
@@ -125,7 +126,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		requestFocus();
 
 	}
 
