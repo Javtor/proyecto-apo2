@@ -38,7 +38,12 @@ public class Ventana extends JFrame {
 
 	public Ventana() {
 		juego = new Juego();
-
+		try {
+			juego.recuperarJugadores();
+		} catch (ClassNotFoundException | IOException e) {
+	
+		}
+		
 		setTitle("Space War");
 		setLayout(new BorderLayout());
 		setResizable(false);
@@ -56,8 +61,8 @@ public class Ventana extends JFrame {
 		setVisible(true);
 	}
 
-	public void iniciarPartida() {
-		juego.iniciarJuego();
+	public void iniciarPartida(boolean cargado) {
+		juego.iniciarJuego(cargado);
 		remove(panelInicio);
 		panelJuego = new PanelJuego(this);
 		add(panelJuego, BorderLayout.CENTER);
@@ -68,11 +73,7 @@ public class Ventana extends JFrame {
 		moverNave();
 		generarPelotas();
 		generarBonificaciones();
-		try {
-			juego.recuperarJugadores();
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public void mostrarDatos() {
@@ -143,7 +144,7 @@ public class Ventana extends JFrame {
 	public void nuevaPartida() {
 		juego = new Juego();
 		registrarNickname();
-		iniciarPartida();
+		iniciarPartida(false);
 	}
 
 	public void registrarNickname() {
@@ -220,7 +221,7 @@ public class Ventana extends JFrame {
 			juego.cargarDatos();
 			juego.cargarPartida();
 			JOptionPane.showMessageDialog(this, "El juego se ha cargado correctamente");
-			iniciarPartida();
+			iniciarPartida(true);
 			mostrarDatos();
 			
 		} catch (IOException | ClassNotFoundException e) {

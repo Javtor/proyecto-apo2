@@ -28,6 +28,7 @@ public class Juego implements Serializable {
 	public static final String DIREC_PELOTAS = "data/pelotas.txt";
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
+	public static final String DIREC_BONUS = "data/bonus.txt";
 	public static final String SONG = "img/bgmusic.wav";
 
 	public static final int FPS = 35;
@@ -71,7 +72,7 @@ public class Juego implements Serializable {
 		return puntaje;
 	}
 
-	public void iniciarJuego() {
+	public void iniciarJuego(boolean cargado) {
 		jugador.setNivel(nivel);
 		jugando = true;
 		try {
@@ -82,9 +83,11 @@ public class Juego implements Serializable {
 			e.printStackTrace();
 		}
 
-		nave = nave != null ? nave : new Nave();
+		nave = cargado ? nave : new Nave();
 		numPelotas = nivel / 3 + 3;
-		iniciarPelotas();
+		if (!cargado) {
+			iniciarPelotas();
+		}
 	}
 
 	public void insertarPelota(Pelota p) {
@@ -128,6 +131,7 @@ public class Juego implements Serializable {
 		guardarNave();
 		guardarPelotas();
 		guardarJugadores();
+		guardarBonificaciones();
 	}
 
 	public void guardarJugadores() throws FileNotFoundException, IOException {
@@ -148,17 +152,23 @@ public class Juego implements Serializable {
 
 	public void guardarPelotas() throws FileNotFoundException, IOException {
 		File file = new File(DIREC_PELOTAS);
-		if (file.exists())
-			file.delete();
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(raizPelota);
 		oos.close();
 	}
+	
+	public void guardarBonificaciones() throws FileNotFoundException, IOException {
+		File file = new File(DIREC_BONUS);
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+		oos.writeObject(primerBonus);
+		oos.close();
+	}
 
 	public void cargarPartida() throws FileNotFoundException, IOException, ClassNotFoundException {
-//		recuperarPelotas();
-//		recuperarNave();
+		recuperarPelotas();
+		recuperarNave();
 		recuperarJugadores();
+		recuperarBonus();
 	}
 
 	public void recuperarPelotas() throws IOException, ClassNotFoundException {
@@ -172,6 +182,18 @@ public class Juego implements Serializable {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
 	}
+	
+	public void recuperarBonus() throws IOException, ClassNotFoundException {
+		File file = new File(DIREC_BONUS);
+		boolean existe = file.exists() && file.isFile();
+
+		if (existe) {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			primerBonus = (Bonificacion) ois.readObject();
+		} else {
+			throw new FileNotFoundException("No se ha encontrado el archivo");
+		}
+	}
 
 	public void recuperarNave() throws IOException, ClassNotFoundException {
 		File file = new File(DIREC_NAVE);
@@ -180,6 +202,8 @@ public class Juego implements Serializable {
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 			nave = (Nave) ois.readObject();
+			nave.setDX(0);
+			nave.setDY(0);
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}

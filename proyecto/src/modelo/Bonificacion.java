@@ -1,9 +1,10 @@
 package modelo;
 
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bonificacion extends Sprite implements Colisionable {
+public class Bonificacion extends Sprite implements Colisionable, Serializable{
 
 //	public static String DIREC_PROYECTIL = "img/bonus/nproyectiles.png";
 //	public static String DIREC_PROYECTIL = "img/bonus/tproyectil.png";
