@@ -88,6 +88,12 @@ public class Juego implements Serializable {
 		if (!cargado) {
 			iniciarPelotas();
 		}
+		try {
+			addJugador();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void insertarPelota(Pelota p) {
@@ -224,7 +230,6 @@ public class Juego implements Serializable {
 	public void guardarDatos() throws FileNotFoundException {
 		jugador.setNivel(nivel);
 		jugador.setPuntaje(puntaje);
-		addJugador();
 
 		File archivo = new File(NOM_DATOS);
 		PrintWriter pw = new PrintWriter(archivo);
@@ -338,7 +343,7 @@ public class Juego implements Serializable {
 			Jugador menor = listjugadores.get(i);
 			int cual = i;
 			for (int j = i + 1; j < listjugadores.size(); j++) {
-				if (menor.compararNombre(listjugadores.get(j).getNickname()) < 0) {
+				if (menor.compararNombre(listjugadores.get(j).getNickname()) > 0) {
 					menor = listjugadores.get(j);
 					cual = j;
 				}
@@ -357,7 +362,7 @@ public class Juego implements Serializable {
 			Jugador mayor = listjugadores.get(i);
 			int cual = i;
 			for (int j = i + 1; j < listjugadores.size(); j++) {
-				if (mayor.compararNombre(listjugadores.get(j).getNickname()) > 0) {
+				if (mayor.compararNombre(listjugadores.get(j).getNickname()) < 0) {
 					mayor = listjugadores.get(j);
 					cual = j;
 				}

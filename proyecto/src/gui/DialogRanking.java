@@ -71,9 +71,11 @@ public class DialogRanking extends JDialog implements ActionListener {
 		grupochoice.add(rbnombre);
 		grupochoice.add(rbpuntaje);
 		grupochoice.add(rbnivel);
+		rbnombre.setSelected(true);
 
 		rbascendente = new JRadioButton("Ascendente");
 		rbdescendente = new JRadioButton("Descendente");
+		rbascendente.setSelected(true);
 
 		grupocriterio = new ButtonGroup();
 		grupocriterio.add(rbascendente);
@@ -145,8 +147,5 @@ public class DialogRanking extends JDialog implements ActionListener {
 	public void actualizarLista(ArrayList<Jugador> jugadores) {
 		listjugadores.setListData(jugadores.toArray());
 		
-		for (int i =0; i<jugadores.size(); i++) {
-			System.out.println("opa");
-		}
 	}
 }

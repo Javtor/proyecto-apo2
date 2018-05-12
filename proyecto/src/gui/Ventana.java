@@ -171,7 +171,7 @@ public class Ventana extends JFrame {
 			if (criterio == 1)
 				ranking.actualizarLista(juego.ordenarPuntajeAscendente());
 			else
-				ranking.actualizarLista(juego.ordenarPuntajeAscendente());
+				ranking.actualizarLista(juego.ordenarPuntajeDescendente());
 			break;
 		case 3:
 			if (criterio == 1)

@@ -130,7 +130,7 @@ public class Jugador implements Serializable, Comparable{
 	
 	@Override
 	public String toString () {
-		return nickname +"        "+puntaje+"       "+nivel;
+		return nickname +" - "+puntaje+" - "+nivel;
 	}
 	
 }
