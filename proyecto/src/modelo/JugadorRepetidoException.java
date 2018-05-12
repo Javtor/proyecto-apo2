@@ -1,13 +1,15 @@
 package modelo;
 
-public class JugadorRepetidoException extends IllegalArgumentException {
+public class JugadorRepetidoException extends Exception {
+	
+	private Jugador j;
 
-	public JugadorRepetidoException() {
-		// TODO Auto-generated constructor stub
+	public JugadorRepetidoException(Jugador j) {
+		super();
+		this.j = j;
 	}
-
-	public JugadorRepetidoException(String arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
+	
+	public Jugador getJugador() {
+		return j;
 	}
 }

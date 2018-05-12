@@ -17,6 +17,7 @@ import hilos.HiloProyectil;
 import modelo.Bonificacion;
 import modelo.Juego;
 import modelo.Jugador;
+import modelo.JugadorRepetidoException;
 import modelo.Nave;
 import modelo.Pelota;
 import modelo.PuntajeNoExisteException;
@@ -62,17 +63,22 @@ public class Ventana extends JFrame {
 	}
 
 	public void iniciarPartida(boolean cargado) {
-		juego.iniciarJuego(cargado);
-		remove(panelInicio);
-		panelJuego = new PanelJuego(this);
-		add(panelJuego, BorderLayout.CENTER);
-		panelDatos = new PanelDatos();
-		add(panelDatos, BorderLayout.SOUTH);
-		pack();
-		setLocationRelativeTo(null);
-		moverNave();
-		generarPelotas();
-		generarBonificaciones();
+		try {
+			juego.iniciarJuego(cargado);
+			remove(panelInicio);
+			panelJuego = new PanelJuego(this);
+			add(panelJuego, BorderLayout.CENTER);
+			panelDatos = new PanelDatos();
+			add(panelDatos, BorderLayout.SOUTH);
+			pack();
+			setLocationRelativeTo(null);
+			moverNave();
+			generarPelotas();
+			generarBonificaciones();
+		} catch (JugadorRepetidoException e) {
+			JOptionPane.showMessageDialog(this, "El jugador con ese nombre ya existe");
+		}
+		
 		
 	}
 	

@@ -72,7 +72,7 @@ public class Juego implements Serializable {
 		return puntaje;
 	}
 
-	public void iniciarJuego(boolean cargado) {
+	public void iniciarJuego(boolean cargado) throws JugadorRepetidoException {
 		jugador.setNivel(nivel);
 		jugando = true;
 		try {
@@ -90,9 +90,14 @@ public class Juego implements Serializable {
 		}
 		try {
 			addJugador();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (JugadorRepetidoException e) {
+			if(cargado) {
+				jugador = e.getJugador();
+				jugador.setPuntaje(puntaje);
+				jugador.setNivel(nivel);
+			} else {
+				throw e;
+			}
 		}
 	}
 
@@ -106,17 +111,8 @@ public class Juego implements Serializable {
 
 	public void iniciarPelotas() {
 		for (int i = 0; i < numPelotas; i++) {
-			// boolean generar = true;
 			Pelota p = null;
-			// while (generar) {
-			// generar = false;
 			p = new Pelota(nivel);
-			// if (raizPelota != null && raizPelota.existenColisiones(p)) {
-			// if(ANCHO/(numPelotas-2)>raizPelota.getAncho()) {
-			// generar = true;
-			// }
-			// }
-			// }
 			insertarPelota(p);
 		}
 	}
@@ -162,7 +158,7 @@ public class Juego implements Serializable {
 		oos.writeObject(raizPelota);
 		oos.close();
 	}
-	
+
 	public void guardarBonificaciones() throws FileNotFoundException, IOException {
 		File file = new File(DIREC_BONUS);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
@@ -188,7 +184,7 @@ public class Juego implements Serializable {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
 	}
-	
+
 	public void recuperarBonus() throws IOException, ClassNotFoundException {
 		File file = new File(DIREC_BONUS);
 		boolean existe = file.exists() && file.isFile();
@@ -444,6 +440,15 @@ public class Juego implements Serializable {
 		if (!(nave.validarViva())) {
 			jugando = false;
 			cancionFondo.stop();
+			try {
+				guardarJugadores();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -485,7 +490,7 @@ public class Juego implements Serializable {
 		}
 	}
 
-	public void addJugador() {
+	public void addJugador() throws JugadorRepetidoException {
 		if (raizjugador == null) {
 			raizjugador = jugador;
 		} else {

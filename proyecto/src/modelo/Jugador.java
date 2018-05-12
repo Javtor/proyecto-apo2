@@ -101,9 +101,9 @@ public class Jugador implements Serializable, Comparable{
 		return null;
 	}
 	
-	public void insertar (Jugador j) {
+	public void insertar (Jugador j) throws JugadorRepetidoException{
 		if (compararNombre(j.getNickname())==0) {
-			throw new JugadorRepetidoException ();
+			throw new JugadorRepetidoException (this);
 		}else if (compararNombre(j.getNickname())>0) {
 			if (izq == null)
 				izq = j;
