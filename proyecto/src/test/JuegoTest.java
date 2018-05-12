@@ -25,7 +25,12 @@ class JuegoTest {
 	}
 
 	void setUpEscenario1() {
-		juego.addJugador();
+		try {
+			juego.addJugador();
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	void setUpEscenario2() {
@@ -45,41 +50,51 @@ class JuegoTest {
 	}
 	
 	void setUpEscenario4() {
-		jugador = juego.getJugador();
-		jugador.setNickname("Julian");
-		jugador.setNivel(3);
-		jugador.setPuntaje(100);
-		juego.addJugador();
-		
-		juego.setJugador(new Jugador ("Javier"));
-		jugador = juego.getJugador();
-		jugador.setNivel(4);
-		jugador.setPuntaje(200);
-		juego.addJugador();
-		
-		juego.setJugador(new Jugador ("Alejandro"));
-		jugador = juego.getJugador();
-		jugador.setNivel(2);
-		jugador.setPuntaje(50);
-		juego.addJugador();
-		
-		juego.setJugador(new Jugador ("Manyolml"));
-		jugador = juego.getJugador();
-		jugador.setNivel(7);
-		jugador.setPuntaje(500);
-		juego.addJugador();
-		
-		juego.setJugador(new Jugador ("JuanMa"));
-		jugador = juego.getJugador();
-		jugador.setNivel(6);
-		jugador.setPuntaje(400);
-		juego.addJugador();
+		try {
+			jugador = juego.getJugador();
+			jugador.setNickname("Julian");
+			jugador.setNivel(3);
+			jugador.setPuntaje(100);
+			juego.addJugador();
+			
+			juego.setJugador(new Jugador ("Javier"));
+			jugador = juego.getJugador();
+			jugador.setNivel(4);
+			jugador.setPuntaje(200);
+			juego.addJugador();
+			
+			juego.setJugador(new Jugador ("Alejandro"));
+			jugador = juego.getJugador();
+			jugador.setNivel(2);
+			jugador.setPuntaje(50);
+			juego.addJugador();
+			
+			juego.setJugador(new Jugador ("Manyolml"));
+			jugador = juego.getJugador();
+			jugador.setNivel(7);
+			jugador.setPuntaje(500);
+			juego.addJugador();
+			
+			juego.setJugador(new Jugador ("JuanMa"));
+			jugador = juego.getJugador();
+			jugador.setNivel(6);
+			jugador.setPuntaje(400);
+			juego.addJugador();
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Test
 	void testAddJugador1() {
-		juego.addJugador();
+		try {
+			juego.addJugador();
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Jugador j = juego.getRaizJugador();
 		assertTrue(j==jugador);
 	}
@@ -87,7 +102,12 @@ class JuegoTest {
 	@Test
 	void testAddJugador2() {
 		setUpEscenario2();
-		juego.addJugador();
+		try {
+			juego.addJugador();
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Jugador j = juego.getRaizJugador();
 		assertTrue(j.getIzq()==jugador);
 	}
@@ -95,7 +115,12 @@ class JuegoTest {
 	@Test
 	void testAddJugador3() {
 		setUpEscenario3();
-		juego.addJugador();
+		try {
+			juego.addJugador();
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Jugador j = juego.getRaizJugador();
 		assertTrue(j.getDer()==jugador);
 	}
@@ -138,10 +163,10 @@ class JuegoTest {
 	}
 	
 	@Test
-	void testOrdenarNombreAscendente() {
+	void testOrdenarNombreDescendente() {
 		setUpEscenario4();
 		
-		ArrayList<Jugador> array = juego.ordenarNombreAscendente();
+		ArrayList<Jugador> array = juego.ordenarNombreDescendente();
 		
 		assertEquals (array.get(0).getNickname(), "Manyolml");
 		assertEquals (array.get(1).getNickname(), "Julian");
@@ -151,10 +176,10 @@ class JuegoTest {
 	}
 	
 	@Test
-	void testOrdenarNombreDescendente() {
+	void testOrdenarNombreAscendente() {
 		setUpEscenario4();
 		
-		ArrayList<Jugador> array = juego.ordenarNombreDescendente();
+		ArrayList<Jugador> array = juego.ordenarNombreAscendente();
 		
 		assertEquals (array.get(0).getNickname(), "Alejandro");
 		assertEquals (array.get(1).getNickname(), "Javier");

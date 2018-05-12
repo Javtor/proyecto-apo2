@@ -121,7 +121,7 @@ public class DialogRanking extends JDialog implements ActionListener {
 		String comando = e.getActionCommand();
 
 		if (comando.equals(BUSCAR)) {
-			menu.buscarPuntaje();
+			menu.buscar();
 		}
 		if (comando.equals(GENERAR)) {
 			int tipo = 0;
@@ -147,5 +147,11 @@ public class DialogRanking extends JDialog implements ActionListener {
 	public void actualizarLista(ArrayList<Jugador> jugadores) {
 		listjugadores.setListData(jugadores.toArray());
 		
+	}
+	
+	@Override
+	public void dispose(){
+		menu.cerrarRanking();
+		super.dispose();
 	}
 }

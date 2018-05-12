@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
-public class Sprite implements Serializable{
+public abstract class Sprite implements Serializable{
 
 	private int x;
 	private int y;

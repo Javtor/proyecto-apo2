@@ -19,6 +19,7 @@ import modelo.Juego;
 import modelo.Jugador;
 import modelo.JugadorRepetidoException;
 import modelo.Nave;
+import modelo.NombreNoExisteException;
 import modelo.Pelota;
 import modelo.PuntajeNoExisteException;
 
@@ -42,15 +43,15 @@ public class Ventana extends JFrame {
 		try {
 			juego.recuperarJugadores();
 		} catch (ClassNotFoundException | IOException e) {
-	
+
 		}
-		
+
 		setTitle("Space War");
 		setLayout(new BorderLayout());
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		ImageIcon icon = new ImageIcon("img/icono.png");
-		if(icon.getIconWidth()!=-1) {
+		if (icon.getIconWidth() != -1) {
 			setIconImage(icon.getImage());
 		}
 
@@ -78,15 +79,14 @@ public class Ventana extends JFrame {
 		} catch (JugadorRepetidoException e) {
 			JOptionPane.showMessageDialog(this, "El jugador con ese nombre ya existe");
 		}
-		
-		
+
 	}
-	
+
 	public void mostrarDatos() {
 		panelDatos.setJugador(juego.getJugador().getNickname());
-		panelDatos.setPuntos(""+juego.getJugador().getPuntaje());
-		panelDatos.setNivel(""+juego.getJugador().getNivel());
-		panelDatos.setVidas(""+juego.getNave().getVidas());
+		panelDatos.setPuntos("" + juego.getJugador().getPuntaje());
+		panelDatos.setNivel("" + juego.getJugador().getNivel());
+		panelDatos.setVidas("" + juego.getNave().getVidas());
 	}
 
 	public ArrayList<Bonificacion> getBonus() {
@@ -159,7 +159,7 @@ public class Ventana extends JFrame {
 				JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
 			} else {
 				juego.getJugador().setNickname(nick);
-				
+
 			}
 		}
 	}
@@ -188,14 +188,36 @@ public class Ventana extends JFrame {
 		}
 	}
 
+	public void buscar() {
+		int respuesta = JOptionPane.showOptionDialog(ranking, "Escoge el criterio de busqueda", "Buscar", JOptionPane.YES_NO_OPTION, 
+				JOptionPane.QUESTION_MESSAGE, null, new String[] {"Nombre","Puntaje"}, null);
+		if(respuesta == JOptionPane.YES_OPTION) {
+			buscarNombre();
+		} else if(respuesta == JOptionPane.NO_OPTION) {
+			buscarPuntaje();
+		}
+	}
+
 	public void buscarPuntaje() {
 		try {
-			int puntos = Integer.parseInt(JOptionPane.showInputDialog(ranking,"Ingrese puntaje a buscar"));
+			int puntos = Integer.parseInt(JOptionPane.showInputDialog(ranking, "Ingresa el puntaje a buscar"));
 			String nombre = juego.buscarJugadorPuntos(puntos).getNickname();
-			JOptionPane.showMessageDialog(ranking, nombre + " tiene "+puntos+" puntos");
+			JOptionPane.showMessageDialog(ranking, nombre + " tiene " + puntos + " puntos");
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(ranking, "Ingrese un número valido", "Error", JOptionPane.WARNING_MESSAGE);
 		} catch (PuntajeNoExisteException e) {
+			JOptionPane.showMessageDialog(ranking, "No existe un jugador con ese puntaje", "Not Found",
+					JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
+	public void buscarNombre() {
+		try {
+			String nombre = JOptionPane.showInputDialog(ranking, "Ingresa el nombre a buscar");
+			Jugador j = juego.buscarJugadorNombre(nombre);
+			JOptionPane.showMessageDialog(ranking, nombre + " tiene " + j.getPuntaje() + " puntos, y esta en el nivel "+
+			j.getNivel());
+		} catch (NombreNoExisteException e) {
 			JOptionPane.showMessageDialog(ranking, "No existe un jugador con ese puntaje", "Not Found",
 					JOptionPane.WARNING_MESSAGE);
 		}
@@ -217,6 +239,10 @@ public class Ventana extends JFrame {
 		ranking.actualizarLista(juego.toArrayListJugador());
 	}
 
+	public void cerrarRanking() {
+		ranking = null;
+	}
+
 	public ArrayList<Jugador> getJugadores() {
 		return juego.toArrayListJugador();
 	}
@@ -228,13 +254,14 @@ public class Ventana extends JFrame {
 			JOptionPane.showMessageDialog(this, "El juego se ha cargado correctamente");
 			iniciarPartida(true);
 			mostrarDatos();
-			
+
 		} catch (IOException | ClassNotFoundException e) {
-//			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning", JOptionPane.WARNING_MESSAGE);
-		e.printStackTrace();
+			// JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa",
+			// "Warning", JOptionPane.WARNING_MESSAGE);
+			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		Ventana v = new Ventana();
 	}
