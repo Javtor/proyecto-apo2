@@ -17,20 +17,18 @@ import java.util.ArrayList;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-import hilos.HiloJuego;
-
 public class Juego implements Serializable {
 
 	public static final int ANCHO = 800;
 	public static final int ALTO = 600;
 
-	public static final String DIREC_NAVE = "data/nave.txt";
-	public static final String DIREC_PELOTAS = "data/pelotas.txt";
-	public static final String NOM_DATOS = "data/datospartida.txt";
-	public static final String DIREC_JUGADORES = "data/users.txt";
-	public static final String DIREC_BONUS = "data/bonus.txt";
-	public static final String DIREC_DECO = "data/deco.txt";
-	public static final String SONG = "img/bgmusic.wav";
+	public static final String DIREC_NAVE = "data" + File.separator + "nave.txt";
+	public static final String DIREC_PELOTAS = "data" + File.separator + "pelotas.txt";
+	public static final String NOM_DATOS = "data" + File.separator + "datospartida.txt";
+	public static final String DIREC_JUGADORES = "data" + File.separator + "users.txt";
+	public static final String DIREC_BONUS = "data" + File.separator + "bonus.txt";
+	public static final String DIREC_DECO = "data" + File.separator + "deco.txt";
+	public static final String SONG = "img" + File.separator + "bgmusic.wav";
 	public static final int FPS = 35;
 
 	public static final int INCREMENTO_PELOTA = 5;
@@ -44,7 +42,6 @@ public class Juego implements Serializable {
 	private boolean jugando;
 	private int numPelotas;
 	private Clip cancionFondo;
-	private int numDecoraciones;
 
 	private Jugador jugador;
 	private Bonificacion primerBonus;
@@ -171,7 +168,7 @@ public class Juego implements Serializable {
 		oos.writeObject(primerBonus);
 		oos.close();
 	}
-	
+
 	public void guardarDeco() throws FileNotFoundException, IOException {
 		File file = new File(DIREC_DECO);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
@@ -210,7 +207,7 @@ public class Juego implements Serializable {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
 	}
-	
+
 	public void recuperarDeco() throws IOException, ClassNotFoundException {
 		File file = new File(DIREC_DECO);
 		boolean existe = file.exists() && file.isFile();

@@ -2,8 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -26,11 +30,14 @@ import modelo.PuntajeNoExisteException;
 
 public class Ventana extends JFrame {
 
+	public static final String MUSICA_INICIO = "img" + File.separator + "inicio.wav";
+
 	private PanelJuego panelJuego;
 	private PanelInicio panelInicio;
 	private DialogRanking ranking;
 	private PanelDatos panelDatos;
 	private Juego juego;
+	private Clip cancionFondo;
 
 	private HiloBonus hB;
 	private HiloJuego hJ;
@@ -40,6 +47,13 @@ public class Ventana extends JFrame {
 	private HiloProyectil hPro;
 
 	public Ventana() {
+		try {
+			cancionFondo = AudioSystem.getClip();
+			cancionFondo.open(AudioSystem.getAudioInputStream(new File(MUSICA_INICIO)));
+			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		juego = new Juego();
 		try {
 			juego.recuperarJugadores();
@@ -66,6 +80,7 @@ public class Ventana extends JFrame {
 
 	public void iniciarPartida(boolean cargado) {
 		try {
+//			cancionFondo.stop();
 			juego.iniciarJuego(cargado);
 			remove(panelInicio);
 			panelJuego = new PanelJuego(this);
@@ -226,6 +241,13 @@ public class Ventana extends JFrame {
 	}
 
 	public void mostrarInicio() {
+		try {
+			cancionFondo = AudioSystem.getClip();
+			cancionFondo.open(AudioSystem.getAudioInputStream(new File(MUSICA_INICIO)));
+			cancionFondo.loop(Clip.LOOP_CONTINUOUSLY);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		remove(panelJuego);
 		remove(panelDatos);
 		panelInicio = new PanelInicio(this);

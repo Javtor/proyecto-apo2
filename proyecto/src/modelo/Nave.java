@@ -6,21 +6,21 @@ import java.io.File;
 import java.io.Serializable;
 
 public class Nave extends SpriteMovimiento implements Colisionable {
-	
+
 	public static final int VELOCIDAD_BASE = 13;
 	public static final int VIDAS_INICIAL = 4;
-	public static final String UBICACION = "img"+File.separator+"nave.png";
-	public static final String UBICACION_INVULNERABLE = "img"+File.separator+"invulnerable.png";
-	
+	public static final String UBICACION = "img" + File.separator + "nave.png";
+	public static final String UBICACION_INVULNERABLE = "img" + File.separator + "invulnerable.png";
+
 	private int vidas;
 	private boolean invulnerable;
 
 	private Proyectil proyectil;
-	
+
 	public Nave() {
-		super(Juego.ANCHO/2, Juego.ALTO-100, UBICACION);
-		setX(getX()-getAncho()/2);
-		setY(getY()-getAlto()/2);
+		super(Juego.ANCHO / 2, Juego.ALTO - 100, UBICACION);
+		setX(getX() - getAncho() / 2);
+		setY(getY() - getAlto() / 2);
 		vidas = VIDAS_INICIAL;
 		proyectil = new Proyectil(Proyectil.NORMAL);
 	}
@@ -30,17 +30,17 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	public boolean validarViva() {
-		return vidas >=0;
+		return vidas >= 0;
 	}
 
 	@Override
 	public void colisionaCon(Colisionable c) {
-		if(c instanceof Pelota && !esInvulnerable()) {
+		if (c instanceof Pelota && !esInvulnerable()) {
 			disminuirVida();
 			setInvulnerable(true);
-		} else if(c instanceof Bonificacion) {
-			Bonificacion b = (Bonificacion)c;
-			switch(b.getTipo()) {
+		} else if (c instanceof Bonificacion) {
+			Bonificacion b = (Bonificacion) c;
+			switch (b.getTipo()) {
 			case Bonificacion.VIDA:
 				vidas++;
 				break;
@@ -56,62 +56,63 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 			}
 		}
 	}
-	
+
 	@Override
 	public void mover() {
 		super.mover();
-		if(getX()<Math.abs(getDX())) {
+		if (getX() < Math.abs(getDX())) {
 			setX(0);
-		} else if(getX()+getAncho()>Juego.ANCHO-Math.abs(getDX())) {
-			setX(Juego.ANCHO-getAncho());
-		} if(getY()<Math.abs(getDY())) {
+		} else if (getX() + getAncho() > Juego.ANCHO - Math.abs(getDX())) {
+			setX(Juego.ANCHO - getAncho());
+		}
+		if (getY() < Math.abs(getDY())) {
 			setY(0);
-		} else if(getY()+getAlto()>Juego.ALTO-Math.abs(getDY())) {
-			setY(Juego.ALTO-getAlto());
+		} else if (getY() + getAlto() > Juego.ALTO - Math.abs(getDY())) {
+			setY(Juego.ALTO - getAlto());
 		}
 	}
-	
+
 	public void keyPressed(KeyEvent e) {
 
-        int key = e.getKeyCode();
+		int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_A) {
-            setDX(-VELOCIDAD_BASE);
-        }
+		if (key == KeyEvent.VK_A) {
+			setDX(-VELOCIDAD_BASE);
+		}
 
-        if (key == KeyEvent.VK_D) {
-        	setDX(VELOCIDAD_BASE);
-        }
+		if (key == KeyEvent.VK_D) {
+			setDX(VELOCIDAD_BASE);
+		}
 
-        if (key == KeyEvent.VK_W) {
-        	setDY(-VELOCIDAD_BASE);
-        }
+		if (key == KeyEvent.VK_W) {
+			setDY(-VELOCIDAD_BASE);
+		}
 
-        if (key == KeyEvent.VK_S) {
-        	setDY(VELOCIDAD_BASE);
-        }
-    }
+		if (key == KeyEvent.VK_S) {
+			setDY(VELOCIDAD_BASE);
+		}
+	}
 
-    public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {
 
-        int key = e.getKeyCode();
+		int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_A && getDX()<0) {
-        	setDX(0);
-        }
+		if (key == KeyEvent.VK_A && getDX() < 0) {
+			setDX(0);
+		}
 
-        if (key == KeyEvent.VK_D && getDX()>0) {
-        	setDX(0);
-        }
+		if (key == KeyEvent.VK_D && getDX() > 0) {
+			setDX(0);
+		}
 
-        if (key == KeyEvent.VK_W && getDY()<0) {
-        	setDY(0);
-        }
+		if (key == KeyEvent.VK_W && getDY() < 0) {
+			setDY(0);
+		}
 
-        if (key == KeyEvent.VK_S && getDY()>0) {
-        	setDY(0);
-        }
-    }
+		if (key == KeyEvent.VK_S && getDY() > 0) {
+			setDY(0);
+		}
+	}
 
 	@Override
 	public boolean hayColision(Colisionable c) {
@@ -129,7 +130,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 
 	public void setInvulnerable(boolean invulnerable) {
 		this.invulnerable = invulnerable;
-		if(this.invulnerable) {
+		if (this.invulnerable) {
 			setImagen(UBICACION_INVULNERABLE);
 		}
 	}
@@ -137,9 +138,9 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	public int getVidas() {
 		return vidas;
 	}
-	
+
 	public void disparar(int x, int y) {
-		proyectil.disparar(getX()+getAncho()/2, getY()+getAlto()/2, x, y);
+		proyectil.disparar(getX() + getAncho() / 2, getY() + getAlto() / 2, x, y);
 	}
 
 	public Proyectil getProyectil() {
