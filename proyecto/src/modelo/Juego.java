@@ -1,5 +1,7 @@
 package modelo;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,6 +30,7 @@ public class Juego implements Serializable{
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
 	public static final String SONG = "img/bgmusic.wav";
+	public static final String DISPARO="img/disparo.wav";
 	
 	public static final int FPS = 35;
 	
@@ -41,6 +44,7 @@ public class Juego implements Serializable{
 	private int numPelotas;
 	private Clip cancionFondo;
 	private int numDecoraciones;
+	private AudioClip disparo;
 
 	private Jugador jugador;
 	private Bonificacion primerbonus;
@@ -92,7 +96,14 @@ public class Juego implements Serializable{
 		iniciarPelotas();
 		crearDecoraciones();
 	}
-
+//	public void sonidoDisparo() {
+//		try {
+//			disparo=Applet.newAudioClip(getClass().getResource(DISPARO));
+//			disparo.play();
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	public void insertarPelota(Pelota p) {
 		if (raizPelota == null) {
 			raizPelota = p;
@@ -556,6 +567,7 @@ public class Juego implements Serializable{
 	}
 
 	public void disparar(int x, int y) {
+		sonidoDisparo();
 		nave.disparar(x, y);
 	}
 	public void crearDecoraciones() {
