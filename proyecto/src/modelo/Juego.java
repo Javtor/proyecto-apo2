@@ -35,7 +35,7 @@ public class Juego implements Serializable {
 
 	public static final int INCREMENTO_PELOTA = 5;
 	public static final int INCREMENTO_BONUS = 10;
-	public static final int CADA_CUANTO_PELOTA = 3;
+	public static final int CADA_CUANTO_PELOTA = 4;
 
 	private int puntaje;
 	private int nivel;
@@ -73,7 +73,6 @@ public class Juego implements Serializable {
 	}
 
 	public void iniciarJuego(boolean cargado) throws JugadorRepetidoException {
-		jugador.setNivel(nivel);
 		jugando = true;
 		try {
 			cancionFondo = AudioSystem.getClip();
@@ -82,20 +81,22 @@ public class Juego implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		nave = cargado ? nave : new Nave();
-		numPelotas = nivel / 3 + 3;
-		if (!cargado) {
-			iniciarPelotas();
-		}
 		try {
 			addJugador();
+			nave = cargado ? nave : new Nave();
+			
+			numPelotas = nivel / 3 + 3;
+			if (!cargado) {
+				iniciarPelotas();
+			}
 		} catch (JugadorRepetidoException e) {
 			if(cargado) {
 				jugador = e.getJugador();
 				jugador.setPuntaje(puntaje);
 				jugador.setNivel(nivel);
 			} else {
+				jugando = false;
+				cancionFondo.stop();
 				throw e;
 			}
 		}

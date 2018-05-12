@@ -148,18 +148,13 @@ public class Ventana extends JFrame {
 	}
 
 	public void nuevaPartida() {
-		registrarNickname();
-		iniciarPartida(false);
-	}
-
-	public void registrarNickname() {
 		String nick = JOptionPane.showInputDialog("Nuevo Jugador: ");
 		if (nick != null) {
 			if (nick.equals("")) {
 				JOptionPane.showMessageDialog(this, "Debe ingresar un nombre", "Warning", JOptionPane.WARNING_MESSAGE);
 			} else {
 				juego.getJugador().setNickname(nick);
-
+				iniciarPartida(false);
 			}
 		}
 	}
@@ -189,20 +184,24 @@ public class Ventana extends JFrame {
 	}
 
 	public void buscar() {
-		int respuesta = JOptionPane.showOptionDialog(ranking, "Escoge el criterio de busqueda", "Buscar", JOptionPane.YES_NO_OPTION, 
-				JOptionPane.QUESTION_MESSAGE, null, new String[] {"Nombre","Puntaje"}, null);
-		if(respuesta == JOptionPane.YES_OPTION) {
+		int respuesta = JOptionPane.showOptionDialog(ranking, "Escoge el criterio de busqueda", "Buscar",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[] { "Nombre", "Puntaje" },
+				null);
+		if (respuesta == JOptionPane.YES_OPTION) {
 			buscarNombre();
-		} else if(respuesta == JOptionPane.NO_OPTION) {
+		} else if (respuesta == JOptionPane.NO_OPTION) {
 			buscarPuntaje();
 		}
 	}
 
 	public void buscarPuntaje() {
 		try {
-			int puntos = Integer.parseInt(JOptionPane.showInputDialog(ranking, "Ingresa el puntaje a buscar"));
-			String nombre = juego.buscarJugadorPuntos(puntos).getNickname();
-			JOptionPane.showMessageDialog(ranking, nombre + " tiene " + puntos + " puntos");
+			String ans = JOptionPane.showInputDialog(ranking, "Ingresa el puntaje a buscar");
+			if (ans != null) {
+				int puntos = Integer.parseInt(ans);
+				String nombre = juego.buscarJugadorPuntos(puntos).getNickname();
+				JOptionPane.showMessageDialog(ranking, nombre + " tiene " + puntos + " puntos");
+			}
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(ranking, "Ingrese un número valido", "Error", JOptionPane.WARNING_MESSAGE);
 		} catch (PuntajeNoExisteException e) {
@@ -214,11 +213,13 @@ public class Ventana extends JFrame {
 	public void buscarNombre() {
 		try {
 			String nombre = JOptionPane.showInputDialog(ranking, "Ingresa el nombre a buscar");
-			Jugador j = juego.buscarJugadorNombre(nombre);
-			JOptionPane.showMessageDialog(ranking, nombre + " tiene " + j.getPuntaje() + " puntos, y esta en el nivel "+
-			j.getNivel());
+			if (nombre != null) {
+				Jugador j = juego.buscarJugadorNombre(nombre);
+				JOptionPane.showMessageDialog(ranking,
+						nombre + " tiene " + j.getPuntaje() + " puntos, y esta en el nivel " + j.getNivel());
+			}
 		} catch (NombreNoExisteException e) {
-			JOptionPane.showMessageDialog(ranking, "No existe un jugador con ese puntaje", "Not Found",
+			JOptionPane.showMessageDialog(ranking, "No existe un jugador con ese nombre", "Not Found",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
@@ -256,9 +257,8 @@ public class Ventana extends JFrame {
 			mostrarDatos();
 
 		} catch (IOException | ClassNotFoundException e) {
-			// JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa",
-			// "Warning", JOptionPane.WARNING_MESSAGE);
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "No se ha encontrado una partida previa", "Warning",
+					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
