@@ -36,6 +36,7 @@ public class Juego implements Serializable {
 	public static final int INCREMENTO_PELOTA = 5;
 	public static final int INCREMENTO_BONUS = 10;
 	public static final int CADA_CUANTO_PELOTA = 4;
+	public static final int NUMERO_DECORACIONES = 6;
 
 	private int puntaje;
 	private int nivel;
@@ -43,9 +44,11 @@ public class Juego implements Serializable {
 	private boolean jugando;
 	private int numPelotas;
 	private Clip cancionFondo;
+	private int numDecoraciones;
 
 	private Jugador jugador;
 	private Bonificacion primerBonus;
+	private Decoracion primeraDeco;
 
 	private Pelota raizPelota;
 	private Jugador raizjugador;
@@ -84,13 +87,13 @@ public class Juego implements Serializable {
 		try {
 			addJugador();
 			nave = cargado ? nave : new Nave();
-			
 			numPelotas = nivel / 3 + 3;
 			if (!cargado) {
 				iniciarPelotas();
 			}
+			crearDecoraciones();
 		} catch (JugadorRepetidoException e) {
-			if(cargado) {
+			if (cargado) {
 				jugador = e.getJugador();
 				jugador.setPuntaje(puntaje);
 				jugador.setNivel(nivel);
@@ -100,6 +103,7 @@ public class Juego implements Serializable {
 				throw e;
 			}
 		}
+
 	}
 
 	public void insertarPelota(Pelota p) {
@@ -546,6 +550,41 @@ public class Juego implements Serializable {
 
 	public void disparar(int x, int y) {
 		nave.disparar(x, y);
+	}
+
+	public void crearDecoraciones() {
+		for (int i = 0; i < NUMERO_DECORACIONES; i++) {
+			boolean creado = false;
+			while (!creado) {
+				agregarDecoracion(new Decoracion());
+				creado = true;
+			}
+		}
+	}
+
+	public void agregarDecoracion(Decoracion d) {
+		if (primeraDeco == null) {
+			primeraDeco = d;
+		} else {
+			Decoracion actual = primeraDeco;
+			while (actual.darSiguiente() != null) {
+				actual = actual.darSiguiente();
+			}
+			actual.setSiguiente(d);
+		}
+	}
+
+	public ArrayList<Decoracion> darDecoraciones() {
+		ArrayList<Decoracion> decos = new ArrayList<Decoracion>();
+		if (primeraDeco != null) {
+			Decoracion actual = primeraDeco;
+			while (actual.darSiguiente() != null) {
+				decos.add(actual);
+				actual = actual.darSiguiente();
+			}
+			decos.add(actual);
+		}
+		return decos;
 	}
 
 }

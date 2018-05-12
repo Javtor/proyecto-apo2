@@ -10,11 +10,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
-import javax.xml.crypto.dsig.spec.DigestMethodParameterSpec;
-
 import modelo.Bonificacion;
+import modelo.Decoracion;
 import modelo.Juego;
 import modelo.Pelota;
 import modelo.Proyectil;
@@ -38,6 +36,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		if (principal.isJugando()) {
 			Image bg = new ImageIcon("img/bg.jpg").getImage();
 			g2.drawImage(bg, 0, 0, Juego.ANCHO, Juego.ALTO, null);
+			dibujarDecoracion(g2);
 			dibujarBonus(g2);
 			dibujarProyectil(g2);
 			dibujarNave(g2);
@@ -46,6 +45,16 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 			dibujarFin(g2);
 		}
 
+	}
+
+	private void dibujarDecoracion(Graphics2D g2) {
+		ArrayList<Decoracion> a=principal.getPrimeraDeco();
+			for(int i=0;i<a.size();i++) {
+				Image img=a.get(i).getImagen();
+				int x = a.get(i).getX();
+				int y = a.get(i).getY();
+				g2.drawImage(img,x,y,null);
+			}
 	}
 
 	public void dibujarFin(Graphics2D g) {

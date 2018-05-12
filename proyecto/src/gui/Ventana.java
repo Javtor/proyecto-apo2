@@ -15,6 +15,7 @@ import hilos.HiloNave;
 import hilos.HiloPelotas;
 import hilos.HiloProyectil;
 import modelo.Bonificacion;
+import modelo.Decoracion;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.JugadorRepetidoException;
@@ -264,6 +265,10 @@ public class Ventana extends JFrame {
 
 	public static void main(String[] args) {
 		Ventana v = new Ventana();
+	}
+
+	public ArrayList<Decoracion> getPrimeraDeco() {
+		return juego.darDecoraciones();
 	}
 
 }

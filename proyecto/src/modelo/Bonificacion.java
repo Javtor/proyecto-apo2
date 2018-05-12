@@ -27,8 +27,8 @@ public class Bonificacion extends Sprite implements Colisionable, Serializable{
 	public Bonificacion() {
 		super(0, 0, null);
 		tipo = (int) (Math.random() * 5);
-		setX((int)(Math.random()*Juego.ANCHO-getAncho()*2));
-		setY((int)(Math.random()*Juego.ALTO-getAlto()*2));
+		setX((int)(Math.random()*(Juego.ANCHO-getAncho()*2)));
+		setY((int)(Math.random()*(Juego.ALTO-getAlto()*2)));
 		switch (tipo){
 			case VIDA:
 				setImagen(DIREC_BONUS_VIDA);
