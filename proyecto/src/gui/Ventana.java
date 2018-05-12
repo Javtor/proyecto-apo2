@@ -80,6 +80,7 @@ public class Ventana extends JFrame {
 
 	public void iniciarPartida(boolean cargado) {
 		try {
+			cancionFondo.stop();
 			juego.iniciarJuego(cargado);
 			remove(panelInicio);
 			panelJuego = new PanelJuego(this);
