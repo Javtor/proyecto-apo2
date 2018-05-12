@@ -80,9 +80,10 @@ public class Ventana extends JFrame {
 
 	public void iniciarPartida(boolean cargado) {
 		try {
-			cancionFondo.stop();
+			
 			juego.iniciarJuego(cargado);
 			remove(panelInicio);
+			cancionFondo.stop();
 			panelJuego = new PanelJuego(this);
 			add(panelJuego, BorderLayout.CENTER);
 			panelDatos = new PanelDatos();
