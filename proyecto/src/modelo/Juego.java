@@ -31,7 +31,6 @@ public class Juego implements Serializable {
 	public static final String DIREC_BONUS = "data/bonus.txt";
 	public static final String DIREC_DECO = "data/deco.txt";
 	public static final String SONG = "img/bgmusic.wav";
-
 	public static final int FPS = 35;
 
 	public static final int INCREMENTO_PELOTA = 5;

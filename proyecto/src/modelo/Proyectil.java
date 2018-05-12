@@ -4,6 +4,9 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.Serializable;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 public class Proyectil extends SpriteMovimiento implements Colisionable{
 
 	public static final int RAPIDO = 0;
@@ -19,6 +22,7 @@ public class Proyectil extends SpriteMovimiento implements Colisionable{
 	public static final String IMG_NORMAL = "img" + File.separator + "proyectil_n.png";
 	public static final String IMG_RAPIDO = "img" + File.separator + "proyectil_r.png";
 	public static final String IMG_FUERTE = "img" + File.separator + "proyectil_f.png";
+	public static final String DISPARO = "img/disparo.wav";
 	
 	private int danio;
 	private int velocidad;
@@ -31,6 +35,13 @@ public class Proyectil extends SpriteMovimiento implements Colisionable{
 
 	public void disparar(int x, int y, int x2, int y2) {
 		if (!esVisible()) {
+			try {
+				Clip disparo = AudioSystem.getClip();
+				disparo.open(AudioSystem.getAudioInputStream(new File(DISPARO)));
+				disparo.start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			setX(x);
 			setY(y);
 			setVisible(true);
