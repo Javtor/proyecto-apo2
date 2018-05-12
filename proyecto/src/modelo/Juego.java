@@ -559,20 +559,21 @@ public class Juego implements Serializable{
 		nave.disparar(x, y);
 	}
 	public void crearDecoraciones() {
-		for(int i=0;i<6;i++) {
+		for(int i=0;i<8;i++) {
 			boolean creado=false;
 			while(creado==false) {
 				int x=(int)(Math.random()*ANCHO);
-				int y=(int)(Math.random()*ALTO);				
+				int y=(int)(Math.random()*ALTO);
+				int imagen=(int)(Math.random()*4);
 				if(primeradeco==null) {
-					primeradeco=new Decoracion(x,y,"");
+					primeradeco=new Decoracion(x,y,imagen);
 					creado=true;
 				}else {
 					Decoracion actual=primeradeco;
 					while(actual.darSiguiente()!=null) {
 						actual=actual.darSiguiente();
 					}
-					Decoracion nueva=new Decoracion(x,y,"");
+					Decoracion nueva=new Decoracion(x,y,imagen);
 //					if(!nueva.getHitbox()intersects(actual.getHitbox()) {
 						actual.setSiguiente(nueva);
 						nueva.setAnterior(actual);
