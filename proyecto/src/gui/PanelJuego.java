@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.*;
 import modelo.Bonificacion;
@@ -18,6 +19,8 @@ import modelo.Pelota;
 import modelo.Proyectil;
 
 public class PanelJuego extends JPanel implements KeyListener, MouseListener {
+	
+	public static final String GAME_OVER = "img"+File.separator+"GameOver.jpg";
 
 	private Ventana principal;
 
@@ -58,10 +61,12 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	}
 
 	public void dibujarFin(Graphics2D g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Juego.ANCHO, Juego.ALTO);
-		g.setColor(Color.WHITE);
-		g.drawString("Game Over", Juego.ANCHO/2, Juego.ALTO/2);
+//		g.setColor(Color.BLACK);
+//		g.fillRect(0, 0, Juego.ANCHO, Juego.ALTO);
+//		g.setColor(Color.WHITE);
+//		g.drawString("Game Over", Juego.ANCHO/2, Juego.ALTO/2);
+		ImageIcon ii = new ImageIcon(GAME_OVER);
+		g.drawImage(ii.getImage(), 0, 0, Juego.ANCHO, Juego.ALTO, null);
 	}
 
 	public void dibujarNave(Graphics2D g2) {
