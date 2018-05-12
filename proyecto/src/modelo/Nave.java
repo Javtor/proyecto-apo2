@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.Serializable;
 
-public class Nave extends SpriteMovimiento implements Colisionable, Serializable {
+public class Nave extends SpriteMovimiento implements Colisionable {
 	
 	public static final int VELOCIDAD_BASE = 13;
 	public static final int VIDAS_INICIAL = 4;

@@ -4,7 +4,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.Serializable;
 
-public class Proyectil extends SpriteMovimiento implements Colisionable, Serializable {
+public class Proyectil extends SpriteMovimiento implements Colisionable{
 
 	public static final int RAPIDO = 0;
 	public static final int NORMAL = 1;

@@ -29,6 +29,7 @@ public class Juego implements Serializable {
 	public static final String NOM_DATOS = "data/datospartida.txt";
 	public static final String DIREC_JUGADORES = "data/users.txt";
 	public static final String DIREC_BONUS = "data/bonus.txt";
+	public static final String DIREC_DECO = "data/deco.txt";
 	public static final String SONG = "img/bgmusic.wav";
 
 	public static final int FPS = 35;
@@ -36,7 +37,7 @@ public class Juego implements Serializable {
 	public static final int INCREMENTO_PELOTA = 5;
 	public static final int INCREMENTO_BONUS = 10;
 	public static final int CADA_CUANTO_PELOTA = 4;
-	public static final int NUMERO_DECORACIONES = 6;
+	public static final int NUMERO_DECORACIONES = 5;
 
 	private int puntaje;
 	private int nivel;
@@ -139,6 +140,7 @@ public class Juego implements Serializable {
 		guardarPelotas();
 		guardarJugadores();
 		guardarBonificaciones();
+		guardarDeco();
 	}
 
 	public void guardarJugadores() throws FileNotFoundException, IOException {
@@ -170,12 +172,20 @@ public class Juego implements Serializable {
 		oos.writeObject(primerBonus);
 		oos.close();
 	}
+	
+	public void guardarDeco() throws FileNotFoundException, IOException {
+		File file = new File(DIREC_DECO);
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+		oos.writeObject(primeraDeco);
+		oos.close();
+	}
 
 	public void cargarPartida() throws FileNotFoundException, IOException, ClassNotFoundException {
 		recuperarPelotas();
 		recuperarNave();
 		recuperarJugadores();
 		recuperarBonus();
+		recuperarDeco();
 	}
 
 	public void recuperarPelotas() throws IOException, ClassNotFoundException {
@@ -197,6 +207,18 @@ public class Juego implements Serializable {
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 			primerBonus = (Bonificacion) ois.readObject();
+		} else {
+			throw new FileNotFoundException("No se ha encontrado el archivo");
+		}
+	}
+	
+	public void recuperarDeco() throws IOException, ClassNotFoundException {
+		File file = new File(DIREC_DECO);
+		boolean existe = file.exists() && file.isFile();
+
+		if (existe) {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			primeraDeco = (Decoracion) ois.readObject();
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}

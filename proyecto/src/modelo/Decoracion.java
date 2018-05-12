@@ -1,7 +1,5 @@
 package modelo;
 
-import java.awt.geom.Rectangle2D;
-
 public class Decoracion extends Sprite{
 	public static final String IMAGEN = "img/icono.png";
 	public static final String[] IMAGENES = { "img/marte.png", "img/jupiter.png", "img/mercurio.png",
