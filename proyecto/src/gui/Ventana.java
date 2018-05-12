@@ -142,7 +142,6 @@ public class Ventana extends JFrame {
 	}
 
 	public void nuevaPartida() {
-		juego = new Juego();
 		registrarNickname();
 		iniciarPartida(false);
 	}
