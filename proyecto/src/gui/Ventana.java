@@ -242,6 +242,12 @@ public class Ventana extends JFrame {
 	}
 
 	public void mostrarInicio() {
+		juego = new Juego();
+		try {
+			juego.recuperarJugadores();
+		} catch (ClassNotFoundException | IOException e) {
+
+		}
 		try {
 			cancionFondo = AudioSystem.getClip();
 			cancionFondo.open(AudioSystem.getAudioInputStream(new File(MUSICA_INICIO)));
