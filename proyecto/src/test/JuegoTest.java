@@ -1,7 +1,6 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +27,6 @@ class JuegoTest {
 		try {
 			juego.addJugador();
 		} catch (JugadorRepetidoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +79,6 @@ class JuegoTest {
 			jugador.setPuntaje(400);
 			juego.addJugador();
 		} catch (JugadorRepetidoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

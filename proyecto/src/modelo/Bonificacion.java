@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class Bonificacion extends Sprite implements Colisionable{
 
-//	public static String DIREC_PROYECTIL = "img/bonus/nproyectiles.png";
-//	public static String DIREC_PROYECTIL = "img/bonus/tproyectil.png";
 	public static String DIREC_BONUS_VIDA = "img/bonus/bonusvida.png";
 	public static String DIREC_BONUS_PUNTOS = "img/bonus/bonuspuntos.png";
 	public static String DIREC_BONUS_PROYECTIL_R = "img/bonus/proyectil_r.png";

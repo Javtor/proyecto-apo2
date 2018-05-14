@@ -43,8 +43,6 @@ public class Jugador implements Serializable, Comparable{
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	
-	
 
 	public Jugador getIzq() {
 		return izq;
@@ -64,7 +62,6 @@ public class Jugador implements Serializable, Comparable{
 
 	@Override
 	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
 		Jugador j = (Jugador)arg0;
 		return this.puntaje-j.getPuntaje();
 	}
@@ -80,7 +77,6 @@ public class Jugador implements Serializable, Comparable{
 	
 	@Override
 	public boolean equals(Object arg0) {
-		// TODO Auto-generated method stub
 		Jugador j = (Jugador)arg0;
 		return this.puntaje == j.getPuntaje() && this.nickname.equals(j.getNickname());
 	}

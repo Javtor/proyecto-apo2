@@ -24,7 +24,15 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		vidas = VIDAS_INICIAL;
 		proyectil = new Proyectil(Proyectil.NORMAL);
 	}
+	
+	public Proyectil getProyectil() {
+		return this.proyectil;
+	}
 
+	public int getVidas() {
+		return vidas;
+	}
+	
 	public void disminuirVida() {
 		vidas--;
 	}
@@ -135,16 +143,10 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		}
 	}
 
-	public int getVidas() {
-		return vidas;
-	}
-
 	public void disparar(int x, int y) {
 		proyectil.disparar(getX() + getAncho() / 2, getY() + getAlto() / 2, x, y);
 	}
 
-	public Proyectil getProyectil() {
-		return this.proyectil;
-	}
+
 
 }
