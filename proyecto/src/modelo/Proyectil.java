@@ -7,7 +7,7 @@ import java.io.Serializable;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Proyectil extends SpriteMovimiento implements Colisionable{
+public abstract class Proyectil extends SpriteMovimiento implements Colisionable, Disparable{
 
 	public static final int RAPIDO = 0;
 	public static final int NORMAL = 1;
@@ -27,12 +27,12 @@ public class Proyectil extends SpriteMovimiento implements Colisionable{
 	private int danio;
 	private int velocidad;
 
-	public Proyectil(int tipo) {
+	public Proyectil() {
 		super(0, 0, IMG_NORMAL);
 		setVisible(false);
-		setElements(tipo);
 	}
 
+	@Override
 	public void disparar(int x, int y, int x2, int y2) {
 		if (!esVisible()) {
 			try {
@@ -89,24 +89,8 @@ public class Proyectil extends SpriteMovimiento implements Colisionable{
 		this.danio = danio;
 	}
 	
-	public void setElements(int tipo) {
-		switch (tipo) {
-		case RAPIDO:
-			setImagen(IMG_RAPIDO);
-			danio = DANIO_RAPIDO;
-			velocidad = VELOCIDAD_RAPIDO;
-			break;
-		case NORMAL:
-			setImagen(IMG_NORMAL);
-			danio = DANIO_NORMAL;
-			velocidad = VELOCIDAD_NORMAL;
-			break;
-		case FUERTE:
-			setImagen(IMG_FUERTE);
-			danio = DANIO_FUERTE;
-			velocidad = VELOCIDAD_FUERTE;
-			break;
-		}
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
 	}
 
 }
