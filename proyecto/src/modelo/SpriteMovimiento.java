@@ -7,7 +7,6 @@ public abstract class SpriteMovimiento extends Sprite implements Movible{
 
 	public SpriteMovimiento(int x, int y, String imagen) {
 		super(x, y, imagen);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

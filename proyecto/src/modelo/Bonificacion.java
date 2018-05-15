@@ -5,15 +5,30 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Bonificacion extends Sprite implements Colisionable{
-
-//	public static String DIREC_PROYECTIL = "img/bonus/nproyectiles.png";
-//	public static String DIREC_PROYECTIL = "img/bonus/tproyectil.png";
+	// constantes
+	/**
+	 * Directorio del archivo de imagen de la bonificacion de bonus vida
+	 */
 	public static String DIREC_BONUS_VIDA = "img/bonus/bonusvida.png";
+	/**
+	 * Directorio del archivo de imagen de la bonificacion de puntos extra
+	 */
 	public static String DIREC_BONUS_PUNTOS = "img/bonus/bonuspuntos.png";
+	/**
+	 * Directorio del archivo de imagen del cambio de  proyectil 
+	 */
 	public static String DIREC_BONUS_PROYECTIL_R = "img/bonus/proyectil_r.png";
+	/**
+	 * Directorio del archivo de imagen del proyectil 
+	 */
 	public static String DIREC_BONUS_PROYECTIL_N = "img/bonus/proyectil_n.png";
+	/**
+	 * Directorio del archivo de imagen del proyectil 
+	 */
 	public static String DIREC_BONUS_PROYECTIL_F = "img/bonus/proyectil_f.png";
-	
+	/**
+	 * atributo contante 
+	 */
 	public static final int VIDA = 0;
 	public static final int PUNTOS = 1;
 	public static final int PROYECTIL_R = 2;
