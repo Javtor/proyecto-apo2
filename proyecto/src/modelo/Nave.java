@@ -58,7 +58,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 		setX(getX() - getAncho() / 2);
 		setY(getY() - getAlto() / 2);
 		vidas = VIDAS_INICIAL;
-		proyectil = new Proyectil(Proyectil.NORMAL);
+		proyectil = new ProyectilNormal();
 	}
 	/**
 	 * Getter del atributo Proyectil
@@ -153,13 +153,13 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 				vidas++;
 				break;
 			case Bonificacion.PROYECTIL_F:
-				proyectil = new Proyectil(Proyectil.FUERTE);
+				proyectil = new ProyectilFuerte();
 				break;
 			case Bonificacion.PROYECTIL_N:
-				proyectil = new Proyectil(Proyectil.NORMAL);
+				proyectil = new ProyectilNormal();
 				break;
 			case Bonificacion.PROYECTIL_R:
-				proyectil = new Proyectil(Proyectil.RAPIDO);
+				proyectil = new ProyectilRapido();
 				break;
 			}
 		}
