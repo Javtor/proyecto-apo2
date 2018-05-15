@@ -3,11 +3,10 @@ package hilos;
 import gui.Ventana;
 import modelo.Juego;
 import modelo.Nave;
-
 /**
  * Este hilo se encarga de darle un tiempo a la duración de la invulnerabilidad
  * de la nave.
- * 
+ * Esto ocurre depués de que alguna pelota colisiona con la nave.
  * @author Javier Andres Torres, Maria Camila Lenis, Juan Sebastian Palma
  * @version 1.0
  */
@@ -41,8 +40,7 @@ public class HiloInvulnerabilidad extends Thread {
 	 * Mientras se esté en juego, verifica si la nave es invulnerable (se llega a este estado tras
 	 * ser impactado por una pelota). Si lo es, espera un tiempo fijo, tras el cual hace que la nave
 	 * ya no sea invulnerable<br>
-	 * 
-	 * <b>pos:</b> Si la nave era invulnerable, deja de serlo después de un tiempo fijo.
+	 * <b>pos:</b> Si la nave era invulnerable, deja de serlo después de un tiempo fijo.<br>
 	 */
 	@Override
 	public void run() {
@@ -60,7 +58,6 @@ public class HiloInvulnerabilidad extends Thread {
 			try {
 				Thread.sleep(1000 / Juego.FPS);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
