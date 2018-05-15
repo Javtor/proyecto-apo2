@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import modelo.Proyectil;
+import modelo.ProyectilNormal;
 
 public class ProyectilTest {
 	
 	private Proyectil p;
 	
 	private void setupEscenario1() {
-		p = new Proyectil(Proyectil.NORMAL);
+		p = new ProyectilNormal();
 	}
 
 	@Test

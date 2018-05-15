@@ -534,7 +534,26 @@ public class Juego implements Serializable {
 	 * <b>post:</b>Se ha añadido una nueva bonificación a la lista de bonus<br>
 	 */
 	public void crearBonus() {
-		Bonificacion anadida = new Bonificacion();
+		Bonificacion anadida;
+		switch((int)(Math.random()*5)) {
+		case 0:
+			anadida = new BonoVida();
+			break;
+		case 1: 
+			anadida = new BonoPuntos();
+			break;
+		case 2: 
+			anadida = new BonoProyFuerte();
+			break;
+		case 3: 
+			anadida = new BonoProyNormal();
+			break;
+		case 4: 
+			anadida = new BonoProyRapido();
+			break;
+		default:
+			anadida = new BonoVida();
+		}
 		if (primerBonus != null) {
 			Bonificacion actual = localizarUltimoBonus();
 			actual.setSiguiente(anadida);
@@ -740,7 +759,7 @@ public class Juego implements Serializable {
 			boolean colisiona = actual.hayColision(nave);
 			if (actual.esVisible() && colisiona) {
 				actual.colisionaCon(nave);
-				if (actual.getTipo() == Bonificacion.PUNTOS) {
+				if (actual instanceof BonoPuntos) {
 					bonusPuntaje();
 				} else {
 					nave.colisionaCon(actual);
@@ -885,9 +904,7 @@ public class Juego implements Serializable {
 	 */
 	public void crearDecoraciones() {
 		for (int i = 0; i < NUMERO_DECORACIONES; i++) {
-
 			agregarDecoracion(new Decoracion());
-
 		}
 	}
 	/**
