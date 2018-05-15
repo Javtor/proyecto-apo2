@@ -22,6 +22,7 @@ import javax.sound.sampled.Clip;
  * @author Javier Andres Torres, Maria Camila Lenis, Juan Sebastian Palma
  * @version 1.0
  */
+@SuppressWarnings("serial")
 public class Juego implements Serializable {
 
 	//Constantes
@@ -397,7 +398,11 @@ public class Juego implements Serializable {
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			try {
 			raizPelota = (Pelota) ois.readObject();
+			} finally {
+				ois.close();
+			}
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
@@ -413,7 +418,11 @@ public class Juego implements Serializable {
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			try {
 			primerBonus = (Bonificacion) ois.readObject();
+			}finally {
+				ois.close();
+			}
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
@@ -429,7 +438,11 @@ public class Juego implements Serializable {
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			try {
 			primeraDeco = (Decoracion) ois.readObject();
+			} finally {
+				ois.close();
+			}
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
@@ -446,7 +459,11 @@ public class Juego implements Serializable {
 
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+			try {
 			nave = (Nave) ois.readObject();
+			} finally {
+				ois.close();
+			}
 			nave.setDX(0);
 			nave.setDY(0);
 		} else {
@@ -464,7 +481,11 @@ public class Juego implements Serializable {
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
-			raizjugador = (Jugador) ois.readObject();
+			try {			
+				raizjugador = (Jugador) ois.readObject();
+			} finally {
+				ois.close();
+			}
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
 		}
