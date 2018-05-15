@@ -284,17 +284,7 @@ public class Juego implements Serializable {
 			insertarPelota(p);
 		}
 	}
-<<<<<<< HEAD
 
-	public ArrayList<Pelota> getPelotas() {
-		ArrayList<Pelota> a = new ArrayList<Pelota>();
-		if (raizPelota != null) {
-			raizPelota.crearArreglo(a);
-		}
-		return a;
-	}
-
-=======
 	/**
 	 * Instancia el jugador actual 
 	 * <b>post:</b>Se ha instanciado un jugador actual con dicho nombre<br>
@@ -303,6 +293,7 @@ public class Juego implements Serializable {
 	public void iniciarjuego(String nombre) {
 		jugador = new Jugador(nombre);
 	}
+	
 	/**
 	 * Hace la serialización de todas las instancias de la pantalla en el momento 
 	 * Serializa nave, pelotas, jugadores, bonificaciones y decoraciones
@@ -310,7 +301,6 @@ public class Juego implements Serializable {
 	 * @throws FileNotFoundException Si en alguno de los métodos llamados no se encuentra el File
 	 * @throws IOException Si ocurre un error al momento de serializar
 	 */
->>>>>>> 3cec84eed9162f26bfa1ffc21e2e82645af7d58c
 	public void guardarPartida() throws FileNotFoundException, IOException {
 		guardarNave();
 		guardarPelotas();
