@@ -89,7 +89,6 @@ class JuegoTest {
 		try {
 			juego.addJugador();
 		} catch (JugadorRepetidoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Jugador j = juego.getRaizJugador();

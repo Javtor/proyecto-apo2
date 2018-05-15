@@ -13,10 +13,8 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-
 /**
  * Clase Juego
  * Es la clase principal del modelo, donde se manejan los aspectos lógicos relacionados con los requerimientos
