@@ -568,11 +568,9 @@ public class Juego implements Serializable {
 
 	public void crearDecoraciones() {
 		for (int i = 0; i < NUMERO_DECORACIONES; i++) {
-			boolean creado = false;
-			while (!creado) {
-				agregarDecoracion(new Decoracion());
-				creado = true;
-			}
+
+			agregarDecoracion(new Decoracion());
+
 		}
 	}
 
