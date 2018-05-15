@@ -127,10 +127,6 @@ public class Juego implements Serializable {
 		return a;
 	}
 
-	public void iniciarjuego(String nombre) {
-		jugador = new Jugador(nombre);
-	}
-
 	public void guardarPartida() throws FileNotFoundException, IOException {
 		guardarNave();
 		guardarPelotas();
