@@ -6,7 +6,7 @@ import java.io.Serializable;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 /**
- * Clase Abstracta Poryectil
+ * Clase Abstracta Proyectil
  * Esta clase abstracta es la base para el objeto Proyectil que será usado para eliminar las pelotas del juego.
  * @author Javier Andres Torres, Maria Camila Lenis, Juan Sebastian Palma
  * @version 1.0
