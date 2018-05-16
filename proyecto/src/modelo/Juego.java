@@ -285,16 +285,6 @@ public class Juego implements Serializable {
 			insertarPelota(p);
 		}
 	}
-
-	/**
-	 * Instancia el jugador actual 
-	 * <b>post:</b>Se ha instanciado un jugador actual con dicho nombre<br>
-	 * @param nombre Nombre del jugador actual. nombre!=null, nombre!=""
-	 */
-	public void iniciarjuego(String nombre) {
-		jugador = new Jugador(nombre);
-	}
-	
 	/**
 	 * Hace la serialización de todas las instancias de la pantalla en el momento 
 	 * Serializa nave, pelotas, jugadores, bonificaciones y decoraciones
