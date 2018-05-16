@@ -20,8 +20,8 @@ public class HiloJuego extends Thread{
 	/**
 	 * Constructor del HiloJuego
 	 * Inicializa los atributos principal y juego.
-	 * @param principal Ventana principal de la interfaz
-	 * @param juego Clase principal del modelo
+	 * @param principal Ventana principal de la interfaz. principal!=null
+	 * @param juego Clase principal del modelo. juego!=null
 	 */
 	public HiloJuego(Ventana principal, Juego juego) {
 		super();

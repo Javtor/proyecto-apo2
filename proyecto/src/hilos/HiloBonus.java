@@ -19,8 +19,8 @@ public class HiloBonus extends Thread{
 	/**
 	 * Constructor del HiloBonus
 	 * Inicializa los atributos principal y juego.
-	 * @param principal Ventana principal de la interfaz
-	 * @param juego Clase principal del modelo
+	 * @param principal Ventana principal de la interfaz. principal!=null
+	 * @param juego Clase principal del modelo. juego!=null
 	 */
 	public HiloBonus(Ventana principal, Juego juego) {
 		this.principal=principal;
