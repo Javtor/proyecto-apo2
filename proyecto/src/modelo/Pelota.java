@@ -10,8 +10,7 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Pelota extends SpriteMovimiento implements Colisionable {
-	/**
-	 * Ruta de la imagen de la pelota
+	/**	 * Ruta de la imagen de la pelota
 	 */
 	public static final String UBICACION = "img/pelota.png";
 	/**
