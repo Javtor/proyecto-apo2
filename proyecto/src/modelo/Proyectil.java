@@ -74,12 +74,11 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
 	}
-	//FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	/**
 	 * Método implementado de la interfaz Disparable
 	 * <b>pre:</b>El atributo velocidad ha sido inicializado<br>
 	 * <b>post:</b>Se ha reproducido el sonido del disparo<br>
-	 * <b>post:</b><br>
+	 * <b>post:</b>Se ha cambiado en dX y el dY del proyectil<br>
 	 * @param x Posición en x inicial del proyectil. x!=null, x>=0
 	 * @param y Posición en y inicial del proyectil. y!=null, y>=0
 	 * @param x2 Posición en x final del proyectil. x2!=null, x2>=0
