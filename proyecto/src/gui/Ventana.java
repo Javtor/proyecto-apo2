@@ -291,13 +291,11 @@ public class Ventana extends JFrame {
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
-
-	public static void main(String[] args) {
-		Ventana v = new Ventana();
-	}
-
 	public ArrayList<Decoracion> getPrimeraDeco() {
 		return juego.darDecoraciones();
 	}
-
+	
+	public static void main(String[] args) {
+		Ventana v = new Ventana();
+	}
 }
