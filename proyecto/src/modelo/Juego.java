@@ -531,7 +531,6 @@ public class Juego implements Serializable {
 			guardarDatos();
 			guardarPartida();
 		}
-
 	}
 	/**
 	 * Cuando se deja de presionar una tecla se envia el evento a la nave
@@ -791,7 +790,7 @@ public class Juego implements Serializable {
 	}
 	/**
 	 * Recorre el arreglo de pelotas verificando si existe alguna colisión entre la pelota y el proyectil
-	 * Cuando encuentra una colision para el ciclo.
+	 * Cuando encuentra una colision se sale  del ciclo.
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>post:</b>Si el proyectil colisionó con una pelota se vuelve invisible<br>
 	 * <b>post:</b>Si el proyectil colisionó con una pelota se baja la vida de la pelota<br>
