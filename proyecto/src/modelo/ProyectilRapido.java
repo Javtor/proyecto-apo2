@@ -21,7 +21,7 @@ public class ProyectilRapido extends Proyectil{
 	/**
 	 * Ruta de la imagen del proyectil rápido 
 	 */
-	public static final String IMG = "img" + File.separator + "proyectil_r.png";
+	public static final String IMG = "./img" + File.separator + "proyectil_r.png";
 	//Constructor
 	/**
 	 * Constructor del proyectil rápido

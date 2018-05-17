@@ -30,7 +30,7 @@ import modelo.PuntajeNoExisteException;
 
 public class Ventana extends JFrame {
 
-	public static final String MUSICA_INICIO = "img" + File.separator + "inicio.wav";
+	public static final String MUSICA_INICIO = "./img" + File.separator + "inicio.wav";
 
 	private PanelJuego panelJuego;
 	private PanelInicio panelInicio;

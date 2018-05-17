@@ -21,7 +21,7 @@ public class ProyectilFuerte extends Proyectil{
 	/**
 	 * Ruta de la imagen del proyectil fuerte 
 	 */
-	public static final String IMG = "img" + File.separator + "proyectil_f.png";
+	public static final String IMG = "./img" + File.separator + "proyectil_f.png";
 	//Constructor
 	/**
 	 * Constructor del proyectil fuerte

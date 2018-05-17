@@ -10,7 +10,7 @@ public class BonoVida extends Bonificacion{
 	/**
 	 *Este es el String que representa la ruta de la imagen de esta bonificacion
 	 */
-	public static String DIREC = "img/bonus/bonusvida.png";
+	public static String DIREC = "./img/bonus/bonusvida.png";
 	// Constructor
 	/**
 	 * Constructor que se encarga de definir la imagen de la bonificacion y el tipo

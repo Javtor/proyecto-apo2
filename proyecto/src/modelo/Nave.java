@@ -29,11 +29,11 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	/**
 	 * Ruta de la imagen de la nave
 	 */
-	public static final String UBICACION = "img" + File.separator + "nave.png";
+	public static final String UBICACION = "./img" + File.separator + "nave.png";
 	/**
 	 * Ruta de la imagen de la nave cuando se encuentra en estado invulnerable
 	 */
-	public static final String UBICACION_INVULNERABLE = "img" + File.separator + "invulnerable.png";
+	public static final String UBICACION_INVULNERABLE = "./img" + File.separator + "invulnerable.png";
 
 	// Atributos
 	/**

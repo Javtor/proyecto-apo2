@@ -12,8 +12,8 @@ public class Decoracion extends Sprite{
 	 * que se van a utilizar de las decoraciones. Este sirve para que cuando se construya una
 	 * decoracion esta reciba una ruta que le asiganara una imagen
 	 */
-	public static final String[] IMAGENES = { "img/marte.png", "img/jupiter.png", "img/mercurio.png",
-			"img/planetaazul.png" };
+	public static final String[] IMAGENES = { "./img/marte.png", "./img/jupiter.png", "./img/mercurio.png",
+			"./img/planetaazul.png" };
 	/**
 	 * Numero total de decoraciones que se van a crear en el  juego
 	 */

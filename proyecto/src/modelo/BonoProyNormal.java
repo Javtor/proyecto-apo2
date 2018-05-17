@@ -9,7 +9,7 @@ public class BonoProyNormal extends Bonificacion{
 	/**
 	 * Este String contiene la ruta del directorio donde se ubica la imagen
 	 */
-	public static String DIREC = "img/bonus/proyectil_n.png";
+	public static String DIREC = "./img/bonus/proyectil_n.png";
 	// Constructor
 	/**
 	 * Constructor, el constructor se encar de definir la imagen de la bonificacion

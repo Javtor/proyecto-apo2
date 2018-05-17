@@ -21,7 +21,7 @@ public class ProyectilNormal extends Proyectil{
 	/**
 	 * Ruta de la imagen del proyectil normal 
 	 */
-	public static final String IMG = "img" + File.separator + "proyectil_n.png";
+	public static final String IMG = "./img" + File.separator + "proyectil_n.png";
 	//Constructor
 	/**
 	 * Constructor del proyectil normal

@@ -38,32 +38,32 @@ public class Juego implements Serializable {
 	/**
 	 * Directorio del archivo .txt de la nave (cuando se vaya a serializar)
 	 */
-	public static final String DIREC_NAVE = "data" + File.separator + "nave.txt";
+	public static final String DIREC_NAVE = "./data" + File.separator + "nave.txt";
 	/**
 	 * Directorio del archivo .txt del árbol de pelotas (cuando se vaya a serializar)
 	 */
-	public static final String DIREC_PELOTAS = "data" + File.separator + "pelotas.txt";
+	public static final String DIREC_PELOTAS = "./data" + File.separator + "pelotas.txt";
 	/**
 	 * Directorio del archivo .txt de los datos del jugador
 	 * En él se encuentra nombre, puntaje y nivel obtenidos en la partida previa.
 	 */
-	public static final String NOM_DATOS = "data" + File.separator + "datospartida.txt";
+	public static final String NOM_DATOS = "./data" + File.separator + "datospartida.txt";
 	/**
 	 * Directorio del archivo .txt del arbol de jugadores (cuando se vaya a serializar)
 	 */
-	public static final String DIREC_JUGADORES = "data" + File.separator + "users.txt";
+	public static final String DIREC_JUGADORES = "./data" + File.separator + "users.txt";
 	/**
 	 * Directorio del archivo .txt de la lista de bonificaciones (cuando se vaya a serializar)
 	 */
-	public static final String DIREC_BONUS = "data" + File.separator + "bonus.txt";
+	public static final String DIREC_BONUS = "./data" + File.separator + "bonus.txt";
 	/**
 	 * Directorio del archivo .txt de la lista de decoraciones (cuando se vaya a serializar)
 	 */
-	public static final String DIREC_DECO = "data" + File.separator + "deco.txt";
+	public static final String DIREC_DECO = "./data" + File.separator + "deco.txt";
 	/**
 	 * Ruta donde se encuentra la canción de fondo del juego. 
 	 */
-	public static final String SONG = "img" + File.separator + "bgmusic.wav";
+	public static final String SONG = "./img" + File.separator + "bgmusic.wav";
 	/**
 	 * Fotogramas por segundo del juego
 	 */

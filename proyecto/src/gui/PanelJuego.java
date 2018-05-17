@@ -20,7 +20,7 @@ import modelo.Proyectil;
 
 public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	
-	public static final String GAME_OVER = "img"+File.separator+"GameOver.jpg";
+	public static final String GAME_OVER = "./img"+File.separator+"GameOver.jpg";
 
 	private Ventana principal;
 
@@ -37,7 +37,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		if (principal.isJugando()) {
-			Image bg = new ImageIcon("img/bg.jpg").getImage();
+			Image bg = new ImageIcon("./img/bg.jpg").getImage();
 			g2.drawImage(bg, 0, 0, Juego.ANCHO, Juego.ALTO, null);
 			dibujarDecoracion(g2);
 			dibujarBonus(g2);

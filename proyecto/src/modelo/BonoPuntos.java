@@ -10,7 +10,7 @@ public class BonoPuntos extends Bonificacion{
 	/**
 	 * Es el string que contiene la ruta del directorio que contiene la imagen
 	 */
-	public static String DIREC = "img/bonus/bonuspuntos.png";
+	public static String DIREC = "./img/bonus/bonuspuntos.png";
 	// Constructor
 	/**
 	 * El Constructor de la clase se encarga de definir la imagen del bono y su tipo

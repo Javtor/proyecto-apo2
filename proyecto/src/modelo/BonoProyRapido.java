@@ -10,7 +10,7 @@ public class BonoProyRapido extends Bonificacion {
 	/**
 	 * Este String contiene la ruta del directorio donde se ubica la imagen
 	 */
-	public static String DIREC = "img/bonus/proyectil_r.png";
+	public static String DIREC = "./img/bonus/proyectil_r.png";
 	// Constructor
 	/**
 	 * El constructor se encarga de definir la imagen de la bonificacion y su tipo
