@@ -42,6 +42,7 @@ public class Jugador implements Serializable, Comparable{
 	 */
 	public Jugador(String nickname) {
 		super();
+		nivel = 1;
 		this.nickname = nickname;
 		
 		izq=null;
