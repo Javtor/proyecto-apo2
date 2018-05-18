@@ -32,11 +32,11 @@ public class HiloProyectil extends Thread {
 	}
 	/**
 	 * Lo que realiza el hilo cuando se inicia
-	 * Mientras el juego esté activo ejecuta el método mover el proyectil para que vaya en dirección de la nave
+	 * Mientras el juego esté activo ejecuta el método mover el proyectil para que vaya en la dirección dada por su velocidad
 	 * sin importar si es visible o no
-	 * Actualiza el proyectil cada segundo/ FPS del juego
+	 * Actualiza el proyectil cada frame del juego
 	 * <b>post:</b>Se ha movido el proyectil<br>
-	 * <b>post:</b>Se ha actualizado el atributo pro, por el poryectil actual de la nave<br>
+	 * <b>post:</b>Se ha actualizado el atributo pro, por el proyectil actual de la nave<br>
 	 */
 	@Override
 	public void run() {
