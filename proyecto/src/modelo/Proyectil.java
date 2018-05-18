@@ -14,22 +14,6 @@ import javax.sound.sampled.Clip;
 public abstract class Proyectil extends SpriteMovimiento implements Colisionable, Disparable{
 	//Constantes
 	/**
-	 * Define el tipo proyectil a Rapido 
-	 */
-	public static final int RAPIDO = 0;
-	/**
-	 * Define el tipo proyectil a Normal
-	 */
-	public static final int NORMAL = 1;
-	/**
-	 * Define el tipo proyectil a Fuerte 
-	 */
-	public static final int FUERTE = 2;
-	/**
-	 * Imagen base del proyectil 	
-	 */
-	public static final String IMG_NORMAL = "img" + File.separator + "proyectil_n.png";
-	/**
 	 * Sonido del disparo
 	 */
 	public static final String DISPARO = "img/disparo.wav";
@@ -47,7 +31,7 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 	 * Crea un la base de un proyectil que por el momento es invisible
 	 */
 	public Proyectil() {
-		super(0, 0, IMG_NORMAL);
+		super(0, 0, null);
 		setVisible(false);
 	}
 	/**
