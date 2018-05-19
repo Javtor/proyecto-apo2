@@ -165,9 +165,12 @@ public class DialogRanking extends JDialog implements ActionListener {
 	/**
 	 * Método implementado por el ActionListener
 	 * Recibe el evento generado y llama a los respectivos métodos que cumplen la función buscada
+	 * <b>pre:</b>El atributo menu ha sido inicializado<br>
+	 * <b>pre:</b>Los atributos rbnombre, rbpuntaje, rbascendente han sido inicializados<br>
 	 * <b>post:</b>Si presiona el boton buscar llama al método buscar de la clase principal<br>
 	 * <b>post:</b>Si presiona el boton generar, de acuerdo a la opción y al criterio dado, ordena
 	 * la lista de jugadores<br>
+	 * @param e Evento generado por el clic a un botón. e!=null
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
