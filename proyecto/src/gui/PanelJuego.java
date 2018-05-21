@@ -1,5 +1,4 @@
 package gui;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -21,6 +20,7 @@ import modelo.Pelota;
 import modelo.Proyectil;
 /**
  * Clase PanelJuego
+ * Encargado de dar toda la imagen de donde se desarrolla el juego. 
  * @author Javier Andres Torres, Maria Camila Lenis, Juan Sebastian Palma
  * @version 1.0
  */
