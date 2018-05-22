@@ -24,8 +24,8 @@ public class ProyectilFuerte extends Proyectil{
 	public static final String IMG = "./img" + File.separator + "proyectil_f.png";
 	//Constructor
 	/**
-	 * Constructor del proyectil fuerte
-	 * Asigna su daño, velocidad e imagen al valor de las constantes declaradas en esta clase 
+	 * Constructor del proyectil fuerte<br>
+	 * Asigna su daño, velocidad e imagen al valor de las constantes declaradas en esta clase <br>
 	 */
 	public ProyectilFuerte() {
 		super();

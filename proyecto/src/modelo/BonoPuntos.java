@@ -8,12 +8,12 @@ package modelo;
 public class BonoPuntos extends Bonificacion{
 	// Constante
 	/**
-	 * Es el string que contiene la ruta del directorio que contiene la imagen
+	 * La ruta del directorio que contiene la imagen de la bonificación de puntos.
 	 */
 	public static String DIREC = "./img/bonus/bonuspuntos.png";
 	// Constructor
 	/**
-	 * El Constructor de la clase se encarga de definir la imagen del bono y su tipo
+	 * El Constructor de la clase se encarga de definir la imagen del bono y su tipo.
 	 */
 	public BonoPuntos() {
 		super();

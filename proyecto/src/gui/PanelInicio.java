@@ -129,8 +129,8 @@ public class PanelInicio extends JPanel implements ActionListener {
 		add(new JLabel(""));
 	}
 	/**
-	 * Método implementado por el ActionListener
-	 * Dependiendo del evento recibido llama a la interfaz para que cumpla con el requerimiento
+	 * Método implementado por el ActionListener<br>
+	 * Dependiendo del evento recibido llama a la interfaz para que cumpla con el requerimiento<br>
 	 * <b>pre:</b>El atributo principal ha sido inicializado<br>
 	 * <b>post:</b>LLama a los métodos de la ventana principal que cumplen con el requerimiento
 	 * dado por el evento<br>
@@ -149,7 +149,7 @@ public class PanelInicio extends JPanel implements ActionListener {
 			principal.dispose();
 	}
 	/**
-	 * Método que pinta el fondo del PanelInicio
+	 * Método que pinta el fondo del PanelInicio<br>
 	 * <b>post:</b>Se ha pintado el fondo del panel inicio.<br>
 	 */
 	@Override

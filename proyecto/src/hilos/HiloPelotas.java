@@ -22,8 +22,8 @@ public class HiloPelotas extends Thread{
 	ArrayList<Pelota> pelotas;
 
 	/**
-	 * Constructor del HiloPelotas
-	 * Inicializa los atributos principal y pelotas
+	 * Constructor del HiloPelotas<br>
+	 * Inicializa los atributos principal y pelotas<br>
 	 * <b>post:</b>Pelotas será un ArrayList generado a partir del árbol de pelotas 
 	 * @param principal Ventana principal del juego. principal!=null
 	 */
@@ -33,9 +33,9 @@ public class HiloPelotas extends Thread{
 		this.pelotas = principal.getPelotas();
 	}
 	/**
-	 * Lo que realiza el hilo cuando inicia
+	 * Lo que realiza el hilo cuando inicia<br>
 	 * Mientras el juego se encuentre activo se ejecuta el método de movimiento para cada pelota
-	 * en el ArrayList de pelotas cada segundo/FPS del juego
+	 * en el ArrayList de pelotas cada segundo/FPS del juego<br>
 	 */
 	@Override
 	public void run() {

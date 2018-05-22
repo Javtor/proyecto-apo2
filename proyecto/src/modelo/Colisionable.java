@@ -8,19 +8,19 @@ import java.awt.geom.Rectangle2D;
  */
 public interface Colisionable {
 	/**
-	 * Método que verifica si existe colision entre un objeto colisionable y otro
+	 * Método que verifica si existe colision entre un objeto colisionable y otro<br>
 	 * <b>post:</b>Si existe colisión entre un objeto y otro<br>
 	 * @param c Objecto con el que podria colisionar. c!=null
 	 * @return True si colisionaron, False si no colisionaron
 	 */
 	public boolean hayColision(Colisionable c);
 	/**
-	 * Método que realiza la acción correspondiente al objeto con el que colisionó
+	 * Método que realiza la acción correspondiente al objeto con el que colisionó<br>
 	 * @param c Objeto con el que colisionó. c!=null
 	 */
 	public void colisionaCon(Colisionable c);
 	/**
-	 * Método que devulve el HitBox del objeto colisionable
+	 * Método que devulve el HitBox del objeto colisionable<br>
 	 * <b>post:</b>Devuelve el HitBox del objeto colisionable<br>
 	 * @return Devuelve el hitBox del objeto colisionable 
 	 */

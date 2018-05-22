@@ -26,7 +26,7 @@ public class HiloInvulnerabilidad extends Thread {
 	private Nave nave;
 
 	/**
-	 * Constructor del hilo de la duracion de la invulnerabilidad de la nave
+	 * Constructor del hilo de la duracion de la invulnerabilidad de la nave<br>
 	 * @param principal La ventana principal del juego. principal != null
 	 * @param nave La nave a la que se le aplica la invulnerabilidad. nave != null
 	 */

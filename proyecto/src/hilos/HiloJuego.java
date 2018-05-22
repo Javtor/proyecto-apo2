@@ -18,8 +18,8 @@ public class HiloJuego extends Thread{
 	 */
 	private Juego juego;
 	/**
-	 * Constructor del HiloJuego
-	 * Inicializa los atributos principal y juego.
+	 * Constructor del HiloJuego<br>
+	 * Inicializa los atributos principal y juego.<br>
 	 * @param principal Ventana principal de la interfaz. principal!=null
 	 * @param juego Clase principal del modelo. juego!=null
 	 */
@@ -29,10 +29,10 @@ public class HiloJuego extends Thread{
 		this.juego = juego;
 	}
 	/**
-	 * Lo que realiza el hilo una vez inicie
-	 * Mientras este jugando va a refrescar el tablero cada segundo/Los FPS del juego
-	 * Mientras este jugando va a controlar el ciclo del juego.
-	 * Si deja de jugar vuelve a la pantalla de inicio
+	 * Lo que realiza el hilo una vez inicie<br>
+	 * Mientras este jugando va a refrescar el tablero cada segundo/Los FPS del juego<br>
+	 * Mientras este jugando va a controlar el ciclo del juego.<br>
+	 * Si deja de jugar vuelve a la pantalla de inicio<br>
 	 * <b>pre:</b>Se ha instanciado una ventana principal<br>
 	 * <b>pre:</b>Se ha instanciado un juego<br>
 	 * <b>post:</b>Se refresca el tablero mientras se este jugando<br>

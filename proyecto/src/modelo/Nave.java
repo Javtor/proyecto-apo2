@@ -56,7 +56,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	/**
 	 * Constructor de la clase Nave que ubica a la nave en el centro de la pantalla
 	 * al iniciar el juego Asigna el valor de las vidas y crea el proyectil por
-	 * defecto (de tipo Normal)
+	 * defecto (de tipo Normal)<br>
 	 */
 	public Nave() {
 		super(Juego.ANCHO / 2, Juego.ALTO - 100, UBICACION);
@@ -69,7 +69,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	/**
 	 * Getter del atributo Proyectil <b>post:</b>Retorna el proyectil actual de la
 	 * nave<br>
-	 * 
 	 * @return El proyectil actual de la nave
 	 */
 	public Proyectil getProyectil() {
@@ -79,7 +78,6 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	/**
 	 * Getter del atributo vidas <b>post:</b>Devuelve el numero de vidas que tiene
 	 * la nave actualmente<br>
-	 * 
 	 * @return Numero de vidas que tiene la nave
 	 */
 	public int getVidas() {
@@ -96,17 +94,16 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	/**
-	 * Valida si la nave sigue viva o no
-	 * 
-	 * @return False si se quedo sin vidas. vidas<=0, True si todavia tiene vidas.
-	 *         vidas>0
+	 * Valida si la nave sigue viva o no.<br>
+	 * <b>post:</b>Se ha validado si sigue viva o no la nave<br>
+	 * @return False si se quedo sin vidas. True si todavia tiene vidas.
 	 */
 	public boolean validarViva() {
 		return vidas >= 0;
 	}
 
 	/**
-	 * Método implementado de la interfaz Colisionable Devuelve el HitBox de la nave
+	 * Método implementado de la interfaz Colisionable Devuelve el HitBox de la nave.<br>
 	 * <b>pre:</b>La nave ha sido instanciada<br>
 	 * <b>pre:</b>Los atributos x, y, dX y dY han sido inicializados<br>
 	 * <b>post:</b>Crea y retorna el HitBox de la nave<br>
@@ -119,7 +116,7 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	/**
-	 * Método que devuelve el estado de la nave (vulnerable/invulnerable)
+	 * Método que devuelve el estado de la nave (vulnerable/invulnerable).<br>
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>pre:</b>Se ha inicializado el atributo invulnerable<br>
 	 * <b>post:</b>Devuelve el estado de invulnerabilidad de la nave<br>
@@ -149,11 +146,12 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	/**
-	 * Método implementado de la interfaz Colisionable Se encarga de realizar la
-	 * acción correspondiente dependiendo del objeto con el que colisionó Si es una
-	 * pelota y no está en estado de invulnerabilidad disminuye si vida y pasa
-	 * aestar invulnerable Si es una bonificación, dependiendo del tipo, realiza a
-	 * acción correspondiente <b>pre:</b>Vidas ha sido inicializado<br>
+	 * Método implementado de la interfaz Colisionable<br>
+	 * Se encarga de realizar la acción correspondiente dependiendo del objeto con el que colisionó.<br>
+	 * Si es una pelota y no está en estado de invulnerabilidad disminuye si vida y pasa
+	 * a estar invulnerable.<br>
+	 * Si es una bonificación, dependiendo del tipo, realiza la acción correspondiente .<br>
+	 * <b>pre:</b>Vidas ha sido inicializado<br>
 	 * <b>pre:</b>El objeto colisionable es una Pelota o una Bonificación<br>
 	 * <b>post:</b>Si el objeto colisionable es una pelota, disminuye la vida de la
 	 * nave y pasa a estado de invulnerabilidad<br>
@@ -190,10 +188,10 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	/**
-	 * Método implementado de la interfaz Movible Llama al método mover de su
-	 * superclase SpriteMovimiento y hace las respectivas verificaciones para que la
-	 * nave no se salga de la pantalla <b>pre:</b>Los atributos x, y , dX y dY han
-	 * sido inicializados<br>
+	 * Método implementado de la interfaz Movible<br>
+	 * Llama al método mover de su superclase SpriteMovimiento y hace las respectivas verificaciones para que la
+	 * nave no se salga de la pantalla 
+	 * <b>pre:</b>Los atributos x, y , dX y dY han sido inicializados<br>
 	 * <b>post:</b>Se aumenta el valor de x y y en dX y dY<br>
 	 * <b>post:</b>Si se va a salir de la pantalla por la parte izquierda se fija su
 	 * x a 0<br>
@@ -280,12 +278,10 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 
 	/**
 	 * Método implementado de la interfaz Colisionable Recibe un objeto de tipo
-	 * colisionable y verifica si este esta intersecó con la nave <b>pre:</b>Se ha
-	 * instanciado una nave<br>
+	 * colisionable y verifica si este esta intersecó con la nave <br>
+	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>post:</b>Retorna si la nave intersecó o no con el objeto Colisionable<br>
-	 * 
-	 * @param c
-	 *            Objeto que puede haber o no colisionado con la nave
+	 * @param c Objeto que puede haber o no colisionado con la nave
 	 * @return True si intersecó con la nave, False si no intersecó con la nave
 	 */
 	@Override
@@ -294,14 +290,11 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	}
 
 	/**
-	 * Método que ejecuta el disparo del proyectil <b>pre:</b>Se ha instanciado un
-	 * proyectil<br>
+	 * Método que ejecuta el disparo del proyectil<br>
+	 * <b>pre:</b>Se ha instanciado un proyectil<br>
 	 * <b>post:</b>Se ha disparado un proyectil<br>
-	 * 
-	 * @param x
-	 *            Ubicación x a la que tiene que llegar el proyectil. x!=null, x>=0.
-	 * @param y
-	 *            Ubicación y a la que tiene que llegar el proyectil. y!=null, y>=0.
+	 * @param x Ubicación x a la que tiene que llegar el proyectil. x!=null, x debe ser mayor o igual a 0.
+	 * @param y Ubicación y a la que tiene que llegar el proyectil. y!=null, y debe ser mayor o igual a 0.
 	 */
 	public void disparar(int x, int y) {
 		proyectil.disparar(getX() + getAncho() / 2, getY() + getAlto() / 2, x, y);

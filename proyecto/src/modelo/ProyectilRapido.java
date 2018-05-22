@@ -24,8 +24,8 @@ public class ProyectilRapido extends Proyectil{
 	public static final String IMG = "./img" + File.separator + "proyectil_r.png";
 	//Constructor
 	/**
-	 * Constructor del proyectil rápido
-	 * Asigna su daño, velocidad e imagen al valor de las constantes declaradas en esta clase 
+	 * Constructor del proyectil rápido.<br>
+	 * Asigna su daño, velocidad e imagen al valor de las constantes declaradas en esta clase.<br>
 	 */
 	public ProyectilRapido() {
 		super();

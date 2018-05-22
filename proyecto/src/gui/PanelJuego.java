@@ -72,7 +72,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	}
 	/**
 	 * Dependiendo si el juego está o no activo dibuja el juego como tal, 
-	 * o la pantalla del GameOver. 
+	 * o la pantalla del GameOver.<br>
 	 * <b>pre:</b>Se ha inicializado el atirbuto principal<br>
 	 * <b>post:</b>Se ha pintado un juego en la pantalla o un GameOver<br>
 	 */
@@ -88,7 +88,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 			dibujarFin(g2);
 	}
 	/**
-	 * Se encarga de dibujar los distintos elementos de la pantalla juego
+	 * Se encarga de dibujar los distintos elementos de la pantalla juego<br>
 	 * <b>post:</b>Dibuja una luna en la pantalla<br>
 	 * <b>post:</b>Sibuja las decoraciones de la pantalla<br>
 	 * <b>post:</b>Dibuja los bonus activos<br>
@@ -110,7 +110,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		dibujarDatos(g2);
 	}
 	/**
-	 * Dibuja una luna con sus respectivos cráteres.
+	 * Dibuja una luna con sus respectivos cráteres.<br>
 	 * <b>post:</b>Se ha dibujado una luna con sus respectivos cráteres<br> 
 	 * @param g2 Graphics 2D para dibujar. g2!=null.
 	 */
@@ -124,7 +124,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		g2.fillOval(60, 90, 12, 12);
 	}
 	/**
-	 * Dibuja los datos de la partida actual
+	 * Dibuja los datos de la partida actual<br>
 	 * <b>post:</b>Se han dibujado los datos de la partida actual<br>
 	 * @param g2 Graphics 2D para dibujar. g2!=null.
 	 */
@@ -139,7 +139,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		g2.drawString("Vidas: " + vidas, 600, Juego.ALTO + 25);
 	}
 	/**
-	 * Dibuja las decoraciones de la pantalla
+	 * Dibuja las decoraciones de la pantalla<br>
 	 * <b>post:</b>Dibuja las decoraciones de la pantalla<br>
 	 * @param g2 Graphics 2D para dibujar. g2!=null.
 	 */
@@ -153,7 +153,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		}
 	}
 	/**
-	 * Dibuja el letrero de GameOver de la partida
+	 * Dibuja el letrero de GameOver de la partida<br>
 	 * <b>post:</b>Se ha dibujado un letrero de GameOver<br>
 	 * @param g Graphics 2D para dibujar. g!=null.
 	 */
@@ -166,7 +166,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		g.fillRect(0, Juego.ALTO, Juego.ANCHO, 40);
 	}
 	/**
-	 * Dibuja la nave de la partida.
+	 * Dibuja la nave de la partida.<br>
 	 * <b>post:</b>Se ha dibujado la nave de la partida actual. <br>
 	 * @param g2  Graphics 2D para dibujar. g2!=null.
 	 */
@@ -177,7 +177,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		g2.drawImage(img, x, y, null);
 	}
 	/**
-	 * Dibuja las pelotas activas en la pantalla 
+	 * Dibuja las pelotas activas en la pantalla <br>
 	 * <b>post:</b>Se han dibujado las pelotas activas del nivel<br>
 	 * @param g2  Graphics 2D para dibujar. g2!=null.
 	 */
@@ -193,7 +193,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		}
 	}
 	/**
-	 * Dibuja los bonus activos de la partida
+	 * Dibuja los bonus activos de la partida<br>
 	 * <b>post:</b>Se han dibujado los bonus activos de la partida<br>
 	 * @param g2  Graphics 2D para dibujar. g2!=null.
 	 */
@@ -209,7 +209,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		}
 	}
 	/**
-	 * Dibuja el proyectil disparado en la partida
+	 * Dibuja el proyectil disparado en la partida<br>
 	 * <b>post:</b>Se ha dibujado el proyectil disparado<br>
 	 * @param g2  Graphics 2D para dibujar. g2!=null.
 	 */
@@ -223,27 +223,27 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		}
 	}
 	/**
-	 * Envia el evento obtenido por presionar una tecla
+	 * Envia el evento obtenido por presionar una tecla<br>
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		principal.keyPressed(e);
 	}
 	/**
-	 * Envia el evento obtenido por dejar de presionar una tecla
+	 * Envia el evento obtenido por dejar de presionar una tecla<br>
 	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		principal.keyReleased(e);
 	}
 	/**
-	 * Método implementado por la interfaz MouseListener
+	 * Método implementado por la interfaz MouseListener<br>
 	 */
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 	}
 	/**
-	 * Envia el evento obtenido por el clic el mouse para disparar el proyectil
+	 * Envia el evento obtenido por el clic el mouse para disparar el proyectil<br>
 	 * <b>pre:</b>Se ha inicializado el atributo principal<br>
 	 * <b>post:</b>Se ha disparado un proyectil<br>
 	 */
@@ -277,7 +277,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 	public void mouseReleased(MouseEvent arg0) {
 	}
 	/**
-	 * Asigna el nombre del jugador al atributo nombre
+	 * Asigna el nombre del jugador al atributo nombre<br>
 	 * <b>post:</b>Se ha inicializado el atributo nombre<br>
 	 * @param s Nombre del jugador. s!=null, s!=""
 	 */
@@ -285,7 +285,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		nombre = s;
 	}
 	/**
-	 * Asigna los puntos del jugador al atributo puntos
+	 * Asigna los puntos del jugador al atributo puntos<br>
 	 * <b>post:</b>Se ha inicializado el atributo puntos<br>
 	 * @param s Puntos del jugador. s!=null, s!=""
 	 */
@@ -293,7 +293,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		puntos = s;
 	}
 	/**
-	 * Asigna el nivel del jugador al atirbuto nivel
+	 * Asigna el nivel del jugador al atirbuto nivel<br>
 	 * <b>post:</b>Se ha inicializado el atributo nivel<br>
 	 * @param s Nivel del jugador. s!=null, s!=""
 	 */
@@ -301,7 +301,7 @@ public class PanelJuego extends JPanel implements KeyListener, MouseListener {
 		nivel = s;
 	}
 	/**
-	 * Asigna la vidas del jugador al atirbuto vidas
+	 * Asigna la vidas del jugador al atirbuto vidas<br>
 	 * <b>post:</b>Se ha inicializado el atributo vidas<br>
 	 * @param s Vidas del jugador. s!=null, s!=""
 	 */

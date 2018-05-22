@@ -34,14 +34,14 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	 */
 	private Pelota der;
 	/**
-	 * Constructor de la clase Pelota
+	 * Constructor de la clase Pelota<br>
 	 * Ubica a la pelota en una posición random (en x) de manera en que no se salga de los bordes
-	 * izquierdo y derecho de la pantalla.
-	 * Ubica a la pelota en la parte superior de la pantalla (en y)
+	 * izquierdo y derecho de la pantalla.<br>
+	 * Ubica a la pelota en la parte superior de la pantalla (en y)<br>
 	 * Asigna la velocidad real a un valor multiplo de la velocidad base en una escala de 0.8-1 para
-	 * que esta sirva para asignar el dY Y dX
-	 * Asigna el dY a a la velocidad real + la mitad del nivel actual
-	 * Asigna el dX a un valor random que al ser menor a 0.5 ira en direccion a la izquierda y si no a la derecha
+	 * que esta sirva para asignar el dY Y dX<br>
+	 * Asigna el dY a a la velocidad real + la mitad del nivel actual<br>
+	 * Asigna el dX a un valor random que al ser menor a 0.5 ira en direccion a la izquierda y si no a la derecha<br>
  	 * @param nivel Nivel actual del juego 
 	 */
 	public Pelota(int nivel) {
@@ -67,7 +67,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		}
 	}
 	/**
-	 * Verifica si la pelota es una hoja, es decir no tiene subarbol izquierdo y derecho
+	 * Verifica si la pelota es una hoja, es decir no tiene subarbol izquierdo y derecho<br>
 	 * <b>post:</b>Verifica si la pelota es una hoja<br>
 	 * @return False si tiene subarbol izquiero o derecho, True si ambos subarboles son null.
 	 */
@@ -75,7 +75,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		return izq == null && der == null;
 	}
 	/**
-	 * Recorre todo el arbol de pelotas en inorden verificando si existe alguna colisión entre las pelotas
+	 * Recorre todo el arbol de pelotas en inorden verificando si existe alguna colisión entre las pelotas<br>
 	 * <b>post:</b>Se ha recorrido todo el árbol de pelotas en inorden<br>
 	 * <b>post:</b>Se ha retornado si existe alguna colisión en el arbol<br>
 	 * @param c Objeto Colisionable con el que posiblemente colisinó alguna pelota
@@ -97,7 +97,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		return colIzq || col || colDer;
 	}
 	/**
-	 * Crea el arreglo de pelotas en inorden
+	 * Crea el arreglo de pelotas en inorden<br>
 	 * @param a ArrayList donde se van acomulando las pelotas del árbol
 	 */
 	public void crearArreglo(ArrayList<Pelota> a) {
@@ -110,7 +110,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		}
 	}
 	/**
-	 * Recorre todo el árbol de pelotas en inorden verificando si existe alguna pelota viva.
+	 * Recorre todo el árbol de pelotas en inorden verificando si existe alguna pelota viva.<br>
 	 * <b>post:</b>Se ha recorrido todo el árbol de pelotas<br>
 	 * <b>post:</b>Retorna true si eixste por lo menos una pelota viva en el árbol<br>
 	 * @return True si existe por lo menos una pelota viva en el árbol, False si no hay pelotas vivas en el árbol
@@ -129,7 +129,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		return vIzq || v || vDer;
 	}
 	/**
-	 * Inserta una pelota en el árbol ordenado de acuerdo a su posición en X
+	 * Inserta una pelota en el árbol ordenado de acuerdo a su posición en X.<br>
 	 * <b>pre:</b>Se ha instanciado la raíz del árbol<br>
 	 * <b>post:</b>Se ha añadido una pelota en su posición correspondiente de acuero a su posicion en x<br>
 	 * <b>post:</b>El peso del árbol se incrementó en +1<br>
@@ -151,8 +151,8 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		}
 	}
 	/**
-	 * Método implementado de la interfaz Colisionable
-	 * Realiza su respectiva acción si ha colisionado con un Proyectil
+	 * Método implementado de la interfaz Colisionable.<br>
+	 * Realiza su respectiva acción si ha colisionado con un Proyectil.<br>
 	 * <b>pre:</b>Se ha inicializado el atributo vida<br>
 	 * <b>post:</b>Si ha colisionado con un poryectil se llama al método que disminuye la vida de la pelota<br>
 	 * @param c Objeto con el que colisionó la Pelota. c!=null
@@ -164,8 +164,8 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		}
 	}
 	/**
-	 * Método implementado de la interfaz Colisionable
-	 * Verifica si existe colisión entre el Objeto Colisionable y la pelota
+	 * Método implementado de la interfaz Colisionable.<br>
+	 * Verifica si existe colisión entre el Objeto Colisionable y la pelota.<br>
 	 * <b>post:</b>Retorna si existe colisión entre ambos objetos<br>
 	 * @return True si existe colisión, false si no eixste colisión.
 	 * @param c Objeto que posiblemente colisionó con la pelota. c!=null.
@@ -175,8 +175,8 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		return this.esVisible() && this.getHitbox().intersects(c.getHitbox());
 	}
 	/**
-	 * Método implementado de la interfaz Colisionable
-	 * Retorna el HitBox de la pelota
+	 * Método implementado de la interfaz Colisionable.<br>
+	 * Retorna el HitBox de la pelota.<br>
 	 * <b>pre:</b>Los atributos x, y, ancho y alto han sido inicializados<br>
 	 * <b>post:</b>Retorna el HitBox de la pelota<br>
 	 * @return el HitBox Rectangular de la pelota. 
@@ -186,10 +186,10 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
 	}
 	/**
-	 * Método implementado de la interfaz Movible
-	 * Realiza el movimiento de la pelota aumentando su posicion en x y y en dX y dY
+	 * Método implementado de la interfaz Movible.<br>
+	 * Realiza el movimiento de la pelota aumentando su posicion en x y y en dX y dY.<br>
 	 * Verifica si la nueva posición en x y en y de la peloha hace que se salga de la pantalla y fija su 
-	 * dX y dY en dirección contraria.
+	 * dX y dY en dirección contraria.<br>
 	 * <b>pre:</b>Los atributos dX, dY, X y Y han sido inicializados<br>
 	 * <b>post:</b>Se ha cambiado la posicion en x y en y en dX y dY<br>
 	 * <b>post:</b>Si se sale de los bordes izquierdo o derecho cambia su direccion en x a la opuesta<br>
@@ -206,7 +206,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		}
 	}
 	/**
-	 * Retorna el peso del árbol, es decir cuántos elementos tiene el árbol
+	 * Retorna el peso del árbol, es decir cuántos elementos tiene el árbol.<br>
 	 * <b>post:</b>Recorre el árbol y retorna el peso<br>
 	 * @return el peso del árbol, sumando el peso del subárbol izquiero y del subarbol derecho más la raiz 
 	 */

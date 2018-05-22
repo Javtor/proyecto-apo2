@@ -35,38 +35,38 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 		setVisible(false);
 	}
 	/**
-	 * Getter del daño
+	 * Getter del daño<br>
 	 * <b>post:</b>Devuelve el daño del proyectil<br>
-	 * @return
+	 * @return El daño que posee el proyectil
 	 */
 	public int getDanio() {
 		return danio;
 	}
 	/**
-	 * Setter del daño
+	 * Setter del daño<br>
 	 * <b>post:</b>Asigna el daño al poryectil<br>
-	 * @param danio
+	 * @param danio El nuevo daño que tendrá el proyectil. danio!=null, danio debe ser mayor a 0.
 	 */
 	public void setDanio(int danio) {
 		this.danio = danio;
 	}
 	/**
-	 * Setter de la velocidad 
-	 * <b>post:</b>Asigna la velocidad del poryectil<br>
-	 * @param danio
+	 * Setter de la velocidad <br>
+	 * <b>post:</b>Asigna la velocidad del proyectil<br>
+	 * @param velocidad La nueva velocidad del proyectil. velocidad!=null, velocidad debe ser mayor a 0.
 	 */
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
 	}
 	/**
-	 * Método implementado de la interfaz Disparable
+	 * Método implementado de la interfaz Disparable<br>
 	 * <b>pre:</b>El atributo velocidad ha sido inicializado<br>
 	 * <b>post:</b>Se ha reproducido el sonido del disparo<br>
 	 * <b>post:</b>Se ha cambiado en dX y el dY del proyectil<br>
-	 * @param x Posición en x inicial del proyectil. x!=null, x>=0
-	 * @param y Posición en y inicial del proyectil. y!=null, y>=0
-	 * @param x2 Posición en x final del proyectil. x2!=null, x2>=0
-	 * @param y2 Posición en y final del proyectil. y2!=null, y2>=0 
+	 * @param x Posición en x inicial del proyectil. x!=null, x debe ser mayor o igual a 0
+	 * @param y Posición en y inicial del proyectil. y!=null, y debe ser mayor o igual a 0
+	 * @param x2 Posición en x final del proyectil. x2!=null, x2 debe ser mayor o igual a 0
+	 * @param y2 Posición en y final del proyectil. y2!=null, y2 debe ser mayor o igual a 0 
 	 */
 	@Override
 	public void disparar(int x, int y, int x2, int y2) {
@@ -90,8 +90,8 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 		}
 	}
 	/**
-	 * Método implementado de la interfaz Movible
-	 * Realiza el movimiento del proyectil y si alcanza los bordes de la pantalla se vuelve invisible
+	 * Método implementado de la interfaz Movible<br>
+	 * Realiza el movimiento del proyectil y si alcanza los bordes de la pantalla se vuelve invisible<br>
 	 * <b>pre:</b>Se ha intanciado un proyectil<br>
 	 * <b>post:</b>Se ha cambiado su posición en x y en y <br>
 	 * <b>post:</b>Si ha llegado a los bordes, se ha vuelto invisible<br>
@@ -106,8 +106,8 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 		}
 	}
 	/**
-	 * Método implementado de la interfaz Colisionable
-	 * Vuelve el proyectil invisible si el objeto Colisionable con el que intersecó es una Pelota
+	 * Método implementado de la interfaz Colisionable<br>
+	 * Vuelve el proyectil invisible si el objeto Colisionable con el que intersecó es una Pelota<br>
 	 * <b>post:</b>Si c es una Pelota, el proyectil se vuelve invisible<br>
 	 * @param c Objeto colisionable que intersecó con el proyectil. 
 	 */
@@ -118,8 +118,8 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 		}
 	}
 	/**
-	 * Método implementado de la interfaz Colisionable
-	 * Verifica si existe una colisión entre un objeto Colisionable y otro
+	 * Método implementado de la interfaz Colisionable<br>
+	 * Verifica si existe una colisión entre un objeto Colisionable y otro<br>
 	 * <b>post:</b>Devuelve si el proyectil ha intersecado o no con otro objeto Colisionable<br>
 	 * @return True si ha colisionado, False si no ha colisionado
 	 */
@@ -128,8 +128,8 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 		return getHitbox().intersects(c.getHitbox());
 	}
 	/**
-	 * Método implementado de la interfaz Colisionable
-	 * Retorna el HitBox del proyectil
+	 * Método implementado de la interfaz Colisionable<br>
+	 * Retorna el HitBox del proyectil<br>
 	 * <b>pre:</b>Los atributos x, y, ancho y alto han sido inicializados<br>
 	 * <b>post:</b>Retorna el HitBox del proyectil<br>
 	 * @return el HitBox Rectangular del proyectil. 

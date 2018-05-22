@@ -43,13 +43,10 @@ public abstract class Sprite implements Serializable{
 	/**
 	 * Este es el constructor de la superclase que se encarga de 
 	 * aplicar las coordenadas del objeto, la ruta de la imagen, definir la visibilidad
-	 * del objeto y su altura y ancho.
-	 * @param x
-	 * 			Es el valor del eje X
-	 * @param y
-	 * 			Es el valor del eje Y
-	 * @param imagen
-	 * 			Es la ruta que contiene la imagen
+	 * del objeto y su altura y ancho.<br>
+	 * @param x Es el valor del eje X
+	 * @param y Es el valor del eje Y
+	 * @param imagen Es la ruta que contiene la imagen
 	 */
 	public Sprite(int x, int y, String imagen) {
 		this.x = x;
@@ -61,7 +58,7 @@ public abstract class Sprite implements Serializable{
 		alto = img.getHeight(null);
 	}
 	/**
-	 * Este metodo tiene la funcion de retornar un String
+	 * Este metodo tiene la funcion de retornar la ruta de laa imagen del Sprite<br>
 	 * @return Retorna un String que contiene la ruta de la imagen
 	 */
 	public Image getImagen() {
@@ -69,9 +66,8 @@ public abstract class Sprite implements Serializable{
 	}
 	/**
 	 * Este metodo se encarga de definir el atributo imagen y la
-	 * altura junto el ancho
-	 * @param imagen
-	 * 				Este es un String que contiene la ruta de una imagen
+	 * altura junto el ancho.<br>
+	 * @param imagen Este es un String que contiene la ruta de una imagen<br>
 	 */
 	public void setImagen(String imagen) {
 		this.imagen=imagen;
@@ -80,63 +76,58 @@ public abstract class Sprite implements Serializable{
 		alto = img.getHeight(null);
 	}
 	/**
-	 * Este metodo retorna la coordenada del objeto en el eje X
+	 * Este metodo retorna la coordenada del objeto en el eje X.<br>
 	 * @return Retorna un int que representa la coordenada X del objeto
 	 */
 	public int getX() {
 		return x;
 	}
 	/**
-	 * Este modifica le coordenada del eje X
-	 * @param x
-	 * 			Este es un valor entero que sera utilizado para reemplazar
-	 * 			el valor anterio
+	 *Setter de la coordenada del eje X<br>
+	 * @param x Ubicacion en x del Sprite. x!=null, x debe ser mayor o igual a 0.
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	/**
-	 * Este metodo retorna la coordenada del eje Y
+	 * Este metodo retorna la coordenada del eje Y<br>
 	 * @return Retorna un int que representa la coordenada del objeto en el eje Y
 	 */
 	public int getY() {
 		return y;
 	}
 	/**
-	 * Este metodo modifica la coordenada del eje Y
-	 * @param y
-	 * 			Entero que sera la nueva coordenada del eje Y 
+	 * Este metodo modifica la coordenada del eje Y<br>
+	 * @param y Ubicacion en y del Sprite. y!=null, y debe ser mayor o igual a 0.
 	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 	/**
-	 * Este metodo retorna el ancho del objeto
+	 * Este metodo retorna el ancho del objeto<br>
 	 * @return Retorna un int que representa el ancho del objeto(imagen)
 	 */
 	public int getAncho() {
 		return ancho;
 	}
 	/**
-	 * Este metodo retorna la altura del objeto
+	 * Este metodo retorna la altura del objeto<br>
 	 * @return Retorna un valor entero que representa la altura del objeto(imagen)
 	 */
 	public int getAlto() {
 		return alto;
 	}
 	/**
-	 * Este metodo retorna si el objeto es visible o no
-	 * @return Retorna un valor booleano que representa la visibilidad del 
-	 * 			del objeto
+	 * Este metodo retorna si el objeto es visible o no<br>
+	 * @return Retorna un valor booleano que representa la visibilidad del objeto
 	 */
 	public boolean esVisible() {
 		return visible;
 	}
 	/**
-	 * Este metodo modifica el valor de la visibilidad
-	 * <b> Pos: Se modifica la visibilidad del objeto
-	 * @param visible
-	 * 				Este valor booleano modifica la visibilidad del objeto
+	 * Este metodo modifica el valor de la visibilidad<br>
+	 * <b>post:</b> Se modifica la visibilidad del objeto<br>
+	 * @param visible Este valor booleano modifica la visibilidad del objeto
 	 */
 	public void setVisible(boolean visible) {
 		this.visible = visible;

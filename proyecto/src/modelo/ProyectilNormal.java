@@ -24,8 +24,8 @@ public class ProyectilNormal extends Proyectil{
 	public static final String IMG = "./img" + File.separator + "proyectil_n.png";
 	//Constructor
 	/**
-	 * Constructor del proyectil normal
-	 * Asigna su daño, velocidad e imagen al valor de las constantes declaradas en esta clase 
+	 * Constructor del proyectil normal.<br>
+	 * Asigna su daño, velocidad e imagen al valor de las constantes declaradas en esta clase.<br>
 	 */
 	public ProyectilNormal() {
 		super();

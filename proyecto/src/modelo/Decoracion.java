@@ -10,7 +10,7 @@ public class Decoracion extends Sprite{
 	/**
 	 * IMAGENES es un arreglo de Strings que se encarga de contener la ruta de las imagenes
 	 * que se van a utilizar de las decoraciones. Este sirve para que cuando se construya una
-	 * decoracion esta reciba una ruta que le asiganara una imagen
+	 * decoracion esta reciba una ruta que le asiganara una imagen.
 	 */
 	public static final String[] IMAGENES = { "./img/marte.png", "./img/jupiter.png", "./img/mercurio.png",
 			"./img/planetaazul.png" };
@@ -38,7 +38,8 @@ public class Decoracion extends Sprite{
 		setY((int)(Math.random()*(Juego.ALTO-getAncho())));
 	}
 	/**
-	 * Este metodo se encarga de dar el objeto del tipo Decoracion que le sigue al actual
+	 * Este metodo se encarga de dar el objeto del tipo Decoracion que le sigue al actual<br>
+	 * <b>post:</b>Devuelve la siguiente decoración de la lista<br>
 	 * @return Se retorna un objeto del tipo Decoracion
 	 */
 	public Decoracion darSiguiente() {
@@ -46,9 +47,9 @@ public class Decoracion extends Sprite{
 	}
 	/**
 	 * Este metodo se encarga de dar el objeto del tipo Decoracion que se encuntre antes del
-	 * actual
+	 * actual.<br>
 	 * @return Se retorna un objeto del tipo Decoracion
-	 * <pre> No debe ser el primer objeto dentro de la lista
+	 * <b>pre:</b> No debe ser el primer objeto dentro de la lista<br>
 	 */
 	public Decoracion darAnterior() {
 		return anterior;
@@ -56,10 +57,9 @@ public class Decoracion extends Sprite{
 	/**
 	 * Este metodo se encarga de modificar la ruta del objeto siguiente
 	 * al mismo tiempo se implementa el objeto actual como el anterior del
-	 * nuevo objeto
-	 * <b> post:Se crea una nueva ruta entre el objteo actual y el nuevo
-	 * @param s
-	 * 		s es un objeto del tipo decoracion
+	 * nuevo objeto.<br>
+	 * <b> post:</b>Se crea una nueva ruta entre el objteo actual y el nuevo<br>
+	 * @param s es un objeto del tipo decoracion. 
 	 */
 	public void setSiguiente(Decoracion s) {
 		siguiente = s;
@@ -67,9 +67,8 @@ public class Decoracion extends Sprite{
 	}
 	/**
 	 * Este metodo se encarga de modificar el objeto anterior a este y se encarga de
-	 * ubicar este metodo en el siguiente del nuevo
-	 * @param a
-	 * 			es un objeto del tipo decoracion
+	 * ubicar este metodo en el siguiente del nuevo.<br>
+	 * @param a un objeto del tipo decoracion
 	 */
 	public void setAnterior(Decoracion a) {
 		anterior = a;

@@ -15,9 +15,8 @@ public class NombreNoExisteException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 	/**
-	 * Se encarga de crear la excepcion, utilizando un string para modificar el mensaje
-	 * @param s
-	 * 			Es un String que contiene el nombre no ubicado
+	 * Se encarga de crear la excepcion, utilizando un string para modificar el mensaje.<br>
+	 * @param s Es un String que contiene el nombre no ubicado
 	 */
 	public NombreNoExisteException(String s) {
 		super(s);

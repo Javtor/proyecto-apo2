@@ -20,8 +20,8 @@ public class HiloProyectil extends Thread {
 	 */
 	private Proyectil pro;
 	/**
-	 * Constructor del HiloProyectil 
-	 * Inicializa los atributos principal y pro
+	 * Constructor del HiloProyectil <br>
+	 * Inicializa los atributos principal y pro<br>
 	 * @param principal Ventana principal del juego. principal!=null
 	 * @param pro Proyectil del juego asociado con la nave. pro!=null
 	 */
@@ -31,10 +31,10 @@ public class HiloProyectil extends Thread {
 		this.pro = pro;
 	}
 	/**
-	 * Lo que realiza el hilo cuando se inicia
+	 * Lo que realiza el hilo cuando se inicia<br>
 	 * Mientras el juego esté activo ejecuta el método mover el proyectil para que vaya en la dirección dada por su velocidad
-	 * sin importar si es visible o no
-	 * Actualiza el proyectil cada frame del juego
+	 * sin importar si es visible o no<br>
+	 * Actualiza el proyectil cada frame del juego<br>
 	 * <b>post:</b>Se ha movido el proyectil<br>
 	 * <b>post:</b>Se ha actualizado el atributo pro, por el proyectil actual de la nave<br>
 	 */

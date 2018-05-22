@@ -132,9 +132,9 @@ public class Juego implements Serializable {
 	private Jugador raizjugador;
 
 	/**
-	 * Constructor de la clase juego
-	 * Asigna el nivel inicial como 1
-	 * Crea un jugador actual sin nombre
+	 * Constructor de la clase juego<br>
+	 * Asigna el nivel inicial como 1<br>
+	 * Crea un jugador actual sin nombre<br>
 	 */
 	public Juego() {
 		nivel = 1;
@@ -143,7 +143,7 @@ public class Juego implements Serializable {
 	}
 
 	/**
-	 * Getter de la raiz del árbol Jugador
+	 * Getter de la raiz del árbol Jugador<br>
 	 * <b>post:</b> Devuelve la raiz del arbol jugador <br> 
 	 * @return raizjugador=null || raizjugador instanceOf Jugador
 	 */
@@ -152,7 +152,7 @@ public class Juego implements Serializable {
 	}
 
 	/**
-	 * Getter del jugador
+	 * Getter del jugador<br>
 	 * <b>post:</b> Devuelve el jugador actual del juego <br>
 	 * @return jugador instanceOf Jugador, jugador!=null
 	 */
@@ -160,22 +160,22 @@ public class Juego implements Serializable {
 		return jugador;
 	}
 	/**
-	 * Setter del jugador
-	 * @param jugador El nuevo jugador que se va a insertar como jugador actual. jugador!=null.
+	 * Setter del jugador<br>
 	 * <b>post:</b> Devuelve el jugador actual del juego <br>
+	 * @param jugador El nuevo jugador que se va a insertar como jugador actual. jugador!=null.
 	 */
 	public void setJugador(Jugador jugador) {
 		this.jugador = jugador;
 	}
 	/**
-	 * Getter del puntaje
+	 * Getter del puntaje<br>
 	 * @return retorna el puntaje actual del juego. puntaje!=null
 	 */
 	public int getPuntaje() {
 		return puntaje;
 	}
 	/**
-	 * Getter del atributo nave
+	 * Getter del atributo nave<br>
 	 * <b>post:</b>Devuelve el atributo nave.<br>
 	 * @return nave. nave!=null
 	 */
@@ -183,7 +183,7 @@ public class Juego implements Serializable {
 		return nave;
 	}
 	/**
-	 * Getter del ArrayList de Pelotas, generado a partir de la raiz del árbol pelotas
+	 * Getter del ArrayList de Pelotas, generado a partir de la raiz del árbol pelotas<br>
 	 * @return un ArrayList con elementos de tipo Pelota. a!=null 
 	 */
 	public ArrayList<Pelota> getPelotas() {
@@ -194,7 +194,7 @@ public class Juego implements Serializable {
 		return a;
 	}
 	/**
-	 * Devuelve si la partida está activa
+	 * Devuelve si la partida está activa<br>
 	 * <b>post:</b>Devuelve si la partida está activa o no<br>
 	 * @return true o false dependiendo si la partida está activa o no
 	 */
@@ -202,7 +202,7 @@ public class Juego implements Serializable {
 		return jugando;
 	}
 	/**
-	 * Setter para saber si la partida está activa o no
+	 * Setter para saber si la partida está activa o no.<br>
 	 * <b>post:</b>El estado de la partida (activa/inactiva) ha cambiado<br>
 	 * @param jugando si la partida está activa o no. jugador!=null
 	 */
@@ -210,7 +210,7 @@ public class Juego implements Serializable {
 		this.jugando = jugando;
 	}
 	/**
-	 * Crea y retorna un ArrayList con la lista de los bonus
+	 * Crea y retorna un ArrayList con la lista de los bonus.<br>
 	 * <b>post:</b>Retorna un ArrayList a partir del primer bonus de la lista bonus<br>
 	 * @return un ArrayList con la lista bonus, puede estar vacía.
 	 */
@@ -222,12 +222,12 @@ public class Juego implements Serializable {
 		return b;
 	}
 	/**
-	 * Inicia el juego poniendo a sonar la canción de fondo
-	 * Añade un nuevo jugador y carga el numero de pelotas y la nave, dependiendo si es una partida nueva o no
-	 * Crea las decoraciones de la pantalla
-	 * Dependiendo si está cargado o no inicia las pelotas serializadas o nuevas
+	 * Inicia el juego poniendo a sonar la canción de fondo.<br>
+	 * Añade un nuevo jugador y carga el numero de pelotas y la nave, dependiendo si es una partida nueva o no<br>
+	 * Crea las decoraciones de la pantalla<br>
+	 * Dependiendo si está cargado o no inicia las pelotas serializadas o nuevas<br>
 	 * Dependiendo si está cargado o no si se lanza la Excepcion JugadorRepetidoException verifica si en realidad
-	 * está repetido o es que está cargando uno ya existente. 
+	 * está repetido o es que está cargando uno ya existente. <br>
 	 * @param cargado Dice si está cargado o no el juego. cargado !=null
 	 * @throws JugadorRepetidoException si el jugador que se intenta instanciar para emepzar el juego ya existe 
 	 */
@@ -262,7 +262,7 @@ public class Juego implements Serializable {
 
 	}
 	/**
-	 * Inserta una nueva pelota en el árbol de pelotas
+	 * Inserta una nueva pelota en el árbol de pelotas.<br>
 	 * <b>post:</b> Se ha añadido un nuevo elemento al árbol de pelotas<br>
 	 * @param p Es la nueva pelota a añadir. p!=null
 	 */
@@ -274,8 +274,8 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Inicia el numero de pelotas correspondientes con el atributo numPelotas
-	 * <b>pre:</b>numPelotas!=null, numPelotas>0 <br>
+	 * Inicia el numero de pelotas correspondientes con el atributo numPelotas.<br>
+	 * <b>pre:</b>numPelotas!=null, numPelotas debe ser mayor a 0 <br>
 	 * <b>post:</b>Se han instanciado n pelotas correspondientes con el atributo numPelotas <br>
 	 */
 	public void iniciarPelotas() {
@@ -286,8 +286,8 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Hace la serialización de todas las instancias de la pantalla en el momento 
-	 * Serializa nave, pelotas, jugadores, bonificaciones y decoraciones
+	 * Hace la serialización de todas las instancias de la pantalla en el momento<br>
+	 * Serializa nave, pelotas, jugadores, bonificaciones y decoraciones.<br>
 	 * <b>post:</b> Se ha creado 5 archivos serializables con las intancias de la pantalla.<br>
 	 * @throws FileNotFoundException Si en alguno de los métodos llamados no se encuentra el File
 	 * @throws IOException Si ocurre un error al momento de serializar
@@ -300,7 +300,7 @@ public class Juego implements Serializable {
 		guardarDeco();
 	}
 	/**
-	 * Serializa el árbol de jugadores a partir de la raiz.
+	 * Serializa el árbol de jugadores a partir de la raiz.<br>
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado del árbol jugadores<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
@@ -314,7 +314,7 @@ public class Juego implements Serializable {
 		oos.close();
 	}
 	/**
-	 * Serializa la nave y por ende el proyectil que se tiene en el momento 
+	 * Serializa la nave y por ende el proyectil que se tiene en el momento.<br> 
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado de la nave<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
@@ -326,7 +326,7 @@ public class Juego implements Serializable {
 		oos.close();
 	}
 	/**
-	 * Serializa el árbol de pelotas a partir de la raiz.
+	 * Serializa el árbol de pelotas a partir de la raiz.<br>
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado del árbol pelotas<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
@@ -338,7 +338,7 @@ public class Juego implements Serializable {
 		oos.close();
 	}
 	/**
-	 * Serializa la lista de bonificaciones a partir del primer elemento de la lista
+	 * Serializa la lista de bonificaciones a partir del primer elemento de la lista.<br>
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado de la lista de bonificaciones<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
@@ -350,7 +350,7 @@ public class Juego implements Serializable {
 		oos.close();
 	}
 	/**
-	 * Serializa la lista de decoraciones a partir del primer elemento de la lista
+	 * Serializa la lista de decoraciones a partir del primer elemento de la lista.<br>
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado de las decoraciones<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
@@ -363,8 +363,8 @@ public class Juego implements Serializable {
 	}
 	/**
 	 * Recupera los serializables de todos los aspectos relacionados con la pantalla y los jugadores 
-	 * que han guardado el juego
-	 * Recupera las pelotas, la nave, los jugadores, la lista de bonus y las decoraciones
+	 * que han guardado el juego.<br>
+	 * Recupera las pelotas, la nave, los jugadores, la lista de bonus y las decoraciones.<br>
 	 * <b>post:</b> Se ha recuperado todos los aspectos del juego (asociaciones)<br>
 	 * @throws FileNotFoundException Si no encuentra el archivo serializado
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
@@ -378,7 +378,7 @@ public class Juego implements Serializable {
 		recuperarDeco();
 	}
 	/**
-	 * Recupera la raiz del árbol Pelotas
+	 * Recupera la raiz del árbol Pelotas.<br>
 	 * <b>post:</b> el árbol de pelotas ha sido recuperado. raizPelota!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
@@ -398,7 +398,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Recupera el primer elemento de la lista bonus
+	 * Recupera el primer elemento de la lista bonus.<br>
 	 * <b>post:</b> la lista de bonus ha sido recuperada. primerBonus!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
@@ -418,7 +418,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Recupera el primer elemento de la lista de decoraciones 
+	 * Recupera el primer elemento de la lista de decoraciones.<br>
 	 * <b>post:</b> La lista de decoraciones ha sido recuperada. primeraDeco!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
@@ -438,7 +438,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Recupera la nave del juego, y por ende al proyectil actual
+	 * Recupera la nave del juego, y por ende al proyectil actual.<br>
 	 * <b>post:</b> la nave ha sido recuperada y su posicion pasa a ser la (0,0) de la pantalla<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
@@ -461,7 +461,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Recupera la raiz del árbol Jugadores
+	 * Recupera la raiz del árbol Jugadores.<br>
 	 * <b>post:</b> el árbol de jugadores ha sido recuperado. raizjugador!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
@@ -481,7 +481,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Crea un archivo de texto con el nombre del jugador, el puntaje y el nivel actual del juego
+	 * Crea un archivo de texto con el nombre del jugador, el puntaje y el nivel actual del juego.<br>
 	 * <b>post:</b> Se ha creado un archivo de texto con la información del jugador actual
 	 * @throws FileNotFoundException Si no encuentra el directorio donde se crea el archivo
 	 */
@@ -497,7 +497,7 @@ public class Juego implements Serializable {
 	}
 	/**
 	 * Recupera los datos del jugador de la ultima partida guardada y asigna esa informacion al
-	 * jugador, puntaje y nivel de la partida
+	 * jugador, puntaje y nivel de la partida.<br>
 	 * <b>post:</b>Se ha recuperado la informacion del jugador de la ultima partida guardada<br>
 	 * @throws IOException Si ocurre algun error al momento de recuperar el archivo
 	 */
@@ -518,9 +518,9 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Ejecuta la acccion correspondiente a la tecla presionada
-	 * Si es la letra G, guarda la partida y los datos
-	 * Si es diferente a G realiza algún movimiento de la nave 
+	 * Ejecuta la acccion correspondiente a la tecla presionada.<br>
+	 * Si es la letra G, guarda la partida y los datos.<br>
+	 * Si es diferente a G realiza algún movimiento de la nave.<br> 
 	 * @param e KeyEvent de la tecla presionada 
 	 * @throws IOException Si ocurre algun error al momento de guadar los datos o la partida.
 	 */
@@ -533,14 +533,14 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Cuando se deja de presionar una tecla se envia el evento a la nave
+	 * Cuando se deja de presionar una tecla se envia el evento a la nave.<br>
 	 * @param e Evento de la tecla presionada 
 	 */
 	public void keyReleased(KeyEvent e) {
 		nave.keyReleased(e);
 	}
 	/**
-	 * Añade un nuevo bonus a la lista bonificación
+	 * Añade un nuevo bonus a la lista bonificación.<br>
 	 * <b>post:</b>Se ha añadido una nueva bonificación a la lista de bonus<br>
 	 */
 	public void crearBonus() {
@@ -572,7 +572,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Localiza el ultimo bonus de la lista de bonificaciones
+	 * Localiza el ultimo bonus de la lista de bonificaciones.<br>
 	 * <b>post:</b>Devuelve el ultimo elemento de la lista de bonificaciones<br>
 	 * @return actual es el ultimo elemento de la lista. actual puede ser null.
 	 */
@@ -586,7 +586,7 @@ public class Juego implements Serializable {
 		return actual;
 	}
 	/**
-	 * Incrementa el puntaje actual en INCREMENTO_BONUS
+	 * Incrementa el puntaje actual en INCREMENTO_BONUS.<br>
 	 * <b>pre:</b>Se ha instanciado un jugador<br>
 	 * <b>post:</b>El atributo puntaje se ha incrementado<br>
 	 */
@@ -596,7 +596,7 @@ public class Juego implements Serializable {
 
 	}
 	/**
-	 * Incrementa el puntaje actual en INCREMENTO_PELOTA	
+	 * Incrementa el puntaje actual en INCREMENTO_PELOTA.<br>	
 	 * <b>pre:</b>Se ha instanciado un jugador<br>
 	 * <b>post:</b>El atributo puntaje se ha incrementado<br>
 	 */
@@ -605,7 +605,7 @@ public class Juego implements Serializable {
 		jugador.setPuntaje(puntaje);
 	}
 	/**
-	 * Ordena la lista de jugadores de manera ascendente de acuerdo al nombre
+	 * Ordena la lista de jugadores de manera ascendente de acuerdo al nombre.<br>
 	 * <b>post:</b>Retorna una lista de jugadores ordenada de manera ascendente de acuerdo a su nombre<br>
 	 * @return Un ArrayList con elementos de tipo jugador ordenados de manera ascendente por nombre. 
 	 */
@@ -628,7 +628,7 @@ public class Juego implements Serializable {
 		return listjugadores;
 	}
 	/**
-	 * Ordena la lista de jugadores de manera descendente de acuerdo al nombre
+	 * Ordena la lista de jugadores de manera descendente de acuerdo al nombre.<br>
 	 * <b>post:</b>Retorna una lista de jugadores ordenada de manera descendente de acuerdo a su nombre<br>
 	 * @return Un ArrayList con elementos de tipo jugador ordenados de manera descente por nombre. 
 	 */
@@ -651,7 +651,7 @@ public class Juego implements Serializable {
 		return listjugadores;
 	}
 	/**
-	 * Ordena la lista de jugadores de manera ascendente de acuerdo al puntaje
+	 * Ordena la lista de jugadores de manera ascendente de acuerdo al puntaje.<br>
 	 * <b>post:</b>Retorna una lista de jugadores ordenada de manera ascendente de acuerdo a su puntaje<br>
 	 * @return Un ArrayList con elementos de tipo jugador ordenados de manera ascendente por puntaje. 
 	 */
@@ -670,7 +670,7 @@ public class Juego implements Serializable {
 		return listjugadores;
 	}
 	/**
-	 * Ordena la lista de jugadores de manera descendente de acuerdo al puntaje
+	 * Ordena la lista de jugadores de manera descendente de acuerdo al puntaje.<br>
 	 * <b>post:</b>Retorna una lista de jugadores ordenada de manera descendente de acuerdo a su puntaje<br>
 	 * @return Un ArrayList con elementos de tipo jugador ordenados de manera descendente por puntaje. 
 	 */
@@ -689,7 +689,7 @@ public class Juego implements Serializable {
 		return listjugadores;
 	}
 	/**
-	 * Ordena la lista de jugadores de manera ascendente de acuerdo al nivel
+	 * Ordena la lista de jugadores de manera ascendente de acuerdo al nivel.<br>
 	 * <b>post:</b>Retorna una lista de jugadores ordenada de manera ascendente de acuerdo a su nivel<br>
 	 * @return Un ArrayList con elementos de tipo jugador ordenados de manera ascendente por nivel. 
 	 */
@@ -706,7 +706,7 @@ public class Juego implements Serializable {
 		return listjugadores;
 	}
 	/**
-	 * Ordena la lista de jugadores de manera descendente de acuerdo al nivel
+	 * Ordena la lista de jugadores de manera descendente de acuerdo al nivel.<br>
 	 * <b>post:</b>Retorna una lista de jugadores ordenada de manera descedente de acuerdo a su nivel<br>
 	 * @return Un ArrayList con elementos de tipo jugador ordenados de manera descendente por nivel. 
 	 */
@@ -725,7 +725,7 @@ public class Juego implements Serializable {
 	/**
 	 * Verifca todas las posibles colisiones del juego para realizar incremento de puntos,
 	 * mejorar el proyectil dependiendo de las bonificaciones, o decrementar la vida de las pelotas si un 
-	 * proyectil colisiona con ella.
+	 * proyectil colisiona con ella.<br>
 	 * <b>pre:</b>raizPelota!=null<br>
 	 * <b>post:</b>Se ha verificado todos los aspectos del juego y se han ejecutado los incrementos,
 	 * decrementos o mejoras correspondientes<br>
@@ -740,7 +740,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Verifica si la nave sigue con vida, de no ser así termina el juego
+	 * Verifica si la nave sigue con vida, de no ser así termina el juego.<br>
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>post:</b>El juego para si la nave no tiene vidas<br>
 	 * <b>post:</b>Si pierde el juego crea el serializable de los jugadores<br>
@@ -757,7 +757,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Verifica si existe alguna colision entre la nave y un bonus de la lista
+	 * Verifica si existe alguna colision entre la nave y un bonus de la lista.<br>
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>post:</b>Recorre la lista de bonus verificando si existe colisión con la nave<br>
 	 * <b>post:</b>Si existe colisión con la nave verifica si es de puntaje, o si es de tipo puntaje e 
@@ -790,7 +790,7 @@ public class Juego implements Serializable {
 	}
 	/**
 	 * Recorre el arreglo de pelotas verificando si existe alguna colisión entre la pelota y el proyectil
-	 * Cuando encuentra una colision se sale  del ciclo.
+	 * Cuando encuentra una colision se sale  del ciclo.<br>
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>post:</b>Si el proyectil colisionó con una pelota se vuelve invisible<br>
 	 * <b>post:</b>Si el proyectil colisionó con una pelota se baja la vida de la pelota<br>
@@ -813,8 +813,8 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Sube el nivel en 1 y ubica a la nave en el centro de la pantalla
-	 * Instancia el nuevo numero de pelotas que debe tener la pantalla de acuerdo al nivel alcanzado
+	 * Sube el nivel en 1 y ubica a la nave en el centro de la pantalla<br>
+	 * Instancia el nuevo numero de pelotas que debe tener la pantalla de acuerdo al nivel alcanzado.<br>
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>pre:</b>Se ha instanciado un jugador<br>
 	 * <b>post:</b>Se ha incrementado el puntaje en 1<br>
@@ -831,7 +831,7 @@ public class Juego implements Serializable {
 		iniciarPelotas();
 	}
 	/**
-	 * Añade el jugador actual de la partida al árbol de jugadores
+	 * Añade el jugador actual de la partida al árbol de jugadores.<br>
 	 * <b>post:</b>Se ha añadido un jugador al árbol de jugadores<br>
 	 * @throws JugadorRepetidoException Si ya existe ese jugador en el árbol
 	 */
@@ -843,7 +843,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Crea y devuelve un ArrayList con los jugadores del árbol de jugadores
+	 * Crea y devuelve un ArrayList con los jugadores del árbol de jugadores.<br>
 	 * <b>post:</b>Se ha creado un ArrayList con todos los jugadores del árbol<br>
 	 * @return Un ArrayList con los jugadores (ordenado por defecto por nombre de manera ascendente)
 	 */
@@ -856,7 +856,7 @@ public class Juego implements Serializable {
 
 	}
 	/**
-	 * Busca en el árbol de jugadores un jugador dado su nombre
+	 * Busca en el árbol de jugadores un jugador dado su nombre.<br>
 	 *  <b>post:</b>Se ha encontrado el jugador con dicho nombre<br>
 	 * @param nombre El nombre que se usará para buscar al jugador. nombre!=null, nombre!=""
 	 * @return Retorna el jugador buscado
@@ -870,9 +870,9 @@ public class Juego implements Serializable {
 		return j;
 	}
 	/**
-	 * Busca en un ArrayList con los jugadores del arbol un jugador dados sus puntos
+	 * Busca en un ArrayList con los jugadores del arbol un jugador dados sus puntos.<br>
 	 * <b>post:</b>Se encontró un jugador con dichos puntos<br>
-	 * @param puntos El criterio a buscar en el ArrayList. puntos!=null, puntos>=0.
+	 * @param puntos El criterio a buscar en el ArrayList. puntos!=null, puntos debe ser mayor o igual a 0.
 	 * @return El primer jugador encontrado con dicho puntaje
 	 * @throws PuntajeNoExisteException Si no existe ningun jugador con ese puntaje 
 	 */
@@ -899,17 +899,17 @@ public class Juego implements Serializable {
 		return j;
 	}
 	/**
-	 * Manda las coordenadas x y y de la posición a la que debe dirigir el disparo del proyectil
+	 * Manda las coordenadas x y y de la posición a la que debe dirigir el disparo del proyectil.<br>
 	 * <b>pre:</b>Se ha instanciado una nave<br>
 	 * <b>post:</b>El proyectil ha sido disparado<br>
-	 * @param x coordenada x. x!=null, x>=0.
-	 * @param y coordenada y. y!=null, y>=0.
+	 * @param x coordenada x. x!=null, x debe ser mayor o igual a 0.
+	 * @param y coordenada y. y!=null, y debe ser mayor o igual a 0.
 	 */
 	public void disparar(int x, int y) {
 		nave.disparar(x, y);
 	}
 	/**
-	 * Crea el numero de decoraciones correspondiente a la constante NUMERO_DECORACIONES
+	 * Crea el numero de decoraciones correspondiente a la constante NUMERO_DECORACIONES.<br>
 	 * <b>post:</b>Se han creado las decoraciones correspondientes en la lista de decoraciones<br>
 	 */
 	public void crearDecoraciones() {
@@ -918,7 +918,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Añade una decoración al final de la lista
+	 * Añade una decoración al final de la lista.<br>
 	 * <b>post:</b>Añade una decoración al final de la lista<br>
 	 * @param d La nueva decoración a añadir. d!=null
 	 */
@@ -934,7 +934,7 @@ public class Juego implements Serializable {
 		}
 	}
 	/**
-	 * Crea y devuelve un ArrayList con las decoraciones que hay en la lista decoraciones
+	 * Crea y devuelve un ArrayList con las decoraciones que hay en la lista decoraciones.<br>
 	 * <b>post:</b>Se ha recorrido y añadido todas las decoraciones de la lista al ArrayList<br>
 	 * @return Un ArrayList con las decoraciones que hay en la lista decoraciones 
 	 */

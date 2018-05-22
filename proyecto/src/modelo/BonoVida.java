@@ -8,7 +8,7 @@ package modelo;
 public class BonoVida extends Bonificacion{
 	// Constantes
 	/**
-	 *Este es el String que representa la ruta de la imagen de esta bonificacion
+	 *La ruta de la imagen de la bonificacion de vida.
 	 */
 	public static String DIREC = "./img/bonus/bonusvida.png";
 	// Constructor

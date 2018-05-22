@@ -8,12 +8,12 @@ package modelo;
 public class BonoProyRapido extends Bonificacion {
 	// Constante
 	/**
-	 * Este String contiene la ruta del directorio donde se ubica la imagen
+	 * La ruta del directorio donde se ubica la imagen de la bonificación del proyectil rápido.
 	 */
 	public static String DIREC = "./img/bonus/proyectil_r.png";
 	// Constructor
 	/**
-	 * El constructor se encarga de definir la imagen de la bonificacion y su tipo
+	 * El constructor se encarga de definir la imagen de la bonificacion y su tipo.
 	 */
 	public BonoProyRapido() {
 		super();

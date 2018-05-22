@@ -17,8 +17,8 @@ public class HiloBonus extends Thread{
 	 */
 	private Juego juego;
 	/**
-	 * Constructor del HiloBonus
-	 * Inicializa los atributos principal y juego.
+	 * Constructor del HiloBonus<br>
+	 * Inicializa los atributos principal y juego.<br>
 	 * @param principal Ventana principal de la interfaz. principal!=null
 	 * @param juego Clase principal del modelo. juego!=null
 	 */
@@ -27,9 +27,9 @@ public class HiloBonus extends Thread{
 		this.juego=juego;	
 	}
 	/**
-	 * Lo que el hilo realiza cuando se inicie
+	 * Lo que el hilo realiza cuando se inicie<br>
 	 * Si la ventana principal esta jugando, en un intervalo de tiempo random entre 0-7 segundos crea
-	 * un nuevo bonus.
+	 * un nuevo bonus.<br>
 	 * <b>pre:</b>Se ha instanciado una ventana principal<br>
 	 * <b>pre:</b>Se ha instanciado un juego<br>
 	 * <b>post:</b>Se ha creado una nueva bonificación cada 0-7 segundos<br>

@@ -15,9 +15,8 @@ public class PuntajeNoExisteException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 	/**
-	 * Constructor que crea la excepcion con un String para redefinirla
-	 * @param arg0
-	 * 			Es un String que contiene el puntaje no encontrado
+	 * Constructor que crea la excepcion con el puntaje no encontrado<br>
+	 * @param arg0 Es un String que contiene el puntaje no encontrado
 	 */
 	public PuntajeNoExisteException(String arg0) {
 		super(arg0);

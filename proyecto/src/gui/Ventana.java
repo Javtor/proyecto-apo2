@@ -83,8 +83,8 @@ public class Ventana extends JFrame {
 	 */
 	private HiloProyectil hPro;
 	/**
-	 * Constructor de la ventana principal de la interfaz
-	 * Se encarga de inicializar el menu de inicio del juego, y las partidas guardadas.
+	 * Constructor de la ventana principal de la interfaz<br>
+	 * Se encarga de inicializar el menu de inicio del juego, y las partidas guardadas.<br>
 	 * <b>post:</b>La lista de usuarios que se han registrado en el juego ha sido recuperada<br>
 	 * <b>post:</b>Se muestra el menu de inicio del juego<br>
 	 */
@@ -117,50 +117,50 @@ public class Ventana extends JFrame {
 		setVisible(true);
 	}
 	/**
-	 * Getter de la lista de bonus del juego
+	 * Getter de la lista de bonus del juego<br>
 	 * @return un arrayList de la lista de bonus del juego
 	 */
 	public ArrayList<Bonificacion> getBonus() {
 		return juego.getBonus();
 	}
 	/**
-	 * Getter de la nave del juego
+	 * Getter de la nave del juego<br>
 	 * @return el atributo nave de la clase Juego 
 	 */
 	public Nave getNave() {
 		return juego.getNave();
 	}
 	/**
-	 * Getter de la lista de pelotas del juego
+	 * Getter de la lista de pelotas del juego<br>
 	 * @return un arrayList de la lista de pelotas del juego
 	 */
 	public ArrayList<Pelota> getPelotas() {
 		return juego.getPelotas();
 	}
 	/**
-	 * Getter del estado del juego
+	 * Getter del estado del juego<br>
 	 * @return el estado del juego. true: si está activo, false: si está inactivo.
 	 */
 	public boolean isJugando() {
 		return juego.isJugando();
 	}
 	/**
-	 * Getter de la lista de jugadores que han sido registrados en el juego
+	 * Getter de la lista de jugadores que han sido registrados en el juego<br>
 	 * @return un arrayList de la lista de jugadores que se han registrado en el juego
 	 */
 	public ArrayList<Jugador> getJugadores() {
 		return juego.toArrayListJugador();
 	}
 	/**
-	 * Getter de la lista de decoraciones del juego
+	 * Getter de la lista de decoraciones del juego<br>
 	 * @return un arrayList de la lista decoraciones del juego
 	 */
 	public ArrayList<Decoracion> getPrimeraDeco() {
 		return juego.darDecoraciones();
 	}
 	/**
-	 * Inicia una partida, dependiendo si es nueva o la ultima que se ha guardado.
-	 * Muestra el panel de juego e inicia el juego.
+	 * Inicia una partida, dependiendo si es nueva o la ultima que se ha guardado.<br>
+	 * Muestra el panel de juego e inicia el juego.<br>
 	 * <b>pre:</b>juego ha sido inicializado<br>
 	 * <b>post:</b>panelJuego ha sido inicializado<br>
 	 * <b>post:</b>Se ha iniciado una nueva partida<br>
@@ -186,7 +186,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Se encarga de mostrar los datos de la partida en la pantalla
+	 * Se encarga de mostrar los datos de la partida en la pantalla<br>
 	 * <b>pre:</b>Se ha inicialiado el panelJuego<br>
 	 * <b>post:</b>Se muestran los datos de la partida actual: nickname, puntos,
 	 * nivel y vidas<br>
@@ -198,7 +198,7 @@ public class Ventana extends JFrame {
 		panelJuego.setVidas("" + juego.getNave().getVidas());
 	}
 	/**
-	 * Inicia todos los hilos relacionados con el juego y el movimiento de la nave
+	 * Inicia todos los hilos relacionados con el juego y el movimiento de la nave<br>
 	 * <b>post:</b>El hilo del juego ha empezado<br>
 	 * <b>post:</b>El hilo de la nave ha empezado<br>
 	 * <b>post:</b>EL hilo del proyectil ha empezado<br>
@@ -215,7 +215,7 @@ public class Ventana extends JFrame {
 		hPro.start();
 	}
 	/**
-	 * Inicia el hilo del movimiento de las pelotas
+	 * Inicia el hilo del movimiento de las pelotas<br>
 	 * <b>post:</b>El hilo de las pelotas ha empezado<br>
 	 */
 	public void generarPelotas() {
@@ -223,7 +223,7 @@ public class Ventana extends JFrame {
 		hPel.start();
 	}
 	/**
-	 * Inicia el hilo que genera las bonificaciones
+	 * Inicia el hilo que genera las bonificaciones<br>
 	 * <b>post:</b>El hilo que genera las bonificaciones ha empezado<br>
 	 */
 	public void generarBonificaciones() {
@@ -231,7 +231,7 @@ public class Ventana extends JFrame {
 		hB.start();
 	}
 	/**
-	 * Dispara un proyectil a la posicion x,y
+	 * Dispara un proyectil a la posicion x,y<br>
 	 * <b>pre:</b>Se ha inicializado el atributo juego<br>
 	 * <b>post:</b>Se ha disparado un proyectil a la posicion x,y de la pantalla<br>
 	 * @param x Posición en x donde debe llegar el proyectil. x!=null, x debe ser positivo.
@@ -241,7 +241,7 @@ public class Ventana extends JFrame {
 		juego.disparar(x, y);
 	}	
 	/**
-	 * Método que se encarga de recibir el evento de la tecla presionada
+	 * Método que se encarga de recibir el evento de la tecla presionada<br>
 	 * <b>pre:</b>Se ha inicializado el atributo juego<br>
 	 * <b>post:</b>Se ha realizado la acción correspondiente a la tecla presionada 
 	 * solo si es: W,A,S,D o G<br>
@@ -257,7 +257,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Método que se encarga de recibir el evento de la tecla que se ha dejado de presionar
+	 * Método que se encarga de recibir el evento de la tecla que se ha dejado de presionar.<br>
 	 * <b>pre:</b>Se ha inicializado el atributo juego<br>
 	 * <b>post:</b>Se ha realizado la acción correspondiente a la tecla que se ha dejado de presionar 
 	 * solo si es: W,A,S,D<br>
@@ -267,14 +267,14 @@ public class Ventana extends JFrame {
 		juego.keyReleased(e);
 	}
 	/**
-	 * Método que se encarga de repintar el tablero
+	 * Método que se encarga de repintar el tablero.<br>
 	 * <b>pre:</b>Se ha repintado el juego<br>
 	 */
 	public void refrescarTablero() {
 		panelJuego.repaint();
 	}
 	/**
-	 * Método que recibe el nuevo nickname del jugador
+	 * Método que recibe el nuevo nickname del jugador.<br>
 	 * <b>pre:</b> Se ha inicializado el atributo juego<br>
 	 * <b>post:</b> Ha iniciado una partida nueva con ese nickname<br>
 	 */
@@ -322,7 +322,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Método que dirige la busqueda de acuerdo al criterio seleccionado por el usuario
+	 * Método que dirige la busqueda de acuerdo al criterio seleccionado por el usuario.<br>
 	 * <b>pre:</b>Se ha inicializado el atributo ranking.
 	 * <b>post:</b> Se llama al método buscarNombre
 	 * <b>post:</b> Se llama al método buscarPuntaje
@@ -338,7 +338,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Busca el puntaje ingresado por el usuario y muestra los datos del jugador que tiene el puntaje ingresado
+	 * Busca el puntaje ingresado por el usuario y muestra los datos del jugador que tiene el puntaje ingresado<br>
 	 * <b>pre:</b>El atributo ranking se ha sido inicializado<br>
 	 * <b>pre:</b>El atributo juego se ha inicializado<br>
 	 * <b>post:</b> Busca el puntaje ingresado por el usuario
@@ -361,7 +361,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Busca el nombre ingresado por el usuario y muestra los datos del jugador que tiene el nombre ingresado
+	 * Busca el nombre ingresado por el usuario y muestra los datos del jugador que tiene el nombre ingresado<br>
 	 * <b>pre:</b>El atributo ranking se ha sido inicializado<br>
 	 * <b>pre:</b>El atributo juego se ha inicializado<br>
 	 * <b>post:</b> Busca el nombre ingresado por el usuario
@@ -382,7 +382,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Deja de mostrar el juego y vuelve al menú de inicio
+	 * Deja de mostrar el juego y vuelve al menú de inicio<br>
 	 * <b>pre:</b>El atributo juego ha sido inicializado<br>
 	 * <b>post:</b>El paneljuego se ha eliminado de la pantalla<br>
 	 * <b>post:</b>Se muestra el menú de inicio del juego<br>
@@ -409,7 +409,7 @@ public class Ventana extends JFrame {
 		setVisible(true);
 	}
 	/**
-	 * Abre el dialogo de ranking
+	 * Abre el dialogo de ranking.<br>
 	 * <b>post:</b>Inicializada el atributo ranking.<br>
 	 * <b>post:</b>Abre el dialogo de ranking<br>
 	 */
@@ -418,15 +418,15 @@ public class Ventana extends JFrame {
 		ranking.actualizarLista(juego.toArrayListJugador());
 	}
 	/**
-	 * Cierra el dialogo ranking.
+	 * Cierra el dialogo ranking.<br>
 	 * <b>post:</b>El dialogo ranking ha sido cerrado<br>
 	 */
 	public void cerrarRanking() {
 		ranking = null;
 	}
 	/**
-	 * Carga la última partida guardada en el juego.
-	 * <b>pre:</b>El atributo juego ha sido inicializado.
+	 * Carga la última partida guardada en el juego.<br>
+	 * <b>pre:</b>El atributo juego ha sido inicializado.<br>
 	 * <b>post:</b>Se ha cargado la última partida guardada y empieza el juego desde donde se guardó
 	 * <b>post:</b>Si ocurre un error al momento de recuperar la partida se muestra un mensaje de alerta
 	 */
@@ -443,7 +443,7 @@ public class Ventana extends JFrame {
 		}
 	}
 	/**
-	 * Hilo principal de la aplicación
+	 * Hilo principal de la aplicación.<br>
 	 * <b>post:</b>Crea la ventana principal<br>
 	 * @param args Parámetro del método main 
 	 */

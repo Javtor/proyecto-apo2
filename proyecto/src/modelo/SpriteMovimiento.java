@@ -23,8 +23,8 @@ public abstract class SpriteMovimiento extends Sprite implements Movible{
 	// Constructor
 	
 	/**
-	 * Este es el constructor de la clase SpriteMovimiento, este constructor se encarga de 
-	 * enviar los datos del objeto a la clase sprite, la super clase de la cual hereda
+	 * Constructor de la clase SpriteMovimiento, este constructor se encarga de 
+	 * enviar los datos del objeto a la clase sprite, la super clase de la cual hereda.<br>
 	 * @param x
 	 * 			Es un int que contiene la ubicacion del objeto en el eje x
 	 * @param y
@@ -37,8 +37,8 @@ public abstract class SpriteMovimiento extends Sprite implements Movible{
 	}
 	/**
 	 * Metodo sobreescrito de la super clase sprite, este metodo se encarga de modificar las velocidades
-	 * del objeto en los ejes X y Y
-	 * <b>post: la velocidad del objeto cambia
+	 * del objeto en los ejes X y Y.<br>
+	 * <b>post:</b> La velocidad del objeto cambia en dX y dY<br>
 	 */
 	@Override
 	public void mover() {
@@ -46,31 +46,29 @@ public abstract class SpriteMovimiento extends Sprite implements Movible{
 		 setY(getY()+dY);
 	}
 	/**
-	 * Este metodo tiene la funcion de retornar un int que representa la velocidad
+	 * Getter de la velocidad en x.<br>
 	 * @return retorna un valor entero de la velocidad velocidad actual del objeto
 	 */
 	public int getDX() {
 		return dX;
 	}
 	/**
-	 * este metodo se encarga de modificar la velocidad del objeto en el eje x
-	 * @param dX
-	 * 			Es un valor entero que sera utilizado para reemplazar la velocidad
+	 * Setter de la velocidad del objeto en el eje x
+	 * @param dX Es un valor entero que sera utilizado para reemplazar la velocidad. dX!=null.
 	 */
 	public void setDX(int dX) {
 		this.dX = dX;
 	}
 	/**
-	 *  Este metodo recupera el valor de la velocidad del objeto en el eje Y
+	 * Getter del valor de la velocidad del objeto en el eje Y
 	 * @return retorna un valor entero que representa la velocidad del eje y
 	 */
 	public int getDY() {
 		return dY;
 	}
 	/**
-	 * Este metodo modifica la velocidad del eje Y
-	 * @param dY
-	 * 			Este valor entero se utiliza para modificar la velocidad del eje Y
+	 * Setter de la velocidad del eje Y
+	 * @param dY Este valor entero se utiliza para modificar la velocidad del eje Y. dY!=null.
 	 */
 	public void setDY(int dY) {
 		this.dY = dY;

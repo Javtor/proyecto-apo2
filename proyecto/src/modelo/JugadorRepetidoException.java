@@ -13,9 +13,8 @@ public class JugadorRepetidoException extends Exception {
 	private Jugador j;
 	// Constructor
 	/**
-	 *  Se encarga de crear la excepcion, y modifica el atributo j
-	 * @param j
-	 * 		Objeto del tipo Jugador
+	 *  Se encarga de crear la excepcion, y modifica el atributo j<br>
+	 * @param j Objeto del tipo Jugador
 	 */
 	public JugadorRepetidoException(Jugador j) {
 		super();
@@ -23,7 +22,7 @@ public class JugadorRepetidoException extends Exception {
 	}
 	/**
 	 * Este metodo se encarga de dar el objeto del tipo Jugador almacenado  en el
-	 * atributo j
+	 * atributo j<br>
 	 * @return Retorna un Objto del tipo Jugador
 	 */
 	public Jugador getJugador() {

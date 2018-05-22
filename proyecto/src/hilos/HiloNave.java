@@ -18,8 +18,8 @@ public class HiloNave extends Thread {
 	 */
 	private Nave nave;
 	/**
-	 * Constructor del HiloNave
-	 * Inicializa los atributos principal y nave.
+	 * Constructor del HiloNave<br>
+	 * Inicializa los atributos principal y nave.<br>
 	 * @param principal Ventana principal de la interfaz. principal!=null
 	 * @param nave Nave que se está usando en el juego. nave!=null
 	 */
@@ -29,9 +29,9 @@ public class HiloNave extends Thread {
 		this.nave = nave;
 	}
 	/**
-	 * Lo que realiza el hilo cuando se inicia
+	 * Lo que realiza el hilo cuando se inicia<br>
 	 * Mientras se el juego se encuentre activo se ejecuta el método mover de la nave
-	 * cada segundo/FPS del juego
+	 * cada segundo/FPS del juego<br>
 	 */
 	@Override
 	public void run() {

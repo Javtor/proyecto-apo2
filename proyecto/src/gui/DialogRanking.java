@@ -163,8 +163,8 @@ public class DialogRanking extends JDialog implements ActionListener {
 		setVisible(true);
 	}
 	/**
-	 * Método implementado por el ActionListener
-	 * Recibe el evento generado y llama a los respectivos métodos que cumplen la función buscada
+	 * Método implementado por el ActionListener<br>
+	 * Recibe el evento generado y llama a los respectivos métodos que cumplen la función buscada<br>
 	 * <b>pre:</b>El atributo menu ha sido inicializado<br>
 	 * <b>pre:</b>Los atributos rbnombre, rbpuntaje, rbascendente han sido inicializados<br>
 	 * <b>post:</b>Si presiona el boton buscar llama al método buscar de la clase principal<br>
@@ -195,7 +195,7 @@ public class DialogRanking extends JDialog implements ActionListener {
 		}
 	}
 	/**
-	 * Método que se encarga de actualiza la lista 
+	 * Método que se encarga de actualiza la lista<br>
 	 * @param jugadores ArrayList de los jugadores que existen guardados en el juego. jugadores!=null
 	 */
 	@SuppressWarnings("unchecked")
@@ -203,7 +203,8 @@ public class DialogRanking extends JDialog implements ActionListener {
 		listjugadores.setListData(jugadores.toArray());
 	}
 	/**
-	 * Se encarga de cerrar la ventana de dialogo. 
+	 * Se encarga de cerrar la ventana de dialogo. <br>
+	 * <b>post:</b>Se ha cerrado la ventana de dialogo<br>
 	 */
 	@Override
 	public void dispose(){

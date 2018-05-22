@@ -7,7 +7,7 @@ package modelo;
  */
 public interface Movible {
 	/**
-	 * Este método sera implementado para definir el movimiento del objeto que implemente esta interfaz
+	 * Este método sera implementado para definir el movimiento del objeto que implemente esta interfaz<br>
 	 */
 	public void mover();
 	
