@@ -45,6 +45,7 @@ public class Decoracion extends Sprite{
 	public Decoracion darSiguiente() {
 		return siguiente;
 	}
+	
 	/**
 	 * Este metodo se encarga de dar el objeto del tipo Decoracion que se encuntre antes del
 	 * actual.<br>
