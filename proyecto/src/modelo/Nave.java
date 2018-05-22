@@ -9,8 +9,7 @@ import java.io.Serializable;
  * Clase Nave Esta es la plantilla para el objeto tipo Nave que será usado por
  * el usuario para moverse por la pantalla La nave mediante clics dispara un
  * proyectil que es uno de los atributos de esta Es la encargada de verificar
- * colisiones con pelotas, bonificaciones y disparar proyectiles.
- * 
+ * colisiones con pelotas, bonificaciones y disparar proyectiles.	
  * @author Javier Andres Torres, Maria Camila Lenis, Juan Sebastian Palma
  * @version 1.0
  */

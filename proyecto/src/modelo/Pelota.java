@@ -188,7 +188,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	/**
 	 * Método implementado de la interfaz Movible.<br>
 	 * Realiza el movimiento de la pelota aumentando su posicion en x y y en dX y dY.<br>
-	 * Verifica si la nueva posición en x y en y de la peloha hace que se salga de la pantalla y fija su 
+	 * Verifica si la nueva posición en x y en y de la pelota hace que se salga de la pantalla y fija su 
 	 * dX y dY en dirección contraria.<br>
 	 * <b>pre:</b>Los atributos dX, dY, X y Y han sido inicializados<br>
 	 * <b>post:</b>Se ha cambiado la posicion en x y en y en dX y dY<br>

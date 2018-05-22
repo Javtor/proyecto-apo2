@@ -85,7 +85,7 @@ public abstract class Bonificacion extends Sprite implements Colisionable{
 	/**
 	 * Este metodo sirve para verificar si el objeto del tipo bonificacion colisiona con un objeto 
 	 * que implementa la interfaz Colisionable, Y cambio el valor de su estado visible<br>
-	 * <b>post:</b> Se cambia a flaso el valor de la variable viisible<br>
+	 * <b>post:</b> Se cambia a falso el valor de la variable visible<br>
 	 */
 	@Override
 	public void colisionaCon(Colisionable c) {
