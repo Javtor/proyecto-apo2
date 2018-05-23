@@ -67,14 +67,6 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		}
 	}
 	/**
-	 * Verifica si la pelota es una hoja, es decir no tiene subarbol izquierdo y derecho<br>
-	 * <b>post:</b>Verifica si la pelota es una hoja<br>
-	 * @return False si tiene subarbol izquiero o derecho, True si ambos subarboles son null.
-	 */
-	public boolean esHoja() {
-		return izq == null && der == null;
-	}
-	/**
 	 * Recorre todo el arbol de pelotas en inorden verificando si existe alguna colisión entre las pelotas<br>
 	 * <b>post:</b>Se ha recorrido todo el árbol de pelotas en inorden<br>
 	 * <b>post:</b>Se ha retornado si existe alguna colisión en el arbol<br>
