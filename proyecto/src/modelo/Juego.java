@@ -293,20 +293,21 @@ public class Juego implements Serializable {
 	 * @throws IOException Si ocurre un error al momento de serializar
 	 */
 	public void guardarPartida() throws FileNotFoundException, IOException {
-		guardarNave();
-		guardarPelotas();
-		guardarJugadores();
-		guardarBonificaciones();
-		guardarDeco();
+		guardarNave(DIREC_NAVE);
+		guardarPelotas(DIREC_PELOTAS);
+		guardarJugadores(DIREC_JUGADORES);
+		guardarBonificaciones(DIREC_BONUS);
+		guardarDeco(DIREC_DECO);
 	}
 	/**
 	 * Serializa el árbol de jugadores a partir de la raiz.<br>
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado del árbol jugadores<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
+	 * @param direc Ruta del directorio donde desea guardar los jugadores. direc!=null, direc=""
 	 */
-	public void guardarJugadores() throws FileNotFoundException, IOException {
-		File file = new File(DIREC_JUGADORES);
+	public void guardarJugadores(String direc) throws FileNotFoundException, IOException {
+		File file = new File(direc);
 		if (file.exists())
 			file.delete();
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
@@ -318,9 +319,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado de la nave<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
+	 * @param direc Ruta del directorio donde desea guardar la nave. direc!=null, direc=""
 	 */
-	public void guardarNave() throws FileNotFoundException, IOException {
-		File file = new File(DIREC_NAVE);
+	public void guardarNave(String direc) throws FileNotFoundException, IOException {
+		File file = new File(direc);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(nave);
 		oos.close();
@@ -330,8 +332,9 @@ public class Juego implements Serializable {
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado del árbol pelotas<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
+	 * @param direc Ruta del directorio donde desea guardar el árbol de pelotas. direc!=null, direc=""
 	 */
-	public void guardarPelotas() throws FileNotFoundException, IOException {
+	public void guardarPelotas(String direc) throws FileNotFoundException, IOException {
 		File file = new File(DIREC_PELOTAS);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(raizPelota);
@@ -342,9 +345,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado de la lista de bonificaciones<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
+	 * @param direc Ruta del directorio donde desea guardar la lista de bonificaciones. direc!=null, direc=""
 	 */
-	public void guardarBonificaciones() throws FileNotFoundException, IOException {
-		File file = new File(DIREC_BONUS);
+	public void guardarBonificaciones(String direc) throws FileNotFoundException, IOException {
+		File file = new File(direc);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(primerBonus);
 		oos.close();
@@ -354,9 +358,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b>Se ha creado un archivo .txt con el serializado de las decoraciones<br>
 	 * @throws FileNotFoundException Si no se encuentra el File en el directorio
 	 * @throws IOException Si ocurre un error al momento de serializar
+	 * @param direc Ruta del directorio donde desea guardar la lista de decoraciones. direc!=null, direc=""
 	 */
-	public void guardarDeco() throws FileNotFoundException, IOException {
-		File file = new File(DIREC_DECO);
+	public void guardarDeco(String direc) throws FileNotFoundException, IOException {
+		File file = new File(direc);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(primeraDeco);
 		oos.close();
@@ -371,20 +376,21 @@ public class Juego implements Serializable {
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
 	 */
 	public void cargarPartida() throws FileNotFoundException, IOException, ClassNotFoundException {
-		recuperarPelotas();
-		recuperarNave();
-		recuperarJugadores();
-		recuperarBonus();
-		recuperarDeco();
+		recuperarPelotas(DIREC_PELOTAS);
+		recuperarNave(DIREC_NAVE);
+		recuperarJugadores(DIREC_JUGADORES);
+		recuperarBonus(DIREC_BONUS);
+		recuperarDeco(DIREC_DECO);
 	}
 	/**
 	 * Recupera la raiz del árbol Pelotas.<br>
 	 * <b>post:</b> el árbol de pelotas ha sido recuperado. raizPelota!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
+	 * @param direc Ruta del directorio donde desea recuperar el árbol de pelotas. direc!=null, direc=""
 	 */
-	public void recuperarPelotas() throws IOException, ClassNotFoundException {
-		File file = new File(DIREC_PELOTAS);
+	public void recuperarPelotas(String direc) throws IOException, ClassNotFoundException {
+		File file = new File(direc);
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
@@ -402,9 +408,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b> la lista de bonus ha sido recuperada. primerBonus!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
+	 * @param direc Ruta del directorio donde desea recuperar la lista de bonificaciones. direc!=null, direc=""
 	 */
-	public void recuperarBonus() throws IOException, ClassNotFoundException {
-		File file = new File(DIREC_BONUS);
+	public void recuperarBonus(String direc) throws IOException, ClassNotFoundException {
+		File file = new File(direc);
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
@@ -422,9 +429,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b> La lista de decoraciones ha sido recuperada. primeraDeco!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
+	 * @param direc Ruta del directorio donde desea recuperar la lista de decoraciones. direc!=null, direc=""
 	 */
-	public void recuperarDeco() throws IOException, ClassNotFoundException {
-		File file = new File(DIREC_DECO);
+	public void recuperarDeco(String direc) throws IOException, ClassNotFoundException {
+		File file = new File(direc);
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
@@ -442,9 +450,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b> la nave ha sido recuperada y su posicion pasa a ser la (0,0) de la pantalla<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
+	 * @param direc Ruta del directorio donde desea recuperar la nave. direc!=null, direc=""
 	 */
-	public void recuperarNave() throws IOException, ClassNotFoundException {
-		File file = new File(DIREC_NAVE);
+	public void recuperarNave(String direc) throws IOException, ClassNotFoundException {
+		File file = new File(direc);
 		boolean existe = file.exists() && file.isFile();
 
 		if (existe) {
@@ -465,9 +474,10 @@ public class Juego implements Serializable {
 	 * <b>post:</b> el árbol de jugadores ha sido recuperado. raizjugador!=null<br>
 	 * @throws IOException Si ocurre un error al momento de recuperarlo
 	 * @throws ClassNotFoundException Si no encuentra la clase de la que se quiere recuperar el objeto
+	 * @param direc Ruta del directorio donde desea recuperar los jugadores. direc!=null, direc=""
 	 */
-	public void recuperarJugadores() throws IOException, ClassNotFoundException {
-		File file = new File(DIREC_JUGADORES);
+	public void recuperarJugadores(String direc) throws IOException, ClassNotFoundException {
+		File file = new File(direc);
 		boolean existe = file.exists() && file.isFile();
 		if (existe) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
@@ -484,11 +494,13 @@ public class Juego implements Serializable {
 	 * Crea un archivo de texto con el nombre del jugador, el puntaje y el nivel actual del juego.<br>
 	 * <b>post:</b> Se ha creado un archivo de texto con la información del jugador actual
 	 * @throws FileNotFoundException Si no encuentra el directorio donde se crea el archivo
+	 * @param direc Ruta del directorio donde desea guardar el archivo de texto 
+	 * de los datos del jugador. direc!=null, direc=""
 	 */
-	public void guardarDatos() throws FileNotFoundException {
+	public void guardarDatos(String direc) throws FileNotFoundException {
 		jugador.setNivel(nivel);
 		jugador.setPuntaje(puntaje);
-		File archivo = new File(NOM_DATOS);
+		File archivo = new File(direc);
 		PrintWriter pw = new PrintWriter(archivo);
 		pw.println(jugador.getNickname());
 		pw.println("Puntaje:" + jugador.getPuntaje());
@@ -500,9 +512,11 @@ public class Juego implements Serializable {
 	 * jugador, puntaje y nivel de la partida.<br>
 	 * <b>post:</b>Se ha recuperado la informacion del jugador de la ultima partida guardada<br>
 	 * @throws IOException Si ocurre algun error al momento de recuperar el archivo
+	 * @param direc Ruta del directorio donde desea recuperar el archivo de texto 
+	 * de los datos del jugador. direc!=null, direc=""
 	 */
-	public void cargarDatos() throws IOException {
-		File archivo = new File(NOM_DATOS);
+	public void cargarDatos(String direc) throws IOException {
+		File archivo = new File(direc);
 		boolean existe = archivo.exists() && archivo.isFile();
 		if (existe) {
 			BufferedReader read = new BufferedReader(new FileReader(archivo));
@@ -528,7 +542,7 @@ public class Juego implements Serializable {
 		if (e.getKeyCode() != KeyEvent.VK_G) {
 			nave.keyPressed(e);
 		} else {
-			guardarDatos();
+			guardarDatos(NOM_DATOS);
 			guardarPartida();
 		}
 	}
@@ -750,7 +764,7 @@ public class Juego implements Serializable {
 			jugando = false;
 			cancionFondo.stop();
 			try {
-				guardarJugadores();
+				guardarJugadores(DIREC_JUGADORES);
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 

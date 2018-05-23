@@ -98,7 +98,7 @@ public class Ventana extends JFrame {
 		}
 		juego = new Juego();
 		try {
-			juego.recuperarJugadores();
+			juego.recuperarJugadores(Juego.DIREC_JUGADORES);
 		} catch (ClassNotFoundException | IOException e) {
 			System.out.println("Error al recuperar jugadores");
 		}
@@ -390,7 +390,7 @@ public class Ventana extends JFrame {
 	public void mostrarInicio() {
 		juego = new Juego();
 		try {
-			juego.recuperarJugadores();
+			juego.recuperarJugadores(Juego.DIREC_JUGADORES);
 		} catch (ClassNotFoundException | IOException e) {
 
 		}
@@ -432,7 +432,7 @@ public class Ventana extends JFrame {
 	 */
 	public void cargarDatos() {
 		try {
-			juego.cargarDatos();
+			juego.cargarDatos(Juego.NOM_DATOS);
 			juego.cargarPartida();
 			JOptionPane.showMessageDialog(this, "El juego se ha cargado correctamente");
 			iniciarPartida(true);
