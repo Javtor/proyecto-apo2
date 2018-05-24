@@ -335,7 +335,7 @@ public class Juego implements Serializable {
 	 * @param direc Ruta del directorio donde desea guardar el árbol de pelotas. direc!=null, direc=""
 	 */
 	public void guardarPelotas(String direc) throws FileNotFoundException, IOException {
-		File file = new File(DIREC_PELOTAS);
+		File file = new File(direc);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
 		oos.writeObject(raizPelota);
 		oos.close();
