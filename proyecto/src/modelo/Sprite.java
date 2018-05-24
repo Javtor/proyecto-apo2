@@ -58,8 +58,8 @@ public abstract class Sprite implements Serializable{
 		alto = img.getHeight(null);
 	}
 	/**
-	 * Este metodo tiene la funcion de retornar la ruta de laa imagen del Sprite<br>
-	 * @return Retorna un String que contiene la ruta de la imagen
+	 * Este metodo tiene la funcion de retornar la imagen del Sprite<br>
+	 * @return Retorna la imagen del sprite
 	 */
 	public Image getImagen() {
 		return new ImageIcon(imagen).getImage();

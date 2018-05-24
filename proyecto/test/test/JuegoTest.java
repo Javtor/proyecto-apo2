@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
+import modelo.Bonificacion;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.JugadorRepetidoException;
@@ -86,11 +87,14 @@ class JuegoTest {
 	
 	void setUpEscenario5() {
 		juego = new Juego();
-		
 	}
 	
+	void setUpEscenario6() {
+		juego = new Juego();
+		juego.crearBonus();
+	}
 	
-	//PRUEBASSSSSS
+	//PRUEBAS
 	
 
 	@Test
@@ -266,6 +270,19 @@ class JuegoTest {
 		}
 	}
 	
-	
+	@Test
+	void testCrearBonus() {
+		setUpEscenario5();
+		juego.crearBonus();
+		Bonificacion p = juego.getBonus().get(0);
+		assertTrue(p != null);
+		assertTrue(p.getSiguiente() == null);
+		
+		setUpEscenario6();
+		juego.crearBonus();
+		p = juego.getBonus().get(0);
+		assertTrue(p.getSiguiente() != null);
+		assertTrue(p.getSiguiente().getAnterior() == p);
+	}
 
 }
