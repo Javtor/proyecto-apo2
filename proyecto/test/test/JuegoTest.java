@@ -94,6 +94,13 @@ class JuegoTest {
 		juego.crearBonus();
 	}
 	
+	void setUpEscenario7() {
+		juego = new Juego();
+		juego.crearBonus();
+		juego.crearBonus();
+		juego.crearBonus();
+	}
+	
 	//PRUEBAS
 	
 
@@ -283,6 +290,18 @@ class JuegoTest {
 		p = juego.getBonus().get(0);
 		assertTrue(p.getSiguiente() != null);
 		assertTrue(p.getSiguiente().getAnterior() == p);
+	}
+	
+	@Test
+	void testGetBonus() {
+		setUpEscenario7();
+		ArrayList<Bonificacion> b = juego.getBonus();
+		assertTrue(b.get(0).getSiguiente() == b.get(1));
+		assertTrue(b.get(1).getAnterior() == b.get(0));
+		
+		setUpEscenario5();
+		b = juego.getBonus();
+		assertTrue(b.isEmpty());
 	}
 
 }

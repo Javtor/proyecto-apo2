@@ -16,7 +16,10 @@ class BonificacionTest {
 	
 	private void setupEscenario1() {
 		bono = new BonoVida();
+		bono.setX(50);
+		bono.setY(50);
 	}
+	
 	
 	@Test
 	void testColisionaCon() {
@@ -34,6 +37,21 @@ class BonificacionTest {
 		assertTrue(bono.esVisible());
 		bono.colisionaCon(new Pelota(0));
 		assertFalse(bono.esVisible());
+	}
+	
+	@Test
+	void testHayColision() {
+		setupEscenario1();
+		Nave n = new Nave();
+		n.setX(50);
+		n.setY(50);
+		assertTrue(bono.hayColision(n));
+		
+		setupEscenario1();
+		n = new Nave();
+		n.setX(100);
+		n.setY(50);
+		assertFalse(bono.hayColision(n));
 	}
 
 }
