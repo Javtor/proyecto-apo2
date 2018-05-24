@@ -83,6 +83,15 @@ class JuegoTest {
 		}
 		
 	}
+	
+	void setUpEscenario5() {
+		juego = new Juego();
+		
+	}
+	
+	
+	//PRUEBASSSSSS
+	
 
 	@Test
 	void testAddJugador1() {
