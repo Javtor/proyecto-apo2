@@ -150,6 +150,14 @@ public class Juego implements Serializable {
 	public Jugador getRaizJugador() {
 		return raizjugador;
 	}
+	/**
+	 * Getter de la primera decoración de la lista<br>
+	 * <b>post:</b> Devuelve la primera decoración de la lista <br> 
+	 * @return primeraDeco=null || primeraDeco instanceOf Decoración
+	 */
+	public Decoracion getPrimeradeco() {
+		return primeraDeco;
+	}
 
 	/**
 	 * Getter del jugador<br>
