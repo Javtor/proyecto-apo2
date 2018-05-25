@@ -2,9 +2,15 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import javax.swing.ImageIcon;
+
 import org.junit.jupiter.api.Test;
 
 import modelo.Bonificacion;
+import modelo.BonoProyFuerte;
+import modelo.BonoProyNormal;
+import modelo.BonoProyRapido;
+import modelo.BonoPuntos;
 import modelo.BonoVida;
 import modelo.Nave;
 import modelo.Pelota;
@@ -18,6 +24,20 @@ class BonificacionTest {
 		bono = new BonoVida();
 		bono.setX(50);
 		bono.setY(50);
+	}
+	
+	@Test
+	void testBonificacionTipo() {
+		bono = new BonoProyFuerte();
+		assertEquals(bono.getImagen(), new ImageIcon(BonoProyFuerte.DIREC).getImage());
+		bono = new BonoProyNormal();
+		assertEquals(bono.getImagen(), new ImageIcon(BonoProyNormal.DIREC).getImage());
+		bono = new BonoProyRapido();
+		assertEquals(bono.getImagen(), new ImageIcon(BonoProyRapido.DIREC).getImage());
+		bono = new BonoPuntos();
+		assertEquals(bono.getImagen(), new ImageIcon(BonoPuntos.DIREC).getImage());
+		bono = new BonoVida();
+		assertEquals(bono.getImagen(), new ImageIcon(BonoVida.DIREC).getImage());
 	}
 	
 	
