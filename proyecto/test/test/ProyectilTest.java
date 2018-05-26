@@ -5,11 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import javax.swing.ImageIcon;
 
 import org.junit.jupiter.api.Test;
-
-import modelo.BonoProyFuerte;
-import modelo.BonoProyNormal;
-import modelo.BonoProyRapido;
-import modelo.BonoPuntos;
 import modelo.BonoVida;
 import modelo.Pelota;
 import modelo.Proyectil;
@@ -53,7 +48,6 @@ public class ProyectilTest {
 		setupEscenario1();
 		p.disparar(20,20,25, 24);
 	}
-<<<<<<< HEAD
 	
 	@Test
 	void testMover1() {
@@ -117,7 +111,6 @@ public class ProyectilTest {
 		p.colisionaCon(new BonoVida());
 		assertTrue(p.esVisible());
 	}
-=======
->>>>>>> 4e1d312d482a0a6b864b261e740106e406f3f120
+
 
 }
