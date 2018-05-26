@@ -5,7 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import javax.swing.ImageIcon;
 
 import org.junit.jupiter.api.Test;
-
+import modelo.BonoProyFuerte;
+import modelo.BonoProyNormal;
+import modelo.BonoProyRapido;
+import modelo.BonoPuntos;
 import modelo.BonoVida;
 import modelo.Pelota;
 import modelo.Proyectil;
