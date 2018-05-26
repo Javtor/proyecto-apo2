@@ -91,6 +91,7 @@ class NaveTest {
 		p.setX(50);
 		p.setY(50);
 		assertTrue(nave.hayColision(p));
+		assertTrue(true);
 		
 		setupEscenario3();
 		p = new Pelota(0);
