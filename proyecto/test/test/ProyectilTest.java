@@ -38,6 +38,8 @@ public class ProyectilTest {
 	void setUpEscenario4() {
 		p = new ProyectilNormal();
 		p.setVisible(true);
+		p.setX(50);
+		p.setY(50);
 	}
 	
 	@Test
@@ -213,6 +215,20 @@ public class ProyectilTest {
 		p.colisionaCon(new BonoVida());
 		assertTrue(p.esVisible());
 	}
+	
+	@Test
+	void testHayColision() {
+		setUpEscenario4();
+		Pelota pelota = new Pelota(1);
+		pelota.setX(50);
+		pelota.setY(50);
+		assertTrue(p.hayColision(pelota));
+		ProyectilNormal pro = new ProyectilNormal();
+		pro.setX(200);
+		pro.setY(200);
+		assertTrue(!p.hayColision(pro));
+	}
+	
 	
 	
 
