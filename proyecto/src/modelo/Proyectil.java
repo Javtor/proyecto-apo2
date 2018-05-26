@@ -43,6 +43,14 @@ public abstract class Proyectil extends SpriteMovimiento implements Colisionable
 		return danio;
 	}
 	/**
+	 * Getter de la velocidad<br>
+	 * <b>post:</b>Devuelve la velocidad del proyectil<br>
+	 * @return La velocidad que posee el proyectil
+	 */
+	public int getVelocidad() {
+		return velocidad;
+	}
+	/**
 	 * Setter del daño<br>
 	 * <b>post:</b>Asigna el daño al poryectil<br>
 	 * @param danio El nuevo daño que tendrá el proyectil. danio!=null, danio debe ser mayor a 0.
