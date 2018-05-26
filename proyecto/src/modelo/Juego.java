@@ -947,12 +947,15 @@ public class Juego implements Serializable {
 	public void agregarDecoracion(Decoracion d) {
 		if (primeraDeco == null) {
 			primeraDeco = d;
+			primeraDeco.setAnterior(d);
+			primeraDeco.setSiguiente(d);
 		} else {
 			Decoracion actual = primeraDeco;
-			while (actual.darSiguiente() != null) {
+			while (actual.darSiguiente() != primeraDeco) {
 				actual = actual.darSiguiente();
 			}
 			actual.setSiguiente(d);
+			d.setSiguiente(primeraDeco);
 		}
 	}
 	/**
@@ -964,7 +967,7 @@ public class Juego implements Serializable {
 		ArrayList<Decoracion> decos = new ArrayList<Decoracion>();
 		if (primeraDeco != null) {
 			Decoracion actual = primeraDeco;
-			while (actual.darSiguiente() != null) {
+			while (actual.darSiguiente() != primeraDeco) {
 				decos.add(actual);
 				actual = actual.darSiguiente();
 			}

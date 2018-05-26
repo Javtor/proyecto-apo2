@@ -73,7 +73,6 @@ public class Decoracion extends Sprite{
 	 */
 	public void setAnterior(Decoracion a) {
 		anterior = a;
-		a.setSiguiente(this);
 	}
 	
 }
