@@ -11,6 +11,7 @@ import modelo.BonoProyNormal;
 import modelo.BonoProyRapido;
 import modelo.BonoPuntos;
 import modelo.BonoVida;
+import modelo.Pelota;
 import modelo.Proyectil;
 import modelo.ProyectilFuerte;
 import modelo.ProyectilNormal;
@@ -33,6 +34,11 @@ public class ProyectilTest {
 	void setUpEscenario3() {
 		p = new ProyectilRapido();
 		p.setVisible(false);
+	}
+	
+	void setUpEscenario4() {
+		p = new ProyectilNormal();
+		p.setVisible(true);
 	}
 	
 	@Test
@@ -146,5 +152,67 @@ public class ProyectilTest {
 		assertTrue(p.getDX()==0 && p.getDY()==-34);
 	}
 	
+	@Test
+	void testMover1() {
+		setUpEscenario4();
+		p.setX(-50);
+		p.setY(10);
+		p.mover();
+		assertTrue(p.getDX()==0 && p.getDY()==0);
+		assertTrue(!p.esVisible());
+	}
+	
+	@Test
+	void testMover2() {
+		setUpEscenario4();
+		p.setX(10);
+		p.setY(-50);
+		p.mover();
+		assertTrue(p.getDX()==0 && p.getDY()==0);
+		assertTrue(!p.esVisible());
+	}
+	
+	@Test
+	void testMover3() {
+		setUpEscenario4();
+		p.setX(810);
+		p.setY(10);
+		p.mover();
+		assertTrue(p.getDX()==0 && p.getDY()==0);
+		assertTrue(!p.esVisible());
+	}
+	
+	@Test
+	void testMover4() {
+		setUpEscenario4();
+		p.setX(30);
+		p.setY(610);
+		p.mover();
+		assertTrue(p.getDX()==0 && p.getDY()==0);
+		assertTrue(!p.esVisible());
+	}
+	
+	@Test
+	void testMover5() {
+		setUpEscenario4();
+		p.setX(50);
+		p.setY(50);
+		p.mover();
+		assertTrue(p.esVisible());
+	}
+	
+	@Test
+	void testColisionaCon1() {
+		setUpEscenario4();
+		p.colisionaCon(new Pelota(1));
+		assertTrue(!p.esVisible());
+	}
+	
+	@Test
+	void testColisionaCon2() {
+		setUpEscenario4();
+		p.colisionaCon(new BonoVida());
+		assertTrue(p.esVisible());
+	}
 
 }
