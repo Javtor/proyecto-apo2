@@ -111,6 +111,8 @@ public class ProyectilTest {
 		p.colisionaCon(new BonoVida());
 		assertTrue(p.esVisible());
 	}
+	
+	
 
 
 }
