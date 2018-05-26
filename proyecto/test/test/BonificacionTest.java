@@ -39,8 +39,6 @@ class BonificacionTest {
 	}
 	
 	
-	
-	
 	@Test
 	void testColisionaCon() {
 		setupEscenario1();
