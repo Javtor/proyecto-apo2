@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import modelo.Bonificacion;
+import modelo.Decoracion;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.JugadorRepetidoException;
 import modelo.NombreNoExisteException;
+import modelo.Pelota;
+import modelo.ProyectilRapido;
 import modelo.PuntajeNoExisteException;
 
 class JuegoTest {
@@ -99,6 +102,73 @@ class JuegoTest {
 		juego.crearBonus();
 		juego.crearBonus();
 		juego.crearBonus();
+	}
+	
+	void setUpEscenario8() {
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		
+		juego.getNave().disminuirVida();
+		juego.getNave().disminuirVida();
+		juego.getNave().setProyectil(new ProyectilRapido());	
+	}
+	
+	void setUpEscenario9() {
+		juego.insertarPelota(new Pelota(1));
+		juego.insertarPelota(new Pelota(1));
+		juego.insertarPelota(new Pelota(1));
+		juego.insertarPelota(new Pelota(1));
+	}
+	
+	void setUpEscenario10() {
+		juego.crearBonus();
+		juego.crearBonus();
+		juego.crearBonus();
+		juego.crearBonus();
+	}
+	
+	void setUpEscenario11() {
+		juego.agregarDecoracion(new Decoracion());
+		juego.agregarDecoracion(new Decoracion());
+		juego.agregarDecoracion(new Decoracion());
+	}
+	
+	void setUpEscenario12() {
+		try {
+		juego.getRaizJugador().setNickname("Joan");
+		juego.getRaizJugador().setNivel(1);
+		juego.getRaizJugador().setPuntaje(10);
+		juego.addJugador();
+		
+		jugador = juego.getJugador();
+		jugador.setNickname("Julian");
+		jugador.setNivel(3);
+		jugador.setPuntaje(100);
+		juego.addJugador();
+		
+		juego.setJugador(new Jugador ("Javier"));
+		jugador = juego.getJugador();
+		jugador.setNivel(4);
+		jugador.setPuntaje(200);
+		juego.addJugador();
+		
+		juego.setJugador(new Jugador ("Alejandro"));
+		jugador = juego.getJugador();
+		jugador.setNivel(2);
+		jugador.setPuntaje(50);
+		juego.addJugador();
+		
+		juego.setJugador(new Jugador ("Manyolml"));
+		jugador = juego.getJugador();
+		jugador.setNivel(7);
+		jugador.setPuntaje(500);
+		juego.addJugador();
+		}catch(JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
