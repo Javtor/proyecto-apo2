@@ -1,6 +1,8 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +11,7 @@ import modelo.Decoracion;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.JugadorRepetidoException;
+import modelo.Nave;
 import modelo.NombreNoExisteException;
 import modelo.Pelota;
 import modelo.ProyectilRapido;
@@ -114,6 +117,13 @@ class JuegoTest {
 		juego.getNave().disminuirVida();
 		juego.getNave().disminuirVida();
 		juego.getNave().setProyectil(new ProyectilRapido());	
+		
+		try {
+			juego.guardarNave("./test/datatest/nave.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	void setUpEscenario9() {
@@ -121,6 +131,13 @@ class JuegoTest {
 		juego.insertarPelota(new Pelota(1));
 		juego.insertarPelota(new Pelota(1));
 		juego.insertarPelota(new Pelota(1));
+		
+		try {
+			juego.guardarNave("./test/datatest/pelotas.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	void setUpEscenario10() {
@@ -128,12 +145,26 @@ class JuegoTest {
 		juego.crearBonus();
 		juego.crearBonus();
 		juego.crearBonus();
+		
+		try {
+			juego.guardarNave("./test/datatest/bonus.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	void setUpEscenario11() {
 		juego.agregarDecoracion(new Decoracion());
 		juego.agregarDecoracion(new Decoracion());
 		juego.agregarDecoracion(new Decoracion());
+		
+		try {
+			juego.guardarNave("./test/datatest/deco.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	void setUpEscenario12() {
@@ -167,6 +198,13 @@ class JuegoTest {
 		jugador.setPuntaje(500);
 		juego.addJugador();
 		}catch(JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			juego.guardarNave("./test/datatest/users.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -374,6 +412,31 @@ class JuegoTest {
 		setUpEscenario5();
 		b = juego.getBonus();
 		assertTrue(b.isEmpty());
+	}
+	
+	@Test
+	void testRecuperarNave() {
+		setUpEscenario8();
+		try {
+			juego.recuperarNave("./test/datatest/nave.txt");
+		} catch (ClassNotFoundException | IOException e) {
+			fail("No deberia fallar");
+		}
+		
+		Nave nave = juego.getNave();
+		assertTrue(nave.getVidas()==2);
+		assertTrue(nave.getProyectil() instanceof ProyectilRapido);
+	}
+	
+	@Test
+	void testRecuperarNaveError() {
+		setUpEscenario8();
+		try {
+			juego.recuperarNave("./datatest/nave.txt");
+			fail("Deberia fallar");
+		} catch (ClassNotFoundException | IOException e) {
+			
+		}
 	}
 
 }
