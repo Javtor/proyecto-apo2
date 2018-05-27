@@ -169,13 +169,9 @@ class JuegoTest {
 	
 	void setUpEscenario12() {
 		try {
-		juego.getRaizJugador().setNickname("Joan");
-		juego.getRaizJugador().setNivel(1);
-		juego.getRaizJugador().setPuntaje(10);
 		juego.addJugador();
 		
-		jugador = juego.getJugador();
-		jugador.setNickname("Julian");
+		juego.setJugador(new Jugador("Julian"));
 		jugador.setNivel(3);
 		jugador.setPuntaje(100);
 		juego.addJugador();
@@ -204,7 +200,6 @@ class JuegoTest {
 		try {
 			juego.guardarJugadores("./test/datatest/users.txt");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -500,6 +495,32 @@ class JuegoTest {
 		setUpEscenario11();
 		try {
 			juego.recuperarDeco("./datatest/deco.txt");
+			fail("Deberia fallar");
+		} catch (ClassNotFoundException | IOException e) {
+			
+		}
+	}
+	
+	@Test
+	void testRecuperarJugadores() {
+		setUpEscenario12();
+		try {
+			juego.recuperarJugadores("./test/datatest/users.txt");
+		} catch (ClassNotFoundException | IOException e) {
+			fail("No deberia fallar");
+		}
+		System.out.println(juego.getRaizJugador().toString());
+		assertEquals(juego.getRaizJugador().getNickname(), "Joan");
+		assertTrue(juego.getRaizJugador().getNivel()== 1);
+		assertTrue(juego.getRaizJugador().getPuntaje()== 10);
+		assertTrue(juego.toArrayListJugador().size()==5);
+	}
+	
+	@Test
+	void testRecuperarJugadoresError() {
+		setUpEscenario12();
+		try {
+			juego.recuperarJugadores("./datatest/users.txt");
 			fail("Deberia fallar");
 		} catch (ClassNotFoundException | IOException e) {
 			
