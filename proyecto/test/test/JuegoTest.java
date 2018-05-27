@@ -269,10 +269,52 @@ class JuegoTest {
 		juego.aumentarPuntaje();
 	}
 	
+	void setUpEscenario19() {
+		juego = new Juego();
+		juego.setJugador(new Jugador("Armando"));
+	}
 	
+	void setUpEscenario20() {
+		setUpEscenario19();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		juego.subirNivel();
+		juego.subirNivel();
+		juego.subirNivel();
+	}
+	
+	void setUpEscenario21() {
+		setUpEscenario19();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		
+		juego.getNave().disminuirVida();
+		juego.getNave().disminuirVida();
+		juego.getNave().setProyectil(new ProyectilRapido());	
+		
+		juego.subirNivel();
+		juego.bonusPuntaje();
+		juego.bonusPuntaje();
+		
+		try {
+			juego.guardarNave("./test/datatest/nave.txt");
+			juego.guardarPelotas("./test/datatest/pelotas.txt");
+			juego.guardarBonificaciones("./test/datatest/bonus.txt");
+			juego.guardarDeco("./test/datatest/deco.txt");
+			juego.guardarDatos("./test/datatest/data.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	//PRUEBAS
-	
 
 	@Test
 	void testAddJugador1() {
@@ -634,6 +676,58 @@ class JuegoTest {
 		assertTrue(juego.getPuntaje()==10);
 	}
 	
+	@Test
+	void testIniciarJuego1() {
+		setUpEscenario19();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		
+		assertTrue(juego.getNave()!=null);
+		assertTrue(juego.getPelotas().size()==3);
+		assertTrue(juego.isJugando());
+		assertTrue(juego.darDecoraciones().size()==5);
+	}
 	
+	@Test
+	void testIniciarJuego2() {
+		setUpEscenario20();
+		assertTrue(juego.getNave()!=null);
+		assertTrue(juego.getPelotas().size()==4);
+		assertTrue(juego.isJugando());
+	}
+	
+	@Test
+	void testIniciarJuego3() {
+		setUpEscenario21();
+		Nave nav = juego.getNave();
+		juego = new Juego();
+		try {
+			juego.recuperarNave("./test/datatest/nave.txt");
+			juego.recuperarPelotas("./test/datatest/pelotas.txt");
+			juego.recuperarBonus("./test/datatest/bonus.txt");
+			juego.recuperarDeco("./test/datatest/deco.txt");
+			juego.cargarDatos("./test/datatest/data.txt");
+		} catch (ClassNotFoundException | IOException e) {
+			fail("No deberia fallar");
+		}
+		
+		try {
+			juego.iniciarJuego(true);
+		} catch (JugadorRepetidoException e) {
+			fail("No deberia fallar");
+		}
+		
+		assertTrue(juego.getNave().getProyectil()==nav.getProyectil());
+		assertTrue(juego.getNave().getVidas()==nav.getVidas());
+		assertTrue(juego.getPelotas().size()==3);
+		assertTrue(juego.getPuntaje()==20);
+		assertTrue(juego.getJugador().getNivel()==2);
+		
+		
+		
+	}
 
 }
