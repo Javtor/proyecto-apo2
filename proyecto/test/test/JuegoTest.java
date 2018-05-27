@@ -311,7 +311,17 @@ class JuegoTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	void setUpEscenario22() {
+		juego = new Juego();
+		juego.setJugador(new Jugador("Camila"));
+		try {
+			juego.addJugador();
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		juego.setJugador(new Jugador("Camila"));
 	}
 	
 	//PRUEBAS
@@ -713,21 +723,27 @@ class JuegoTest {
 		} catch (ClassNotFoundException | IOException e) {
 			fail("No deberia fallar");
 		}
-		
 		try {
 			juego.iniciarJuego(true);
 		} catch (JugadorRepetidoException e) {
 			fail("No deberia fallar");
 		}
-		
-		assertTrue(juego.getNave().getProyectil()==nav.getProyectil());
+		assertTrue(juego.getNave().getProyectil() instanceof ProyectilRapido);
 		assertTrue(juego.getNave().getVidas()==nav.getVidas());
 		assertTrue(juego.getPelotas().size()==3);
 		assertTrue(juego.getPuntaje()==20);
-		assertTrue(juego.getJugador().getNivel()==2);
-		
-		
-		
+		assertTrue(juego.getJugador().getNivel()==2);		
+	}
+	
+	@Test
+	void testIniciarJuego4() {
+		setUpEscenario22();
+		try {
+			juego.iniciarJuego(false);
+			fail("Deberia fallar");
+		} catch (JugadorRepetidoException e) {
+
+		}
 	}
 
 }
