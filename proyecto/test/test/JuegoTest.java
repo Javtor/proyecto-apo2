@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
@@ -201,6 +202,27 @@ class JuegoTest {
 		try {
 			juego.guardarJugadores("./test/datatest/users.txt");
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void setUpEscenario13() {
+		juego = new Juego();
+		juego.setJugador(new Jugador("Javier"));
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		juego.aumentarPuntaje();
+		juego.aumentarPuntaje();
+		juego.aumentarPuntaje();
+		juego.subirNivel();
+		juego.subirNivel();
+		
+		try {
+			juego.guardarDatos("./test/datatest/data.txt");
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -510,7 +532,6 @@ class JuegoTest {
 		} catch (ClassNotFoundException | IOException e) {
 			fail("No deberia fallar");
 		}
-		System.out.println(juego.getRaizJugador().toString());
 		assertTrue(juego.toArrayListJugador().size()==5);
 		assertEquals(juego.getRaizJugador().getNickname(), "Joan");
 		assertTrue(juego.getRaizJugador().getNivel()== 1);
@@ -527,6 +548,20 @@ class JuegoTest {
 		} catch (ClassNotFoundException | IOException e) {
 			
 		}
+	}
+	
+	@Test
+	void testRecuperarDatos() {
+		setUpEscenario13();
+		try {
+			juego.cargarDatos("./test/datatest/data.txt");
+		} catch (IOException e) {
+			fail("No deberia fallar");
+		}
+		
+		assertEquals(juego.getJugador().getNickname(), "Javier");
+		assertEquals(juego.getJugador().getPuntaje(), 15);
+		assertEquals(juego.getJugador().getNivel(), 3);
 	}
 	
 	

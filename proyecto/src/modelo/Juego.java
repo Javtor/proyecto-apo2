@@ -533,7 +533,9 @@ public class Juego implements Serializable {
 			String[] puntuacion = read.readLine().split(":");
 			jugador.setNickname(usuario);
 			puntaje = Integer.parseInt(level[1]);
+			jugador.setPuntaje(puntaje);
 			nivel = Integer.parseInt(puntuacion[1]);
+			jugador.setNivel(nivel);
 			read.close();
 		} else {
 			throw new FileNotFoundException("No se ha encontrado el archivo");
