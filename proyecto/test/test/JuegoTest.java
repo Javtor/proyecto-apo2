@@ -171,15 +171,16 @@ class JuegoTest {
 		try {
 		juego.addJugador();
 		
-		juego.setJugador(new Jugador("Julian"));
-		jugador.setNivel(3);
-		jugador.setPuntaje(100);
+		Jugador j = new Jugador("Julian");
+		j.setNivel(4);
+		j.setPuntaje(200);
+		juego.setJugador(j);
 		juego.addJugador();
 		
 		juego.setJugador(new Jugador ("Javier"));
 		jugador = juego.getJugador();
-		jugador.setNivel(4);
-		jugador.setPuntaje(200);
+		jugador.setNivel(3);
+		jugador.setPuntaje(100);
 		juego.addJugador();
 		
 		juego.setJugador(new Jugador ("Alejandro"));
@@ -510,10 +511,11 @@ class JuegoTest {
 			fail("No deberia fallar");
 		}
 		System.out.println(juego.getRaizJugador().toString());
+		assertTrue(juego.toArrayListJugador().size()==5);
 		assertEquals(juego.getRaizJugador().getNickname(), "Joan");
 		assertTrue(juego.getRaizJugador().getNivel()== 1);
-		assertTrue(juego.getRaizJugador().getPuntaje()== 10);
-		assertTrue(juego.toArrayListJugador().size()==5);
+		assertTrue(juego.getRaizJugador().getPuntaje()== 100);
+		
 	}
 	
 	@Test
