@@ -227,6 +227,29 @@ class JuegoTest {
 		}
 	}
 	
+	void setUpEscenario14() {
+		juego = new Juego();
+		juego.setJugador(new Jugador("Camila"));
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void setUpEscenario15() {
+		juego = new Juego();
+		juego.setJugador(new Jugador("Camila"));
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			e.printStackTrace();
+		}
+		juego.subirNivel();
+		juego.subirNivel();
+		juego.subirNivel();
+	}
+	
 	
 	
 	//PRUEBAS
@@ -562,6 +585,14 @@ class JuegoTest {
 		assertEquals(juego.getJugador().getNickname(), "Javier");
 		assertEquals(juego.getJugador().getPuntaje(), 15);
 		assertEquals(juego.getJugador().getNivel(), 3);
+	}
+	
+	@Test
+	void testSubirNivel() {
+		setUpEscenario14();
+		assertTrue(juego.getPelotas().size()==3);
+		setUpEscenario15();
+		assertTrue(juego.getPelotas().size()==4);
 	}
 	
 	
