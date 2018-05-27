@@ -73,6 +73,14 @@ public class Nave extends SpriteMovimiento implements Colisionable {
 	public Proyectil getProyectil() {
 		return this.proyectil;
 	}
+	/**
+	 * Setter del atributo Proyectil 
+	 * <b>post:</b>Se asigna un nuevo Proyectil a la nave<br>
+	 * @param proyectil Nuevo proyectil a asignar. proyectil!=null.
+	 */
+	public void setProyectil(Proyectil proyectil) {
+		this.proyectil=proyectil;
+	}
 
 	/**
 	 * Getter del atributo vidas <b>post:</b>Devuelve el numero de vidas que tiene
