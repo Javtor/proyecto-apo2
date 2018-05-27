@@ -250,6 +250,25 @@ class JuegoTest {
 		juego.subirNivel();
 	}
 	
+	void setUpEscenario16() {
+		juego = new Juego();
+		juego.aumentarPuntaje();
+		juego.aumentarPuntaje();
+	}
+	
+	void setUpEscenario17() {
+		juego = new Juego();
+		juego.aumentarPuntaje();
+		juego.aumentarPuntaje();
+		juego.aumentarPuntaje();
+		juego.aumentarPuntaje();
+	}
+	
+	void setUpEscenario18() {
+		juego = new Juego();
+		juego.aumentarPuntaje();
+	}
+	
 	
 	
 	//PRUEBAS
@@ -593,6 +612,26 @@ class JuegoTest {
 		assertTrue(juego.getPelotas().size()==3);
 		setUpEscenario15();
 		assertTrue(juego.getPelotas().size()==4);
+	}
+	
+	@Test
+	void testBonusPuntaje() {
+		setUpEscenario16();
+		juego.bonusPuntaje();
+		assertTrue(juego.getPuntaje()==20);
+		setUpEscenario17();
+		juego.bonusPuntaje();
+		assertTrue(juego.getPuntaje()==30);
+	}
+	
+	@Test
+	void testAumentarPuntaje() {
+		setUpEscenario16();
+		juego.aumentarPuntaje();
+		assertTrue(juego.getPuntaje()==15);
+		setUpEscenario18();
+		juego.aumentarPuntaje();
+		assertTrue(juego.getPuntaje()==10);
 	}
 	
 	
