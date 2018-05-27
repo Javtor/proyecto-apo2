@@ -482,5 +482,30 @@ class JuegoTest {
 			
 		}
 	}
+	
+	@Test
+	void testRecuperarDecoraciones() {
+		setUpEscenario11();
+		try {
+			juego.recuperarDeco("./test/datatest/deco.txt");
+		} catch (ClassNotFoundException | IOException e) {
+			fail("No deberia fallar");
+		}
+		
+		assertTrue(juego.darDecoraciones().size()==3);
+	}
+	
+	@Test
+	void testRecuperarDecoracionesError() {
+		setUpEscenario11();
+		try {
+			juego.recuperarDeco("./datatest/deco.txt");
+			fail("Deberia fallar");
+		} catch (ClassNotFoundException | IOException e) {
+			
+		}
+	}
+	
+	
 
 }
