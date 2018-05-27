@@ -977,5 +977,8 @@ public class Juego implements Serializable {
 		}
 		return decos;
 	}
-
+	public Pelota darRaizPelota() {
+		return raizPelota;
+		
+	}
 }

@@ -207,5 +207,12 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 		int p2 = (der==null) ? 0 : der.darPeso();
 		return 1+p1+p2;
 	}
+	public int darVida() {
+		return vida;
+	}
+	public void setVida(int v) {
+		vida=v;
+	}
+
 
 }
