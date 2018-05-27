@@ -101,6 +101,8 @@ class JuegoTest {
 		juego.crearBonus();
 	}
 	
+	
+	
 	//PRUEBAS
 	
 

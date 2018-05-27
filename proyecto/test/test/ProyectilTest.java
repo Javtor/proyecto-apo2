@@ -229,6 +229,4 @@ public class ProyectilTest {
 		assertTrue(!p.hayColision(pro));
 	}
 	
-	
-
 }
