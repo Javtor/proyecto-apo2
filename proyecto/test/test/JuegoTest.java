@@ -133,7 +133,7 @@ class JuegoTest {
 		juego.insertarPelota(new Pelota(1));
 		
 		try {
-			juego.guardarNave("./test/datatest/pelotas.txt");
+			juego.guardarPelotas("./test/datatest/pelotas.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -433,6 +433,28 @@ class JuegoTest {
 		setUpEscenario8();
 		try {
 			juego.recuperarNave("./datatest/nave.txt");
+			fail("Deberia fallar");
+		} catch (ClassNotFoundException | IOException e) {
+			
+		}
+	}
+	
+	@Test
+	void testRecuperarPelotas() {
+		setUpEscenario9();
+		try {
+			juego.recuperarPelotas("./test/datatest/pelotas.txt");
+		} catch (ClassNotFoundException | IOException e) {
+			fail("No deberia fallar");
+		}
+		assertTrue(juego.getPelotas().size()==4);
+	}
+	
+	@Test
+	void testRecuperarPelotasError() {
+		setUpEscenario9();
+		try {
+			juego.recuperarPelotas("./datatest/pelotas.txt");
 			fail("Deberia fallar");
 		} catch (ClassNotFoundException | IOException e) {
 			
