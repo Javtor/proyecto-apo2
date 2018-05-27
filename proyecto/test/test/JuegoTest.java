@@ -147,7 +147,7 @@ class JuegoTest {
 		juego.crearBonus();
 		
 		try {
-			juego.guardarNave("./test/datatest/bonus.txt");
+			juego.guardarBonificaciones("./test/datatest/bonus.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -160,7 +160,7 @@ class JuegoTest {
 		juego.agregarDecoracion(new Decoracion());
 		
 		try {
-			juego.guardarNave("./test/datatest/deco.txt");
+			juego.guardarDeco("./test/datatest/deco.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -202,7 +202,7 @@ class JuegoTest {
 		}
 		
 		try {
-			juego.guardarNave("./test/datatest/users.txt");
+			juego.guardarJugadores("./test/datatest/users.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -455,6 +455,28 @@ class JuegoTest {
 		setUpEscenario9();
 		try {
 			juego.recuperarPelotas("./datatest/pelotas.txt");
+			fail("Deberia fallar");
+		} catch (ClassNotFoundException | IOException e) {
+			
+		}
+	}
+	
+	@Test
+	void testRecuperarBonus() {
+		setUpEscenario10();
+		try {
+			juego.recuperarBonus("./test/datatest/bonus.txt");
+		} catch (ClassNotFoundException | IOException e) {
+			fail("No deberia fallar");
+		}
+		assertTrue(juego.getBonus().size()==4);
+	}
+	
+	@Test
+	void testRecuperarBonusError() {
+		setUpEscenario10();
+		try {
+			juego.recuperarBonus("./datatest/bonus.txt");
 			fail("Deberia fallar");
 		} catch (ClassNotFoundException | IOException e) {
 			
