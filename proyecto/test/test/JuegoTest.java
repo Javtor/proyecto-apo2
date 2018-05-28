@@ -324,6 +324,51 @@ class JuegoTest {
 		juego.setJugador(new Jugador("Camila"));
 	}
 	
+	void setupEscenario23() {
+		juego = new Juego();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	void setupEscenario24() {
+		juego = new Juego();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		juego.getNave().colisionaCon(new Pelota(0));
+		juego.getNave().setInvulnerable(false);
+		juego.getNave().colisionaCon(new Pelota(0));
+		juego.getNave().setInvulnerable(false);
+		juego.getNave().colisionaCon(new Pelota(0));
+		juego.getNave().setInvulnerable(false);
+		juego.getNave().colisionaCon(new Pelota(0));
+		juego.getNave().setInvulnerable(false);
+		juego.getNave().colisionaCon(new Pelota(0));
+	}
+	
+	void setupEscenario25() {
+		juego = new Juego();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		juego.getNave().setX(50);
+		juego.getNave().setY(50);
+		juego.crearBonus();
+		juego.getBonus().get(0).setX(50);
+		juego.getBonus().get(0).setY(50);
+		juego.bonusPuntaje();
+	}
+	
 	//PRUEBAS
 
 	@Test
@@ -744,6 +789,17 @@ class JuegoTest {
 		} catch (JugadorRepetidoException e) {
 
 		}
+	}
+	
+	@Test
+	void testVerificarVidas() {
+		setupEscenario23();
+		juego.verificarVidas();
+		assertTrue(juego.isJugando());
+		
+		setupEscenario24();
+		juego.verificarVidas();
+		assertFalse(juego.isJugando());
 	}
 
 }
