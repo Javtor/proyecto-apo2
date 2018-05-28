@@ -41,13 +41,13 @@ import modelo.ProyectilRapido;
 	void setupEscenario3(){
 		juego=new Juego();
 	}
+	
 	void setupEscenario4() {
 		setupEscenario3();
 		setupEscenario2();
 		juego.insertarPelota(pelota);
-		juego.insertarPelota(pelota1);
-		juego.insertarPelota(pelota2);
 	}
+	
 	@Test
 	void testHayColision() {
 		setupEscenario1();
@@ -168,7 +168,7 @@ import modelo.ProyectilRapido;
 	@Test
 	void testGetPelotas() {
 		setupEscenario4();
-		ArrayList<Pelota> a=new ArrayList();
+		ArrayList<Pelota> a=new ArrayList<Pelota>();
 		pelota.crearArreglo(a);
 		assertTrue(a.size()==3);
 	}
