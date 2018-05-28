@@ -168,7 +168,8 @@ import modelo.ProyectilRapido;
 	@Test
 	void testGetPelotas() {
 		setupEscenario4();
-		ArrayList<Pelota> a=juego.getPelotas();
+		ArrayList<Pelota> a=new ArrayList();
+		pelota.crearArreglo(a);
 		assertTrue(a.size()==3);
 	}
 	@Test
@@ -184,7 +185,7 @@ import modelo.ProyectilRapido;
 		pelota.setDX(20);
 		pelota.setDY(20);
 		pelota.mover();
-		assertTrue(pelota.getDY()==20 && pelota.getDX()==20);
+		assertTrue(pelota.getX()==20 && pelota.getY()==20);
 		
 		pelota.setX(10);pelota.setY(0);
 		pelota.setDX(0);
@@ -196,6 +197,6 @@ import modelo.ProyectilRapido;
 		pelota.setDX(10);
 		pelota.setDY(10);
 		pelota.mover();
-		assertTrue(pelota.getDX()==10);
+		assertTrue(pelota.getX()==810);
 	}
 }
