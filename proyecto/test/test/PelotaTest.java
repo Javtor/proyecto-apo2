@@ -169,7 +169,7 @@ import modelo.ProyectilRapido;
 	void testGetPelotas() {
 		setupEscenario4();
 		ArrayList<Pelota> a=new ArrayList();
-		pelota.crearArreglo(a);
+		a=juego.getPelotas();
 		assertTrue(a.size()==3);
 	}
 	@Test

@@ -90,7 +90,7 @@ public class Pelota extends SpriteMovimiento implements Colisionable {
 	}
 	/**
 	 * Crea el arreglo de pelotas en inorden<br>
-	 * @param a ArrayList donde se van acomulando las pelotas del árbol
+	 * @param a ArrayList donde se van acumulando las pelotas del árbol
 	 */
 	public void crearArreglo(ArrayList<Pelota> a) {
 		if (izq != null) {
