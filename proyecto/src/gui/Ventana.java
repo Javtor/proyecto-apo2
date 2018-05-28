@@ -100,7 +100,7 @@ public class Ventana extends JFrame {
 		try {
 			juego.recuperarJugadores(Juego.DIREC_JUGADORES);
 		} catch (ClassNotFoundException | IOException e) {
-			System.out.println("Error al recuperar jugadores");
+			
 		}
 		setTitle("Space War");
 		setLayout(new BorderLayout());
