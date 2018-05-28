@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import modelo.Bonificacion;
+import modelo.BonoProyFuerte;
+import modelo.BonoProyNormal;
+import modelo.BonoProyRapido;
+import modelo.BonoPuntos;
+import modelo.BonoVida;
 import modelo.Decoracion;
 import modelo.Juego;
 import modelo.Jugador;
@@ -15,6 +20,8 @@ import modelo.JugadorRepetidoException;
 import modelo.Nave;
 import modelo.NombreNoExisteException;
 import modelo.Pelota;
+import modelo.ProyectilFuerte;
+import modelo.ProyectilNormal;
 import modelo.ProyectilRapido;
 import modelo.PuntajeNoExisteException;
 
@@ -366,6 +373,55 @@ class JuegoTest {
 		juego.crearBonus();
 		juego.getBonus().get(0).setX(50);
 		juego.getBonus().get(0).setY(50);
+		juego.bonusPuntaje();
+	}
+	
+	void setupEscenario26() {
+		juego = new Juego();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		juego.getNave().setX(50);
+		juego.getNave().setY(50);
+		juego.getPelotas().get(1).setX(50);
+		juego.getPelotas().get(1).setY(50);
+		juego.getPelotas().get(0).setX(200);
+		juego.getPelotas().get(0).setY(200);
+	}
+	
+	void setupEscenario27() {
+		juego = new Juego();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		juego.getNave().setX(50);
+		juego.getNave().setY(50);
+		juego.getPelotas().get(1).setX(300);
+		juego.getPelotas().get(1).setY(300);
+		juego.getPelotas().get(0).setX(200);
+		juego.getPelotas().get(0).setY(200);
+	}
+	
+	void setupEscenario28() {
+		juego = new Juego();
+		try {
+			juego.iniciarJuego(false);
+		} catch (JugadorRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		juego.getNave().colisionaCon(new BonoProyFuerte());
+		juego.getNave().getProyectil().setVisible(true);
+		juego.getNave().getProyectil().setX(50);
+		juego.getNave().getProyectil().setY(50);
+		juego.getPelotas().get(0).setX(50);
+		juego.getPelotas().get(0).setY(50);
 		juego.bonusPuntaje();
 	}
 	
@@ -800,6 +856,45 @@ class JuegoTest {
 		setupEscenario24();
 		juego.verificarVidas();
 		assertFalse(juego.isJugando());
+	}
+	
+	@Test
+	void testVerificarColisionBonus() {
+		setupEscenario25();
+		Bonificacion b = juego.getBonus().get(0);
+		juego.verificarColisionBonus();
+		if(b instanceof BonoPuntos) {
+			assertTrue(juego.getPuntaje() == 20);
+		} else if(b instanceof BonoVida) {
+			assertTrue(juego.getNave().getVidas() == 5);
+		} else if(b instanceof BonoProyNormal) {
+			assertTrue(juego.getNave().getProyectil() instanceof ProyectilNormal);
+		} else if(b instanceof BonoProyRapido) {
+			assertTrue(juego.getNave().getProyectil() instanceof ProyectilRapido);
+		} else if(b instanceof BonoProyFuerte) {
+			assertTrue(juego.getNave().getProyectil() instanceof ProyectilFuerte);
+		}  
+	}
+	
+	@Test
+	void testVerificarColisionNave() {
+		setupEscenario26();
+		juego.verificarColisionNave();
+		assertTrue(juego.getNave().esInvulnerable());
+		assertTrue(juego.getNave().getVidas() == 3);
+		
+		setupEscenario27();
+		juego.verificarColisionNave();
+		assertFalse(juego.getNave().esInvulnerable());
+		assertTrue(juego.getNave().getVidas() == 4);
+	}
+	
+	@Test
+	void testVerificarColisionProyectil() {
+		setupEscenario28();
+		juego.verificarColisionProyectil();
+		assertFalse(juego.getPelotas().get(0).esVisible());
+		assertTrue(juego.getPuntaje() == 15);
 	}
 
 }
