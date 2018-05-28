@@ -1,3 +1,0 @@
-ElRompeCulos
-Puntaje:45
-Nivel:4
